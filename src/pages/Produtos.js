@@ -1,7 +1,5 @@
-import Modal from 'react-modal';
 import React, { useState } from 'react';
-
-Modal.setAppElement('#root')
+import Modal from '../components/Modal';
 
 function Produtos() {
     const [abrirModal, setAbrirModal] = useState(false);
@@ -16,16 +14,12 @@ function Produtos() {
 
     return (
       <div>
+        <h1>Páginas de Produtos</h1>
         <button onClick={AbrirModal}>Abrir Modal</button>
-
-        <Modal 
-          isOpen={abrirModal}
-          onRequestClose={FecharModal}
-        >
-          <h1>Hello Modal</h1>
-          <p>Testando o modal para o projeto</p>
-          <button onClick={FecharModal}>Fechar</button>
-        </Modal>
+        {abrirModal ? 
+        <Modal onClose = {FecharModal}>
+          <h4>Olá, sou o Modal</h4>
+        </Modal> : null}
       </div>
     );
   }
