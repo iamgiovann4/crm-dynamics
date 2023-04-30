@@ -11,7 +11,11 @@ const Modal = ({id, onClose, children}) => {
         <div id='modal' className='modal' onClick={idModalFechar}>
             <div className='container'>
                 {children}
-                <button onClick={onClose}>Fechar</button>
+                <input type="text" name="nome"  placeholder="Nome"/><br/>
+                <input type="text" name="preco"  placeholder="Preço"/><br/>
+                <input type="int" name="qtd"  placeholder="Quantidade"/><br/><br/>
+                <button className='enviar'>Enviar</button><br/>
+                <button className='fechar' onClick={onClose}>Fechar</button>
             </div>
         </div>
     );

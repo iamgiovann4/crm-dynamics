@@ -18,7 +18,7 @@ function Produtos() {
         <button onClick={AbrirModal}>Abrir Modal</button>
         {abrirModal ? 
         <Modal onClose = {FecharModal}>
-          <h4>Olá, sou o Modal</h4>
+          <h2>Cadastrar produtos</h2>
         </Modal> : null}
       </div>
     );
