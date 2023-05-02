@@ -10,6 +10,8 @@ const Modal = ({id, onClose, children}) => {
     return(
         <div id='modal' className='modal' onClick={idModalFechar}>
             <div className='container'>
+                
+                <div className='xizinho'><h2 onClick={onClose}>X</h2></div>
                 {children}
                 <input type="text" name="nome"  placeholder="Nome"/><br/>
                 <input type="text" name="preco"  placeholder="Preço"/><br/>
