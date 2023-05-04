@@ -13,7 +13,7 @@ const Cadastro = () => {
                  <img src={Quadrados} alt="Quadrados" height={'530px'} />
                 </div>
                 <div className="caixa2">
-                    <img src={Logo} alt="Mountain" />
+                    <img src={Logo} alt="Logo" />
                     
                     <div className='welcome'>
                         <h2>Bem Vindo</h2>
