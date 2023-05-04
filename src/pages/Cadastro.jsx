@@ -24,7 +24,7 @@ const Cadastro = () => {
                         </div>
 
                         <div>
-                            <h2>Já tem uma conta? <a href="#">Entrar</a> </h2>
+                            <h2>Já tem uma conta? <a href="/produtos">Entrar</a></h2>
                         </div>
 
                     </div>
