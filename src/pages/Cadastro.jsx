@@ -3,6 +3,7 @@ import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import Form from "../images/form.png"
 import './Cadastro.css'
+import FormCadastro from '../components/FormCadastro';
 
 const Cadastro = () => {
     
@@ -18,11 +19,9 @@ const Cadastro = () => {
                     <div className='welcome'>
                         <h2>Bem Vindo</h2>
                         <h3>Administre sua empresa em uma plataforma <span style={{color:'#0F9AFE'}}>Confiavel</span> </h3>
-
-                        <div>
-                            <img src={Form} alt="Quadrados" height={'350px'} />
-                        </div>
-
+                        
+                        <FormCadastro/>
+                        
                         <div>
                             <h2>Já tem uma conta? <a href="/produtos">Entrar</a></h2>
                         </div>

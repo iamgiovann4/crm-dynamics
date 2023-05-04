@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.container{
+.modal > .container{
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.25);
@@ -22,14 +22,14 @@
     justify-content: center;
 }
 
-form{
+.modal > .container > .formModal{
     width: 100%;
     display: flex; 
     flex-direction: column;
     align-items: center ;
 }
 
-.xizinho{
+.modal > .container > .xizinho{
     display: flex;
     justify-content: flex-end;
     width: 83%;
@@ -40,13 +40,13 @@ form{
     margin-top: -100px; 
 }
 
-h2{
+.modal > .container > h2{
     font-size: 35px;
     margin-top: -3px;
     padding-bottom: 10px;
 }
 
-input{
+.modal > .container > .formModal > input{
     width: 65%;
     border-top: none;
     border-left: none;
@@ -62,7 +62,7 @@ input{
     color: #626264b1;
 }
 
-.enviar, .fechar {
+.modal > .container > .formModal > .enviar, .fechar {
     width: 65%;
     height: 45px;
     border: 0;
@@ -72,13 +72,13 @@ input{
     font-weight: bold;
 }
 
-.enviar{
+.modal > .container > .formModal > .enviar{
     background: linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 20px;
 }
 
-.fechar {
+.modal > .container > .formModal > .fechar {
     background: linear-gradient(90deg, #252525 0%, rgba(37, 37, 37, 0.76) 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
