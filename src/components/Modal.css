@@ -29,6 +29,23 @@ form{
     align-items: center ;
 }
 
+.xizinho{
+    display: flex;
+    justify-content: end;
+    width: 83%;
+    color: #252525;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: -100px; 
+}
+
+h2{
+    font-size: 35px;
+    margin-top: -3px;
+    padding-bottom: 10px;
+}
+
 input{
     width: 65%;
     border-top: none;
@@ -62,26 +79,6 @@ input{
 }
 
 .fechar {
-    /* margin-bottom: 60px; */
     background: linear-gradient(90deg, #252525 0%, rgba(37, 37, 37, 0.76) 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    /* margin-bottom: 20px; */
 }
-
-.xizinho{
-    display: flex;
-    justify-content: end;
-    width: 83%;
-    color: #252525;
-    font-weight: bolder;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: -100px; 
-}
-
-h2{
-    font-size: 35px;
-    margin-top: -3px;
-    padding-bottom: 10px;
-}
-
