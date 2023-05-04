@@ -13,14 +13,20 @@
 .container{
     background-color: #fff;
     border-radius: 10px;
+    box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.25);
+    height: 650px;
     width: 500px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: column; 
     align-items: center ;
     justify-content: center;
-    padding-top: 35px;
-    box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.25);
+}
+
+form{
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center ;
 }
 
 input{
@@ -28,47 +34,54 @@ input{
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid rgb(97, 97, 97);
+    border-bottom: 1px solid rgba(97, 97, 97, 0.866);
     outline: 0;
-    margin: 15px 0 0 0;
+    margin: 20px 0 0 0;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-size: 18px;
-    font-weight: bold;
+    font-weight:600;
+    color: #626264b1;
 }
-.xizinho{
-    display: flex;
-    justify-content: end;
-    width: 85%;
-    color: #f00;
-    cursor: pointer;
-    margin-top: -100px;
-}
-h2{
-    font-size: 35px;
-}
-.enviar {
+
+.enviar, .fechar {
     width: 65%;
     height: 45px;
     border: 0;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
     color: #fff;
     font-size: 25px;
     font-weight: bold;
 }
 
+.enviar{
+    background: linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+}
+
 .fechar {
-    width: 65%;
-    height: 45px;
-    border: 0;
-    border-radius: 10px;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     background: linear-gradient(90deg, #252525 0%, rgba(37, 37, 37, 0.76) 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #fff;
-    font-size: 25px;
-    font-weight: bold;
+    /* margin-bottom: 20px; */
 }
+
+.xizinho{
+    display: flex;
+    justify-content: end;
+    width: 83%;
+    color: #252525;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: -100px; 
+}
+
+h2{
+    font-size: 35px;
+    margin-top: -3px;
+    padding-bottom: 10px;
+}
+

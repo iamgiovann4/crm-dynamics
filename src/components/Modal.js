@@ -10,14 +10,15 @@ const Modal = ({id, onClose, children}) => {
     return(
         <div id='modal' className='modal' onClick={idModalFechar}>
             <div className='container'>
-                
-                <div className='xizinho'><h2 onClick={onClose}>X</h2></div>
+                <div className='xizinho'><p onClick={onClose}>X</p></div>
                 {children}
-                <input type="text" name="nome"  placeholder="Nome"/><br/>
-                <input type="text" name="preco"  placeholder="Preço"/><br/>
-                <input type="int" name="qtd"  placeholder="Quantidade"/><br/><br/>
-                <button className='enviar'>Enviar</button><br/>
-                <button className='fechar' onClick={onClose}>Fechar</button>
+                <form>
+                    <input type="text" name="nome"  placeholder="Nome"/><br/>
+                    <input type="text" name="preco"  placeholder="Preço"/><br/>
+                    <input type="int" name="qtd"  placeholder="Quantidade"/><br/><br/>
+                    <button className='enviar'>Enviar</button><br/>
+                    <button className='fechar' onClick={onClose}>Fechar</button>
+                </form>
             </div>
         </div>
     );
