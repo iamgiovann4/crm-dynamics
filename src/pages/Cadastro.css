@@ -34,7 +34,8 @@ html, body, #root{
     color: #666;
 }
 
-.wrapper > .caixa2 > .welcome > div > h2 > a{
+.wrapper > .caixa2 > .welcome > .linkLogin > h2 > a{
     text-decoration: none;
     color: var(--primary);
 }
+
