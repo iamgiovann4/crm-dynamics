@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
-import Form from "../images/form.png"
+// import Form from "../images/form.png"
 import './Cadastro.css'
 import FormCadastro from '../components/FormCadastro';
 
