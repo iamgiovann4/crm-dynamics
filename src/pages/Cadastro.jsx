@@ -1,9 +1,46 @@
 import React from 'react';
+import sha256 from 'sha256';
+
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 // import Form from "../images/form.png"
 import './Cadastro.css'
 import FormCadastro from '../components/FormCadastro';
+
+
+
+//===========================
+export const handleSubmit = async (event) => {
+    event.preventDefault()
+    console.log('Minha funcao de submit')
+    console.log(event.target)
+    const fname = event.target.fname.value 
+    const lname = event.target.lname.value
+    const office = event.target.office.value
+    const cpf = event.target.cpf.value
+    const senha = event.target.password.value
+    const salt = '0912743';
+    const password = sha256(senha + salt);
+    const email = event.target.email.value
+    const user = {fname, lname, office, cpf, password, email}
+    console.log( user)
+    try {
+      const response = await fetch('http://localhost:3100/user',
+      {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user), 
+      })
+      const data = await response.json()
+      console.log(data)
+      alert('usuario cadastrado')
+    } catch (error) {
+      console.log("deu merda: " + error)
+    }
+  }
+//===========================
 
 const Cadastro = () => {
     
