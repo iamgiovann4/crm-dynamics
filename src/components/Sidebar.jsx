@@ -18,7 +18,6 @@ const Sidebar = () => {
             <h2>More</h2>
             <h2>Product Page</h2>
             <h2>About</h2>
-
         </Box>
     )
 }
