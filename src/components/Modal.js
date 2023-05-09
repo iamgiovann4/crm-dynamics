@@ -12,11 +12,11 @@ const Modal = ({id, onClose, children}) => {
             <div className='container'>
                 <div className='xizinho'><p onClick={onClose}>X</p></div>
                 {children}
-                <form className='formModal'>
+                <form onSubmit={handleSubmit} className='formModal'>
                     <input type="text" name="nome"  placeholder="Nome"/><br/>
                     <input type="text" name="preco"  placeholder="Preço"/><br/>
                     <input type="int" name="qtd"  placeholder="Quantidade"/><br/><br/>
-                    <button className='enviar'>Enviar</button><br/>
+                    <button className='enviar' type='submit'>Enviar</button><br/>
                     <button className='fechar' onClick={onClose}>Fechar</button>
                 </form>
             </div>
