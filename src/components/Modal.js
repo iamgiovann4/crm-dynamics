@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormCadastro.css'
+import './Modal.css'
 
 const Modal = ({id, onClose, children}) => {
     const idModalFechar = (e) => {
