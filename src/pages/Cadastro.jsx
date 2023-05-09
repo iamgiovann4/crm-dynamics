@@ -35,10 +35,10 @@ export const handleSubmit = async (event) => {
       })
       const data = await response.json()
       console.log(data)
-      if(data.message['Dados inválidos']){
-        alert('usuario nao cadstrado')
-      }else {
-        alert('usuario cadstrado')
+      if (data.message === "Dados inválidos") {
+        alert('Usuário NÃO cadastrado');
+      } else {
+        alert('Usuário cadastrado');
       }
       
     } catch (error) {
