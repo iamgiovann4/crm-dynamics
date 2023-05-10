@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './Produto.css'
 import Box from '@mui/material/Box'
+import TableProduct from '../components/TableProduct';
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */}
 
-    console.log(products)
+    // console.log(products)
 
     // const OpenModal = () => {
     //     setOpenModal(true)
@@ -62,6 +63,19 @@ function Products() {
       <>
         <h1>Páginas de Produtos</h1>
         <button onClick={() => setOpenModal(true)}>Abrir Modal</button>
+        <Box>
+            <table  style={{border: '1px solid black', margin: '50px auto', padding: '8px', width: '50%', height: 'auto'}}>
+                <tr style={styles.tabela}>
+                    <th style={styles.tabela}>Produto</th>
+                    <th style={styles.tabela}>Preço</th>
+                    <th style={styles.tabela}>Quantidade</th>
+                </tr>
+                {products &&
+                    products.map(product => (
+                    <TableProduct key={product.id} product={product} setProducts={setProducts} products={products}/>
+                ))}
+            </table>
+        </Box>
         {openModal && 
             <Box className='modal' onClick={(event) => {
                 if(event.target.className.includes('modal')){
@@ -83,6 +97,14 @@ function Products() {
         }
       </>
     )
+  }
+
+  const styles = {
+    tabela: {
+        border: '1px solid black',
+        margin: '2px',
+        padding: '10px'
+    }
   }
 
 export default Products
