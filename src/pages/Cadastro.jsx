@@ -6,8 +6,6 @@ import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import FormCadastro from '../components/FormCadastro';
 
-
-
 //===========================
 export const handleSubmit = async (event) => {
     event.preventDefault()
@@ -39,7 +37,6 @@ export const handleSubmit = async (event) => {
       } else {
         alert('Usuário cadastrado');
       }
-      
     } catch (error) {
       console.log("deu merda: " + error)
     }
