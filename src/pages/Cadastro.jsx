@@ -51,10 +51,12 @@ const Cadastro = () => {
         <img style={styles.img} src={Quadrados} alt={'detalhes'} />
       </Grid>
       <Grid item xs={8}>
-        <Box sx={{ paddingTop: '30px', height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10%" }}>
+        <Box sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",}}>
           <Box sx={{ display: "flex", justifyContent: "center", }}>
             <img style={styles.logo} src={Logo} alt={'logo'} />
           </Box>
+            <h2 style={{ fontSize:"34px" }}>Bem Vindo</h2>
+            <h3 > <span style={{ color: "#000000", opacity: "40%" }}>Administre  sua empresa em uma plataforma </span> <span style={{color: "#0070C0",  }}>Confiável</span></h3>
            <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
               <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
                 <Grid item xs={6}>
@@ -78,7 +80,9 @@ const Cadastro = () => {
                 <Grid item xs={12}>
                   <div style={styles.centralizar}>
                     <button style={styles.enviar} className='enviar'>Cadastrar</button><br />
+                    <h4>Já tem uma conta? <span style={{color: "#0070C0"}}> <a href="/produtos" style={{color: "#0070C0"}}>Entrar</a> </span> </h4>
                   </div>
+                  
                 </Grid>
               </Grid>
             </form>
@@ -113,6 +117,7 @@ const styles = {
   centralizar: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    flexDirection: "column"
   }
 }
