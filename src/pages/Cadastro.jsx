@@ -41,11 +41,7 @@ export const handleSubmit = async (event) => {
     } catch (error) {
       console.log("deu merda: " + error)
     }
-
-  } catch (error) {
-    console.log("deu merda: " + error)
   }
-}
 //===========================
 
 const Cadastro = () => {
