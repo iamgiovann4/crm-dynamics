@@ -1,13 +1,32 @@
-import React from 'react';
 import sha256 from 'sha256';
+import React, { useEffect, useState } from 'react'
 
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import { Grid, TextField, Box } from '@mui/material';
 
+function Users() {
+
+const [users, setUsers] = useState(false);
+
+const loadCadastro = async () => {
+  try {
+      const response = await fetch('http://localhost:3100/user')
+      const data = await response.json()
+      setUsers(data)
+      console.log(data)
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+useEffect(() => {
+  loadCadastro()
+}, []) // [] = executa apenas uma vez quando o componente é montados
+
 //===========================
-export const handleSubmit = async (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault()
   console.log('Minha funcao de submit')
   console.log(event.target)
@@ -36,12 +55,12 @@ export const handleSubmit = async (event) => {
       alert('Usuário NÃO cadastrado');
     } else {
       alert('Usuário cadastrado');
+      loadCadastro()
     }
   } catch (error) {
     console.log("deu merda: " + error)
   }
 }
-//===========================
 
 const Cadastro = () => {
 
@@ -87,12 +106,39 @@ const Cadastro = () => {
               </Grid>
             </form>
         </Box>
-      </Grid>
-    </Grid >
-  );
+         <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
+            <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
+              <Grid item xs={6}>
+                <TextField name='fname' label="Nome" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField name='office' label="office" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField name='cpf' label="cpf" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField name='password' label="Senha" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField name='email' label="email" variant="outlined" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <div style={styles.centralizar}>
+                  <button style={styles.enviar} className='enviar'>Cadastrar</button><br />
+                </div>
+              </Grid>
+            </Grid>
+          </form>
+    </Grid>
+  </Grid >
+);
 }
 
-export default Cadastro;
+export default Users;
 
 const styles = {
   img: {
