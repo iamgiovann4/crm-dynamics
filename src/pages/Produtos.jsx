@@ -64,11 +64,13 @@ function Products() {
         <h1>Páginas de Produtos</h1>
         <button onClick={() => setOpenModal(true)}>Abrir Modal</button>
         <Box>
-            <table  style={{border: '1px solid black', margin: '50px auto', padding: '8px', width: '50%', height: 'auto'}}>
-                <tr style={styles.tabela}>
-                    <th style={styles.tabela}>Produto</th>
-                    <th style={styles.tabela}>Preço</th>
-                    <th style={styles.tabela}>Quantidade</th>
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 {products &&
                     products.map(product => (
@@ -97,14 +99,6 @@ function Products() {
         }
       </>
     )
-  }
-
-  const styles = {
-    tabela: {
-        border: '1px solid black',
-        margin: '2px',
-        padding: '10px'
-    }
   }
 
 export default Products
