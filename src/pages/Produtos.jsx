@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Produto.css'
+import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
-import TableProduct from '../components/TableProduct';
+import TableProduct from '../components/TableProduct'
+import Grid from '@mui/material/Grid'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
@@ -61,16 +63,25 @@ function Products() {
 
     return (
       <>
-        <h1>Páginas de Produtos</h1>
         <Box sx={{background: 'white'}}>
+            <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '50px auto',  width: '50%', height: 'auto'}}>
+            
+            <tr>
+                <th colSpan={5}>
+                <Stack container direction="row" sx={{alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between'}}>
+                <h1>Seus Produtos</h1>
+                <button style={{height: '50px', width: '200px', borderRadius: '8px', background: 'white'}} onClick={() => setOpenModal(true)}>Abrir Modal</button>
+                </Stack>
+                </th>
+            </tr>
 
-            <table  style={{background: 'white', boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '50px auto', padding: '8px', width: '50%', height: 'auto'}}>
-                <h1 style={styles.tabela}>Seus Produtos</h1>
-                <button onClick={() => setOpenModal(true)}>Abrir Modal</button>
+                
                 <tr style={styles.tabela}>
-                    <th style={styles.tabela}>Produto Quantidade Preço</th>
-                    <th style={styles.tabela}>Preço</th>
-                    <th style={styles.tabela}>Quantidade</th>
+                    <th align="left" style={styles.tabela}>Produto</th>
+                    <th align="left" style={styles.tabela}>Preço</th>
+                    <th align="left" style={styles.tabela}>Quantidade</th>
+                    <th align="left" style={styles.tabela}></th>
+                    <th align="left" style={styles.tabela}></th>
                 </tr>
                 {products &&
                     products.map(product => (
@@ -103,8 +114,7 @@ function Products() {
 
   const styles = {
     tabela: {
-        margin: '2px',
-        padding: '10px'
+        background: 'white'
     }
   }
 
