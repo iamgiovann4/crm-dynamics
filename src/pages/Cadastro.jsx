@@ -1,29 +1,10 @@
 import sha256 from 'sha256';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import { Grid, TextField, Box } from '@mui/material';
-
-function Users() {
-
-const [users, setUsers] = useState(false);
-
-const loadCadastro = async () => {
-  try {
-      const response = await fetch('http://localhost:3100/user')
-      const data = await response.json()
-      setUsers(data)
-      console.log(data)
-  } catch (error) {
-      console.log(error)
-  }
-}
-
-useEffect(() => {
-  loadCadastro()
-}, []) // [] = executa apenas uma vez quando o componente é montados
 
 //===========================
 const handleSubmit = async (event) => {
@@ -55,7 +36,6 @@ const handleSubmit = async (event) => {
       alert('Usuário NÃO cadastrado');
     } else {
       alert('Usuário cadastrado');
-      loadCadastro()
     }
   } catch (error) {
     console.log("deu merda: " + error)
@@ -138,7 +118,7 @@ const Cadastro = () => {
 );
 }
 
-export default Users;
+export default Cadastro;
 
 const styles = {
   img: {
@@ -167,3 +147,4 @@ const styles = {
     flexDirection: "column"
   }
 }
+
