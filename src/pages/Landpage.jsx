@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography';
 import Logo from '../images/Dynamics.png'
 import prototipo from '../images/prototipo avançado pag de produtos 7.png'
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+
+
 
 
 const Landpage = () => {
@@ -18,7 +21,7 @@ const Landpage = () => {
           <Typography sx={{ flexGrow: 0.9 }}>
             <img src={Logo} alt="" />
           </Typography>
-          <a href="#" style={{textDecoration:'none'}}><strong style={{color:'#000'}}>Entrar</strong></a>
+          <strong><Link to={`/login`} style={{color:"#000", textDecoration:"none"}}>Entrar</Link></strong>
         </Toolbar>
       </AppBar>
     </Box>
@@ -34,7 +37,7 @@ const Landpage = () => {
             <h2 style={{color:'#000', marginBottom: 0 , fontSize:20 }}>Com a nossa plataforma de e-commerce, </h2>
             <h2 style={{color:'#000', marginBottom: 0 , marginTop: 0 , fontSize:20 }}>oferecemos-lhe a oportunidade de criar e gerenciar a</h2>
             <h2 style={{color:'#000', marginTop: 0 , fontSize:20 }}>sua loja online.</h2>
-            <Button  sx={{width:400, height:60,borderRadius: 10, marginBottom: 5 }}><h2 style={{color:"#fff"}}>Cadastre-se</h2></Button>
+            <Button  sx={{width:400, height:60,borderRadius: 10, marginBottom: 5 }}><h2><Link to={`/cadastro`} style={{color:"#fff", textDecoration:"none"}}>Cadastre-se</Link></h2></Button>
             <img src={prototipo} alt="prototipo" />
         </Box>
         </>
