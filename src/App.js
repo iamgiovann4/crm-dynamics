@@ -1,5 +1,5 @@
 import Router from './Router'
-import Initialization from '../components/Initialization'
+import Initialization from './components/Initialization'
 
 function App() {
   return (
