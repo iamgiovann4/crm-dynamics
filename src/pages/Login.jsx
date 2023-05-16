@@ -21,7 +21,7 @@ const Login = () => {
                                 <Grid item xs={12}>
                                     <TextField id="standard-basic" label="Senha" variant="standard" />
                                 </Grid> <br />
-                                <Button />
+                                <div style={{width:"100%"}}><br /><Button> Entrar </Button></div>
                                 {/* <button style={styles.enviar} className='enviar'>Entrar</button><br /> */}
                             </form>
 
