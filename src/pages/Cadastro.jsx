@@ -6,6 +6,7 @@ import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import Button from "../components/Button"
 import { Grid, TextField, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 //===========================
 const handleSubmit = async (event) => {
@@ -51,49 +52,19 @@ const Cadastro = () => {
         <img style={styles.img} src={Quadrados} alt={'detalhes'} />
       </Grid>
       <Grid item xs={8}>
-        <Box sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",}}>
+        <Box sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }}>
           <Box sx={{ display: "flex", justifyContent: "center", }}>
             <img style={styles.logo} src={Logo} alt={'logo'} />
           </Box>
-            <h2 style={{ fontSize:"34px" }}>Bem Vindo</h2>
-            <h3 > <span style={{ color: "#000000", opacity: "40%" }}>Administre  sua empresa em uma plataforma </span> <span style={{color: "#0070C0",  }}>Confiável</span></h3>
-           <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
-              <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
-                <Grid item xs={6}>
-                  <TextField name='lname' label="Nome" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField name='fname' label="Sobrenome" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField name='office' label="office" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField name='cpf' label="cpf" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField name='password' label="Senha" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField name='email' label="email" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item xs={12}>
-                  <div style={styles.centralizar}>
-                    <button style={styles.enviar} className='enviar'>Cadastrar</button><br />
-                    <h4>Já tem uma conta? <span style={{color: "#0070C0"}}> <a href="/produtos" style={{color: "#0070C0"}}>Entrar</a> </span> </h4>
-                  </div>
-                  
-                </Grid>
-              </Grid>
-            </form>
-        </Box>
-         <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
+          <h2 style={{ fontSize: "34px" }}>Bem Vindo</h2>
+          <h3 > <span style={{ color: "#000000", opacity: "40%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
+          <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
             <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
               <Grid item xs={6}>
-                <TextField name='fname' label="Nome" variant="outlined" fullWidth />
+                <TextField name='lname' label="Nome" variant="outlined" fullWidth />
               </Grid>
               <Grid item xs={6}>
-                <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
+                <TextField name='fname' label="Sobrenome" variant="outlined" fullWidth />
               </Grid>
               <Grid item xs={12}>
                 <TextField name='office' label="office" variant="outlined" fullWidth />
@@ -108,13 +79,19 @@ const Cadastro = () => {
                 <TextField name='email' label="email" variant="outlined" fullWidth />
               </Grid>
               <Grid item xs={12}>
-              <Button />
+                <div style={styles.centralizar}>
+                  <div style={{width:"30%"}}><Button>Cadastrar</Button><br /></div>
+                  
+                  <h4>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0" }}>Entrar</Link> </span> </h4>
+                </div>
+
               </Grid>
             </Grid>
           </form>
-    </Grid>
-  </Grid >
-);
+        </Box>
+      </Grid>
+    </Grid >
+  );
 }
 
 export default Cadastro;
@@ -126,20 +103,8 @@ const styles = {
   logo: {
     width: "350px"
   },
-  enviar: {
-    height: "45px",
-    border: "0",
-    borderRadius: "15px",
-    color: "#fff",
-    fontSize: "25px",
-    fontWeight: "bold",
-    textAlign: "center",
-    width: "30%",
-    background: "linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    margintop: "20px"
-  },
   centralizar: {
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
