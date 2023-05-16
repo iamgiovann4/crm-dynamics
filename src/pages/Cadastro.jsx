@@ -4,6 +4,7 @@ import React from 'react'
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
+import Button from "../components/Button"
 import { Grid, TextField, Box } from '@mui/material';
 
 //===========================
@@ -107,9 +108,7 @@ const Cadastro = () => {
                 <TextField name='email' label="email" variant="outlined" fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <div style={styles.centralizar}>
-                  <button style={styles.enviar} className='enviar'>Cadastrar</button><br />
-                </div>
+              <Button />
               </Grid>
             </Grid>
           </form>

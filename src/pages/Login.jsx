@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, TextField, Box } from '@mui/material';
 
 import Logo from "../images/Dynamics.png"
+import Button from "../components/Button"
 
 
 const Login = () => {
@@ -20,7 +21,8 @@ const Login = () => {
                                 <Grid item xs={12}>
                                     <TextField id="standard-basic" label="Senha" variant="standard" />
                                 </Grid> <br />
-                                <button style={styles.enviar} className='enviar'>Entrar</button><br />
+                                <Button />
+                                {/* <button style={styles.enviar} className='enviar'>Entrar</button><br /> */}
                             </form>
 
                         </Box>
