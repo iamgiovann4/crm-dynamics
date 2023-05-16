@@ -7,6 +7,7 @@ const pag404 = () => {
             <h1>só temos 2 rotas</h1>
             <h3>/cadastro</h3>
             <h3>/produtos</h3>
+            <h3>/login</h3>
         </div>
             
         </>
