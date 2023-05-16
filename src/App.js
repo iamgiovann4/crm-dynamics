@@ -1,8 +1,12 @@
 import Router from './Router'
+import Initialization from '../components/Initialization'
 
 function App() {
   return (
-    <Router />
+    <>
+      <Initialization/>
+      <Router />
+    </>
   );
 }
 
