@@ -8,6 +8,7 @@ const pag404 = () => {
             <h3>/cadastro</h3>
             <h3>/produtos</h3>
             <h3>/login</h3>
+            <h3>/landpage</h3>
         </div>
             
         </>
