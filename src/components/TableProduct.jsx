@@ -80,11 +80,11 @@ const TableProduct = ({product, setProducts, products}) => {
           <td>{product.stock}</td>
 
           <td>
-            <IconEdit style={{width: '17px', height: '17px', cursor: 'pointer' }}
+            <IconEdit style={{width: '20px', cursor: 'pointer' }}
             onClick={() => setOpenModal(true)}/>
           </td>
           <td>
-            <IconTrash style={{width: '15px', height: '15px', cursor: 'pointer', alignItems: 'center'}} onClick={() => deleteUser(product.id)}/>
+            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(product.id)}/>
           </td>
       </tr>
 
