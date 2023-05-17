@@ -17,8 +17,8 @@ const Sidebar = () => {
     const handleSubmit = async (event) => {
         event.preventDefault() 
         const email = event.target.email.value
-        const pass = event.target.pass.value
-        const user = {email, pass}
+        const password = event.target.password.value
+        const user = {email, password}
         try {
           const response = await fetch('http://localhost:3100/auth/login',
           {
@@ -113,7 +113,7 @@ const Sidebar = () => {
                     <h1>Logar</h1>
                     <form onSubmit={handleSubmit}>
                       <input type="text" name="email" placeholder="Email" /><br />
-                      <input type="password" name="pass" placeholder="Senha" /><br />
+                      <input type="password" name="password" placeholder="Senha" /><br />
                       <br />
                       <button type="submit">Logar</button>
                     </form>
