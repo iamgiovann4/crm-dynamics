@@ -62,11 +62,13 @@ function Products() {
     return (
       <>
         <h1>Páginas de Produtos</h1>
-        <button onClick={() => setOpenModal(true)}>Abrir Modal</button>
-        <Box>
-            <table  style={{border: '1px solid black', margin: '50px auto', padding: '8px', width: '50%', height: 'auto'}}>
+        <Box sx={{background: 'white'}}>
+
+            <table  style={{background: 'white', boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '50px auto', padding: '8px', width: '50%', height: 'auto'}}>
+                <h1 style={styles.tabela}>Seus Produtos</h1>
+                <button onClick={() => setOpenModal(true)}>Abrir Modal</button>
                 <tr style={styles.tabela}>
-                    <th style={styles.tabela}>Produto</th>
+                    <th style={styles.tabela}>Produto Quantidade Preço</th>
                     <th style={styles.tabela}>Preço</th>
                     <th style={styles.tabela}>Quantidade</th>
                 </tr>
@@ -101,7 +103,6 @@ function Products() {
 
   const styles = {
     tabela: {
-        border: '1px solid black',
         margin: '2px',
         padding: '10px'
     }
