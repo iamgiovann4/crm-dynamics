@@ -4,6 +4,7 @@ import { Grid, TextField, Box } from '@mui/material';
 import Logo from "../images/Dynamics.png"
 import Silhueta from "../images/silhuetaLogin.png"
 import Button from "../components/Button"
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -28,6 +29,7 @@ const Login = () => {
                                     <TextField id="standard-basic" label="Senha" variant="standard" sx={{ width:'30vh' }} />
                                 </Grid> <br />
                                 <div style={{ width: "100%" }}><br /><Button> Entrar </Button></div>
+                                <h3>Não tem uma conta? <span> <Link to={`/cadastro`} style={{ color: "#0070C0" }}>Cadastre-se</Link> </span> </h3>
                                 {/* <button style={styles.enviar} className='enviar'>Entrar</button><br /> */}
                             </form>
 
