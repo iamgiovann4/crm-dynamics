@@ -31,7 +31,7 @@ const Login = () => {
             <Grid container spacing={2} sx={{ height: '100%', }}>
                 <Grid item xs={12}>
                     <Box sx={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
-                        <img style={styles.img} src={Logo} alt={'Logo'} />
+                        <img src={Logo} alt={'Logo'} />
                     </Box>
                     <Box style={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "100%", flexDirection: "column", justifyContent: "center" }}>
 
@@ -39,14 +39,14 @@ const Login = () => {
                             <Box sx={{ marginTop: "-100px" }}>
                                 <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
                             </Box>
-                            <form sx={{ m: 1, width: '25ch', padding:"100px" }}>
+                            <form sx={{ m: 1, width: '25ch', padding: "100px" }}>
                                 <Grid item xs={12}>
                                     <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
                                         <TextField id="standard-basic" label="CPF" variant="standard" sx={{ width: '30vh' }} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <FormControl sx={{ m: 1, width: '25ch' }} variant='standard'>
+                                    <FormControl sx={{ m: 1, width: '100%' }} variant='standard'>
                                         <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                         <Input
                                             id="standard-adornment-password"
@@ -63,7 +63,7 @@ const Login = () => {
                                                     </IconButton>
                                                 </InputAdornment>
                                             }
-                                            sx={{ width: '30vh' }} />
+                                        />
                                     </FormControl>
 
                                 </Grid> <br />

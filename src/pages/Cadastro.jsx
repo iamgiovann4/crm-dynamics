@@ -1,11 +1,19 @@
 import sha256 from 'sha256';
 import React from 'react'
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import Button from "../components/Button"
-import { Grid, TextField, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 //===========================
@@ -46,6 +54,14 @@ const handleSubmit = async (event) => {
 
 const Cadastro = () => {
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Grid container spacing={2} sx={{ height: '100%', }}>
       <Grid item xs={4} style={{ backgroundColor: "#252525", display: "flex", alignItems: "center", height: "100%", }}>
@@ -61,27 +77,56 @@ const Cadastro = () => {
           <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
             <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
               <Grid item xs={6}>
-                <TextField name='lname' label="Nome" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <TextField name='lname' label="Nome" variant="outlined" fullWidth />
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
-                <TextField name='fname' label="Sobrenome" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <TextField name='fname' label="Sobrenome" variant="outlined" fullWidth />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField name='office' label="office" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <TextField name='office' label="office" variant="outlined" fullWidth />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField name='cpf' label="cpf" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <TextField name='cpf' label="cpf" variant="outlined" fullWidth />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField name='password' label="Senha" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-password"
+                    type={showPassword ? 'text' : 'password'}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField name='email' label="email" variant="outlined" fullWidth />
+                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                  <TextField name='email' label="email" variant="outlined" fullWidth />
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <div style={styles.centralizar}>
-                  <div style={{width:"30%"}}><Button>Cadastrar</Button><br /></div>
-                  
+                  <div style={{ width: "30%" }}><Button>Cadastrar</Button><br /></div>
+
                   <h4>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0" }}>Entrar</Link> </span> </h4>
                 </div>
 
