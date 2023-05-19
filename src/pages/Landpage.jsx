@@ -1,5 +1,4 @@
 import React from 'react';
-import './Landpage.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,13 +14,13 @@ import { Link } from 'react-router-dom';
 const Landpage = () => {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, padding: "20px 10px 0 10px" }}>
         <AppBar position="static" sx={{ boxShadow: 'none', }}>
           <Toolbar sx={{ backgroundColor: '#fff', }}>
             <Typography sx={{ flexGrow: 0.9 }}>
               <img src={Logo} alt="" />
             </Typography>
-            <strong><Link to={`/login`} style={{ color: "#000", textDecoration: "none" }}>Entrar</Link></strong>
+            <strong><h2><Link to={`/login`} style={{ color: "#000", textDecoration: "none" }}>Entrar</Link></h2></strong>
           </Toolbar>
         </AppBar>
       </Box>
@@ -30,6 +29,7 @@ const Landpage = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        gap:"20px"
       }}>
         <h1 style={{ color: '#000', marginBottom: 0, textAlign: "center" }}>Simplifique sua Administração <br /> com Nossa Plataforma</h1>
         <p style={{ color: '#000', marginBottom: 0, fontSize: 20, textAlign: "center" }}>Com a nossa plataforma de e-commerce, <br />
