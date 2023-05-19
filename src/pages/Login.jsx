@@ -22,10 +22,10 @@ const Login = () => {
                             </Box>
                             <form style={{ padding: "100px" }}>
                                 <Grid item xs={12}>
-                                    <TextField id="standard-basic" label="CPF" variant="standard" />
+                                    <TextField id="standard-basic" label="CPF" variant="standard" sx={{ width:'30vh' }} />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField id="standard-basic" label="Senha" variant="standard" />
+                                    <TextField id="standard-basic" label="Senha" variant="standard" sx={{ width:'30vh' }} />
                                 </Grid> <br />
                                 <div style={{ width: "100%" }}><br /><Button> Entrar </Button></div>
                                 {/* <button style={styles.enviar} className='enviar'>Entrar</button><br /> */}
