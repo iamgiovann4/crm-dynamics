@@ -9,6 +9,7 @@ import TableProduct from '../components/TableProduct'
 // import Button from '@mui/material/Button'
 
 import Skeleton from '@mui/material/Skeleton';
+import Sidebar from '../components/Sidebar'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
@@ -76,6 +77,7 @@ function Products() {
         }, []);
     return (
         <>
+        <Sidebar />
             <Box sx={{ background: 'white' }}>
                 <table style={{ boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '50px auto', width: '50%', height: 'auto' }}>
 

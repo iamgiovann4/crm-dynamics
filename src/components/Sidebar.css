@@ -1,0 +1,14 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: #000
+}
+
+.sidebar .active {
+    color: blue;
+  }
