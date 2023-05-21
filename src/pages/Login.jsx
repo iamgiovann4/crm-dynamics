@@ -41,8 +41,8 @@ const Login = () => {
                             </Box>
                             <form sx={{ m: 1, width: '25ch', padding: "100px" }}>
                                 <Grid item xs={12}>
-                                    <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
-                                        <TextField id="standard-basic" label="CPF" variant="standard" sx={{ width: '30vh' }} />
+                                    <FormControl sx={{ m: 1, width: '100%' }} variant="filled">
+                                        <TextField id="standard-basic" label="CPF" variant="standard" sx={{ width: '100%' }} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
