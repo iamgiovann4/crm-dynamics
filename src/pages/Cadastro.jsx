@@ -64,7 +64,7 @@ const Cadastro = () => {
 
   return (
     <Grid container spacing={2} sx={{ height: '100%', }}>
-      <Grid item xs={4} style={{ backgroundColor: "#252525", display: "flex", alignItems: "center", height: "100%", }}>
+      <Grid item xs={4} style={{ backgroundColor: "#252525", display: "flex", alignItems: "center" }}>
         <img style={styles.img} src={Quadrados} alt={'detalhes'} />
       </Grid>
       <Grid item xs={8}>
@@ -75,29 +75,29 @@ const Cadastro = () => {
           <h2 style={{ fontSize: "34px" }}>Bem Vindo</h2>
           <h3 > <span style={{ color: "#000000", opacity: "40%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
           <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
-            <Grid container spacing={2} sx={{ display: "flex", alignItems: "center", height: "100%", width: "70%", }}>
+            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
               <Grid item xs={6}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <TextField name='lname' label="Nome" variant="outlined" fullWidth />
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <TextField name='fname' label="Sobrenome" variant="outlined" fullWidth />
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <TextField name='office' label="office" variant="outlined" fullWidth />
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <TextField name='cpf' label="cpf" variant="outlined" fullWidth />
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-password"
@@ -114,12 +114,12 @@ const Cadastro = () => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    label="Password"
+                    label="Password" name="password"
                   />
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+                <FormControl sx={{ width: '100%' }} variant='outlined'>
                   <TextField name='email' label="email" variant="outlined" fullWidth />
                 </FormControl>
               </Grid>
