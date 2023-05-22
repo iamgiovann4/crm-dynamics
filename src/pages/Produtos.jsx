@@ -65,8 +65,9 @@ function Products() {
 
     return (
       <>
-        <Box sx={{background: 'white'}}>
-            <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '50px auto',  width: '50%', height: 'auto'}}>
+        <Box sx={{background: 'white', display: 'flex'}}>
+            <Sidebar></Sidebar>
+            <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '10px auto',  width: '50%', height: 'auto'}}>
             
             
             <tr>
