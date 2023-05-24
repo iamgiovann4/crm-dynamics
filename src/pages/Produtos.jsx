@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
 import Sidebar from '../components/Sidebar'
+import Header from '../components/Header'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 
@@ -65,6 +66,7 @@ function Products() {
 
     return (
       <>
+      <Header></Header>
         <Box sx={{background: 'white', display: 'flex'}}>
             <Sidebar></Sidebar>
             <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '10px auto',  width: '50%', height: 'auto'}}>
