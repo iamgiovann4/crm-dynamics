@@ -10,6 +10,7 @@ import TableProduct from '../components/TableProduct'
 
 import Skeleton from '@mui/material/Skeleton';
 import Sidebar from '../components/Sidebar'
+// import Header from '../components/Header'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
