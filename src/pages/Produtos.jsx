@@ -3,13 +3,10 @@ import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
-
-// import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/Sidebar'
+import Skeleton from '@mui/material/Skeleton'
 // import Grid from '@mui/material/Grid'
 // import Button from '@mui/material/Button'
-
-import Skeleton from '@mui/material/Skeleton';
-import Sidebar from '../components/Sidebar'
 // import Header from '../components/Header'
 
 function Products() {
@@ -67,8 +64,8 @@ function Products() {
             console.log(error)
         }
     }
- const [loading, setLoading] = useState(true);
 
+    const [loading, setLoading] = useState(true);
         useEffect(() => {
           // Simulando um atraso de carregamento
           setTimeout(() => {
@@ -81,26 +78,21 @@ function Products() {
         <Sidebar />
             <Box sx={{ background: 'white' }}>
                 <table style={{ boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '50px auto', width: '50%', height: 'auto' }}>
-
-
                     <tr>
                         <th colSpan={5}>
                             <Stack container direction="row" sx={{ alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px' }}>
                                 <h1>Seus Produtos</h1>
-                                <button disabled={false} variant="filled" style={{ height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE', border: '0px', color: 'white' }} onClick={() => setOpenModal(true)}>Adcionar</button>
+                                <button disabled={false} variant="filled" style={{ height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE', border: '0px', color: 'white' }} onClick={() => setOpenModal(true)}>Adicionar</button>
                             </Stack>
                         </th>
                     </tr>
-
                     {loading ? ( // Verifica se o conteúdo está carregando
-
                         <Box
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-
                             }}
                         >
                             {/* Se estiver carregando, exibe os componentes Skeleton */}
@@ -125,7 +117,6 @@ function Products() {
                                 products.map(product => (
                                     <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} />
                                 ))}
-
                         </>
                     )}
                 </table>
