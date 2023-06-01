@@ -45,19 +45,27 @@ import Button from '@mui/material/Button';
               >
 <Box style={{margin: '30px'}}>
                 
+              <Box style={{
+                background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
+                boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                borderRadius: '15px',
+              }}>
                 <AiFillHome style={{
                 width: 30,
                 height: 30,
-                fill: 'black', 
+                fill: 'white', 
                 float: 'left',
                 padding: '10px'
                 }} /> 
-                <h3 style={{padding: '14px'}}>Casa</h3>
-            </Box>
+                <h3 style={{padding: '14px', color: 'white'}}>Casa</h3>
+              </Box>
+</Box>
 
 
 
             <Box style={{margin: '30px'}}>
+                
+
                 
                 <RiDashboardFill style={{
                 width: 30,
@@ -141,11 +149,4 @@ import Button from '@mui/material/Button';
               </div>
             );
           }
-
-          const styles = {
-            css4t3x6lMuiPaperrootMuiDrawerpaper: {
-              backgroundColor: 'red'
-}
-            }
-                
                     
