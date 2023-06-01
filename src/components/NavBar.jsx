@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box'
-// import MainMenu from './MainMenu'
-
+import { NavLink } from 'react-router-dom'
 import { AiFillHome } from "react-icons/ai";
 import { RiContactsFill } from "react-icons/ri";
 import  { RiDashboardFill } from "react-icons/ri";
@@ -42,31 +41,43 @@ import Button from '@mui/material/Button';
                 onClick={toggleDrawer(anchor, false)}
                 onKeyDown={toggleDrawer(anchor, false)}
               >
-<Box style={{margin: '30px'}}>
+
+          <NavLink style={{textDecoration: 'none', color: 'red'}} to='/Home'>
+            <Box style={{margin: '30px'}}>
+                
+              <Box style={{
+                background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
+                boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                borderRadius: '15px',
+              }}>
                 
                 <AiFillHome style={{
                 width: 30,
                 height: 30,
-                fill: 'black', 
+                fill: 'white', 
                 float: 'left',
                 padding: '10px'
                 }} /> 
-                <h3 style={{padding: '14px'}}>Casa</h3>
-            </Box>
+                <h3 style={{padding: '14px', color: 'white'}}>Casa</h3>
+                </Box>
+              </Box>
+          </NavLink>
 
 
-
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to='/Produtos'>
             <Box style={{margin: '30px'}}>
-                
                 <RiDashboardFill style={{
                 width: 30,
                 height: 30, 
                 float: 'left',
-                padding: '10px'
+                padding: '10px',
                 }} /> 
                 <h3 style={{padding: '14px'}}>Produto</h3>
             </Box>
+          </NavLink>
 
+
+          <NavLink style={{textDecoration: 'none'}} to='/Clientes'>
             <Box style={{margin: '30px'}}>
                 
                 <RiDashboardFill style={{
@@ -76,9 +87,10 @@ import Button from '@mui/material/Button';
                 float: 'left',
                 padding: '10px'
                 }} /> 
-                <h3 style={{padding: '14px'}}>Cliente</h3>
+                <h3 style={{padding: '14px',color: 'black'}}>Cliente</h3>
             </Box>
-            
+            </NavLink>
+
             <Box style={{margin: '30px'}}>
                 
                 <RiContactsFill style={{
@@ -141,10 +153,5 @@ import Button from '@mui/material/Button';
             );
           }
 
-          const styles = {
-            css4t3x6lMuiPaperrootMuiDrawerpaper: {
-              backgroundColor: 'red'
-}
-            }
-                
+          
                     
