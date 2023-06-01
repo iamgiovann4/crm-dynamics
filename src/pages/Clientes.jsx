@@ -68,7 +68,7 @@ function Clientes() {
       <>
       
       <Content>
-      <NavBar></NavBar><Header/>
+      <NavBar></NavBar>
         <Box sx={{background: 'white', display: 'flex'}}>
             <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '10px auto',  width: '50%', height: 'auto'}}>
             
