@@ -13,6 +13,7 @@ import Button from "../components/Button"
 import { Link, useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import useAuthStore from '../store/authStore';
+import Content from '../components/Content';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -61,13 +62,13 @@ const Login = () => {
 
     return (
         <>
+        <Content>
             <Grid container spacing={2} sx={{ height: '100%', }}>
                 <Grid item xs={12}>
                     <Box sx={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
                         <img src={Logo} alt={'Logo'} />
                     </Box>
                     <Box style={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "100%", flexDirection: "column", justifyContent: "center" }}>
-
                         <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", }}>
                             <Box sx={{ marginTop: "-100px" }}>
                                 <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
@@ -82,23 +83,20 @@ const Login = () => {
                                     <FormControl sx={{ m: 1, width: '100%' }} variant='standard'>
                                         <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                         <Input
-                                            id="standard-adornment-password"
-                                            name='password'
-                                            type={showPassword ? 'text' : 'password'}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        aria-label="toggle password visibility"
-                                                        onClick={handleClickShowPassword}
-                                                        onMouseDown={handleMouseDownPassword}
-                                                    >
-                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            }
-                                        />
+                                        id="standard-adornment-password"
+                                        name='password'
+                                        type={showPassword ? 'text' : 'password'}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                            <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}>
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                            </InputAdornment>
+                                        }/>
                                     </FormControl>
-
                                 </Grid> <br />
                                 <div style={{ width: "100%" }}><br /><Button> Entrar </Button></div>
                                 <h3>Não tem uma conta? <span> <Link to={`/cadastro`} style={{ color: "#0070C0" }}>Cadastre-se</Link> </span> </h3>
@@ -107,8 +105,9 @@ const Login = () => {
                     </Box>
                 </Grid>
             </Grid >
-        </>
-    );
+        </Content>
+    </>
+);
 }
 
 export default Login;
