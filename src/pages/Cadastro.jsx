@@ -9,12 +9,12 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
 import './Cadastro.css'
 import Button from "../components/Button"
 import { Link } from 'react-router-dom';
+import Content from '../components/Content';
 
 //===========================
 const handleSubmit = async (event) => {
@@ -63,6 +63,7 @@ const Cadastro = () => {
   };
 
   return (
+    <Content>
     <Grid container spacing={2} sx={{ height: '100%', }}>
       <Grid item xs={4} style={{ backgroundColor: "#252525", display: "flex", alignItems: "center" }}>
         <img style={styles.img} src={Quadrados} alt={'detalhes'} />
@@ -136,6 +137,7 @@ const Cadastro = () => {
         </Box>
       </Grid>
     </Grid >
+    </Content>
   );
 }
 

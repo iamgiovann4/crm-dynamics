@@ -7,6 +7,8 @@ import Pag404 from "./pages/404";
 import Login from "./pages/Login";
 import Resumo from "./pages/Resumo";
 import Landpage from "./pages/Landpage";
+import Funcionarios from "./pages/Funcionarios";
+import Vendas from "./pages/Vendas";
 
 const Router = () => {
     return (
@@ -18,6 +20,8 @@ const Router = () => {
             <Route path="/home" element={<Home/>} />
             <Route path="/resumo" element={< Resumo />} />
             <Route path="/landpage" element={<Landpage/>} />
+            <Route path="/funcionarios" element={<Funcionarios/>} />
+            <Route path="/vendas" element={<Vendas/>} />
             <Route path="*" element={<Pag404/>} />
             
         </Routes>
