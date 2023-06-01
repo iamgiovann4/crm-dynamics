@@ -4,8 +4,8 @@ import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
 import Header from '../components/Header'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
+// import Grid from '@mui/material/Grid'
+// import Button from '@mui/material/Button'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
