@@ -6,6 +6,7 @@ import TableProduct from '../components/TableProduct'
 import NavBar from '../components/NavBar'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
+import Content from '../components/Content'
 
 function Clientes() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
@@ -65,7 +66,9 @@ function Clientes() {
 
     return (
       <>
-      <NavBar></NavBar>
+      
+      <Content>
+      <NavBar></NavBar><Header/>
         <Box sx={{background: 'white', display: 'flex'}}>
             <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '10px auto',  width: '50%', height: 'auto'}}>
             
@@ -112,6 +115,7 @@ function Clientes() {
                 </Box>
             </Box>
         }
+        </Content>
       </>
     )
   }
