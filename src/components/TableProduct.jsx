@@ -2,7 +2,14 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import '../pages/Produto.css'
-import { Table } from 'react-bootstrap'
+// import Table from '@mui/material/Table'
+// import TableBody from '@mui/material/TableBody'
+// import TableCell from '@mui/material/TableCell'
+// import TableContainer from '@mui/material/TableContainer'
+// import TableHead from '@mui/material/TableHead'
+// import TableRow from '@mui/material/TableRow'
+// import Paper from '@mui/material/Paper'
+
 
 const TableProduct = ({product, setProducts, products}) => {
 
@@ -71,12 +78,13 @@ const TableProduct = ({product, setProducts, products}) => {
           <td>{product.name}</td>
           <td>{product.price}</td>
           <td>{product.stock}</td>
+
           <td>
-            <IconEdit style={{width: '17px', height: '17px', cursor: 'pointer' }}
+            <IconEdit style={{width: '20px', cursor: 'pointer' }}
             onClick={() => setOpenModal(true)}/>
           </td>
           <td>
-            <IconTrash style={{width: '15px', height: '15px', cursor: 'pointer', alignItems: 'center'}} onClick={() => deleteUser(product.id)}/>
+            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(product.id)}/>
           </td>
       </tr>
 
@@ -103,5 +111,17 @@ const TableProduct = ({product, setProducts, products}) => {
     </> 
   )
 }
+
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
+
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
 
 export default TableProduct
