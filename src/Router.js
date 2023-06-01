@@ -12,16 +12,16 @@ import Vendas from "./pages/Vendas";
 const Router = () => {
     return (
         <Routes>
+            <Route path="/" element={<Landpage/>} />
+            {/* <Route path="/landpage" element={<Landpage/>} /> */}
             <Route path="/produtos" element={<Products/>} />
-            <Route path="/Clientes" element={<Clientes/>} />
+            <Route path="/clientes" element={<Clientes/>} />
             <Route path="/cadastro" element={<Cadastro/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/home" element={<Home/>} />
-            <Route path="/landpage" element={<Landpage/>} />
             <Route path="/funcionarios" element={<Funcionarios/>} />
             <Route path="/vendas" element={<Vendas/>} />
             <Route path="*" element={<Pag404/>} />
-            
         </Routes>
     )
 }
