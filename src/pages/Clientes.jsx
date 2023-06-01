@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 
-function Products() {
+function Clientes() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */}
 
@@ -73,7 +73,7 @@ function Products() {
             <tr>
                 <th colSpan={5}>
                 <Stack container direction="row" sx={{alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px'}}>
-                <h1>Seus Produtos</h1>
+                <h1>Seus Clientes</h1>
                 <button disabled={false} variant="filled" style={{height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE' , border: '0px', color: 'white'}} onClick={() => setOpenModal(true)}>Adcionar</button>
                 </Stack>
                 </th>
@@ -126,4 +126,4 @@ function Products() {
     }
   }
 
-export default Products
+export default Clientes

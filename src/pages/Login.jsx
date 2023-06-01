@@ -7,14 +7,49 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
-
 import Logo from "../images/Dynamics.png"
 import Silhueta from "../images/silhuetaLogin.png"
 import Button from "../components/Button"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import useAuthStore from '../store/authStore';
 
 const Login = () => {
+    const navigate = useNavigate()
+    const login = useAuthStore((state) => state.login)
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault() 
+        const cpf = event.target.cpf.value
+        const password = event.target.password.value
+        const user = {cpf, password}
+        try {
+          const response = await fetch('http://localhost:3100/auth/login',
+          {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user), 
+          })
+          const data = await response.json()
+
+          console.log(data)
+          if(response.status === 200) {
+            //logar
+            login(data.token, data.user)
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', JSON.stringify(data.user))
+
+            navigate('/home')
+            
+          } else{
+            alert(data.message)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -23,6 +58,7 @@ const Login = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
     return (
         <>
             <Grid container spacing={2} sx={{ height: '100%', }}>
@@ -36,10 +72,10 @@ const Login = () => {
                             <Box sx={{ marginTop: "-100px" }}>
                                 <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
                             </Box>
-                            <form sx={{ m: 1, width: '25ch', padding: "100px" }}>
+                            <form sx={{ m: 1, width: '25ch', padding: "100px" }} onSubmit={handleSubmit}>
                                 <Grid item xs={12}>
                                     <FormControl sx={{ m: 1, width: '100%' }} variant="filled">
-                                        <TextField id="standard-basic" label="CPF" variant="standard" sx={{ width: '100%' }} />
+                                        <TextField id="standard-basic" label="CPF" name='cpf' variant="standard" sx={{ width: '100%' }} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -47,7 +83,7 @@ const Login = () => {
                                         <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                                         <Input
                                             id="standard-adornment-password"
-                                            name='standard-adornment-password'
+                                            name='password'
                                             type={showPassword ? 'text' : 'password'}
                                             endAdornment={
                                                 <InputAdornment position="end">
