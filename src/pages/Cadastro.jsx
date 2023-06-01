@@ -1,4 +1,3 @@
-import sha256 from 'sha256';
 import React from 'react'
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
@@ -25,9 +24,7 @@ const handleSubmit = async (event) => {
   const lname = event.target.lname.value
   const office = event.target.office.value
   const cpf = event.target.cpf.value
-  const senha = event.target.password.value
-  const salt = '0912743';
-  const password = sha256(senha + salt);
+  const password = event.target.password.value;
   const email = event.target.email.value
   const user = { fname, lname, office, cpf, password, email }
   console.log(user)
