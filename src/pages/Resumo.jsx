@@ -1,10 +1,11 @@
 import React from 'react';
-import MyComponent from '../components/OnlineStore';
+
+import { Chart } from '../components/OnlineStore';
 
 const Resumo = () => {
     return(
         <>
-            <MyComponent />
+            <Chart />
         </>
     );
 };

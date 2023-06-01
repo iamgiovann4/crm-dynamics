@@ -1,185 +1,84 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart';
+import React from 'react';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  BarChart,
+  CartesianGrid,
+  Bar
+} from 'recharts';
 
-const SalesChart = () => {
-  const salesChartRef = useRef(null);
+export function Chart() {
+  const data = [
+    {
+      name: 'A',
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'B',
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'C',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'D',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'E',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'F',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'G',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
 
-  useEffect(() => {
-    const ticksStyle = {
-      fontColor: '#495057',
-      fontStyle: 'bold',
-    };
-
-    const mode = 'index';
-    const intersect = true;
-
-    const salesChart = new Chart(salesChartRef.current, {
-      type: 'bar',
-      data: {
-        labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-        datasets: [
-          {
-            backgroundColor: '#007bff',
-            borderColor: '#007bff',
-            data: [1000, 2000, 3000, 2500, 2700, 2500, 3000],
-          },
-          {
-            backgroundColor: '#ced4da',
-            borderColor: '#ced4da',
-            data: [700, 1700, 2700, 2000, 1800, 1500, 2000],
-          },
-        ],
-      },
-      options: {
-        maintainAspectRatio: false,
-        tooltips: {
-          mode: mode,
-          intersect: intersect,
-        },
-        hover: {
-          mode: mode,
-          intersect: intersect,
-        },
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              gridLines: {
-                display: true,
-                lineWidth: '4px',
-                color: 'rgba(0, 0, 0, .2)',
-                zeroLineColor: 'transparent',
-              },
-              ticks: {
-                ...ticksStyle,
-                beginAtZero: true,
-                callback: function (value) {
-                  if (value >= 1000) {
-                    value /= 1000;
-                    value += 'k';
-                  }
-                  return '$' + value;
-                },
-              },
-            },
-          ],
-          xAxes: [
-            {
-              display: true,
-              gridLines: {
-                display: false,
-              },
-              ticks: ticksStyle,
-            },
-          ],
-        },
-      },
-    });
-
-    return () => {
-      salesChart.destroy();
-    };
-  }, []);
-
-  return <canvas ref={salesChartRef} id="sales-chart" />;
-};
-
-const VisitorsChart = () => {
-  const visitorsChartRef = useRef(null);
-
-  useEffect(() => {
-    const ticksStyle = {
-      fontColor: '#495057',
-      fontStyle: 'bold',
-    };
-
-    const mode = 'index';
-    const intersect = true;
-
-    const visitorsChart = new Chart(visitorsChartRef.current, {
-      type: 'line',
-      data: {
-        labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
-        datasets: [
-          {
-            type: 'line',
-            data: [100, 120, 170, 167, 180, 177, 160],
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            pointBorderColor: '#007bff',
-            pointBackgroundColor: '#007bff',
-            fill: false,
-          },
-          {
-            type: 'line',
-            data: [60, 80, 70, 67, 80, 77, 100],
-            backgroundColor: 'transparent',
-            borderColor: '#ced4da',
-            pointBorderColor: '#ced4da',
-            pointBackgroundColor: '#ced4da',
-            fill: false,
-          },
-        ],
-      },
-      options: {
-        maintainAspectRatio: false,
-        tooltips: {
-          mode: mode,
-          intersect: intersect,
-        },
-        hover: {
-          mode: mode,
-          intersect: intersect,
-        },
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              gridLines: {
-                display: true,
-                lineWidth: '4px',
-                color: 'rgba(0, 0, 0, .2)',
-                zeroLineColor: 'transparent',
-              },
-              ticks: {
-                ...ticksStyle,
-                beginAtZero: true,
-                suggestedMax: 200,
-              },
-            },
-          ],
-          xAxes: [
-            {
-              display: true,
-              gridLines: {
-                display: false,
-              },
-              ticks: ticksStyle,
-            },
-          ],
-        },
-      },
-    });
-
-    return () => {
-      visitorsChart.destroy();
-    };
-  }, []);
-
-  return <canvas ref={visitorsChartRef} id="visitors-chart" />;
-};
-
-const MyComponent = () => {
   return (
-    <div>
-      <SalesChart />
-      <VisitorsChart />
-    </div>
-  );
-};
+    <div className="chartContainer">
+      <LineChart width={1000} height={300} data={data}>
+        <XAxis dataKey="name" padding={{ left: 0, right: 0 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 1 }} />
+        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      </LineChart>
 
-export default MyComponent
+      <BarChart width={730} height={250} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="uv" fill="#82ca9d" />
+      </BarChart>
+    </div>
+  )
+}
+
+export default Chart;
