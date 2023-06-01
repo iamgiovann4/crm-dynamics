@@ -12,7 +12,6 @@ const pag404 = () => {
             <Link to={`/funcionarios`} ><h3>/funcionarios</h3></Link> 
             <Link to={`/vendas`} ><h3>/vendas</h3></Link> 
         </div>
-            
         </>
     );
 };
