@@ -1,146 +1,150 @@
 import Box from '@mui/material/Box'
-import {FaReact as IconReact} from 'react-icons/fa'
-import MainMenu from './MainMenu'
-import useAuthStore from '../store/authStore'
-import { useState } from 'react'
+// import MainMenu from './MainMenu'
 
-const Header = () => {
-
-    const isLogged = useAuthStore((state) => state.isLogged)
-    const avatarUserLogged = useAuthStore((state) => state.avatar)
-    const nameUserLogged = useAuthStore((state) => state.name)
-    const emailUserLogged = useAuthStore((state) => state.email)
-    const tokenUserLogged = useAuthStore((state) => state.token)
-    const login = useAuthStore((state) => state.login)
-    const logout = useAuthStore((state) => state.logout)
-
-    const [modalOpen, setModalOpen] = useState(false)
-
-    const handleSubmit = async (event) => {
-        event.preventDefault() 
-        const email = event.target.email.value
-        const pass = event.target.pass.value
-        const user = {email, pass}
-        try {
-          const response = await fetch('http://localhost:3100/auth/login',
-          {
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user), 
-          })
-          const data = await response.json()
+import { AiFillHome } from "react-icons/ai";
+import { RiContactsFill } from "react-icons/ri";
+import  { RiDashboardFill } from "react-icons/ri";
+import  { FiMoreHorizontal } from "react-icons/fi";
+import  { AiFillSetting } from "react-icons/ai";
+import  { AiOutlineBars} from "react-icons/ai";
+import * as React from 'react';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+  
+        export default function Header() {
+            const [state, setState] = React.useState({
+              top: false,
+              left: false,
+              bottom: false,
+              right: false,
+            });
           
-          console.log(data)
-          if(response.status === 200) {
-            //logar
-            login(data.token, data.user)
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('user', JSON.stringify(data.user))
-            setModalOpen(false)
-          } else{
-            alert(data.message)
-          }
+            const toggleDrawer = (anchor, open) => (event) => {
+              if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+                return;
+              }
           
-        } catch (error) {
-          console.log(error)
-        }
-      }
-
-      const handleLogout = async () => {
-        try {
-          const response = await fetch('http://localhost:3100/auth/logout',
-          {
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({email: emailUserLogged, token: tokenUserLogged}), 
-          })
-          const data = await response.json()
-          console.log(data)
-          if(response.status === 200) {
-            logout()
-            localStorage.removeItem('token')
-            localStorage.removeItem('user')
-          } else{
-            alert(data.message)
-          }
+              setState({ ...state, [anchor]: open });
+            };
           
-        } catch (error) {
-          console.log(error)
-        }
-      }
+            const list = (anchor) => (
 
-    return (
-        <Box component='header' sx={{display: 'flex', alignItems: 'center', background: 'white'}}>
-            <Box sx={styles.stack}>
-                <IconReact style={styles.logo} />
-                <h3>Logo</h3>
+              <Box
+                sx={{background: "#FFFFFF",
+                width: 250,
+                height: '100%',
+                top: '0',
+                left: '0',
+                margin: '10px',
+                borderRadius: '10px',
+                boxShadow: '0px 0px 10px 1px #00000026' ,width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 300 }}
+                role="presentation"
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+              >
+<Box style={{margin: '30px'}}>
+                
+                <AiFillHome style={{
+                width: 30,
+                height: 30,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Casa</h3>
             </Box>
-            <MainMenu />
-            <div style={{margin: '0 0 0 20px', color: '#FFF' }}>
-                {isLogged ? (
-                    <img onClick={() => handleLogout()} style={styles.avatar} src={avatarUserLogged} alt={nameUserLogged} />
-                ) : (<button onClick={() => setModalOpen(true)}>Logar</button>) }
-            </div>
-            {modalOpen && 
-              <Box className="bgModal" onClick={(event) => {
-                if(event.target.className.includes('bgModal')) {
-                  setModalOpen(false)
-                }
-              }} sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: '#000000A0',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 9
-                }}>
-                  <Box sx={{
-                    width: '500px',
-                    height: '300px',
-                    background: '#FFF',
-                    borderRadius: '10px',
-                    padding: '20px',
-                  }}>
-                    <h1>Logar</h1>
-                    <form onSubmit={handleSubmit}>
-                      <input type="text" name="email" placeholder="Email" /><br />
-                      <input type="password" name="pass" placeholder="Senha" /><br />
-                      <br />
-                      <button type="submit">Logar</button>
-                    </form>
-                  </Box> 
+
+
+
+            <Box style={{margin: '30px'}}>
+                
+                <RiDashboardFill style={{
+                width: 30,
+                height: 30, 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Produto</h3>
+            </Box>
+
+            <Box style={{margin: '30px'}}>
+                
+                <RiDashboardFill style={{
+                width: 30,
+                height: 30,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Cliente</h3>
+            </Box>
+            
+            <Box style={{margin: '30px'}}>
+                
+                <RiContactsFill style={{
+                width: 30,
+                height: 30,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Contato</h3>
+            </Box>
+
+            <Box style={{margin: '30px', marginTop: '400px'}}>
+                
+                <FiMoreHorizontal style={{
+                width: 30,
+                height: 30,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Mais</h3>
+            </Box>
+
+            <Box style={{margin: '30px'}}>
+                
+                <AiFillSetting style={{
+                width: 30,
+                height: 30,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }} /> 
+                <h3 style={{padding: '14px'}}>Configs</h3>
+            </Box>
               </Box>
+            );
+          
+            return (
+              <div>
+                {['left'].map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <Button onClick={toggleDrawer(anchor, true)}><AiOutlineBars style={{
+                width: 20,
+                height: 20,
+                fill: 'black', 
+                float: 'left',
+                padding: '10px'
+                }}></AiOutlineBars></Button>
+                    <Drawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                    >
+                      {list(anchor)}
+                    </Drawer>
+                  </React.Fragment>
+                ))}
+              </div>
+            );
+          }
+
+          const styles = {
+            css4t3x6lMuiPaperrootMuiDrawerpaper: {
+              backgroundColor: 'red'
+}
             }
-        </Box>
-    )
-}
-
-const styles = {
-    stack: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItens: 'center',
-        gap: '10px',
-        width: 'fit-content'
-    },
-    logo: {
-        color: 'black',
-        width: '40px',
-        height: '40px'
-    },
-    avatar: {
-        width: '40px',
-        borderRadius: '50%',
-        cursor: 'pointer'
-    }
-}
-
-export default Header
+                
+                    

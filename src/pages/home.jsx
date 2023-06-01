@@ -1,11 +1,13 @@
 import React from 'react';
 import './Home.css'
-import Sidebar from '../components/Sidebar'
+import Content from '../components/Content';
 
 const Home = () => {
     return(
         <>
-            <Sidebar/>
+            <Content title="Dashboard">
+
+            </Content>
         </>
     );
 };
