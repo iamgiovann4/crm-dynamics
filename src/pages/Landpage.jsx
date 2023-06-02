@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import Content from '../components/Content';
+import './Landpage.css';
 
 const Landpage = () => {
   const [loading, setLoading] = useState(true);
@@ -24,13 +25,13 @@ const Landpage = () => {
   return (
     <>
       <Content>
-        <Box sx={{ flexGrow: 1, padding: "20px 10px 0 10px" }}>
+        <Box sx={{ flexGrow: 1, padding: "25px 0 0 20px" }}>
           <AppBar position="static" sx={{ boxShadow: 'none', }}>
-            <Toolbar sx={{ backgroundColor: '#fff', }}>
+            <Toolbar sx={{ backgroundColor: '#f1f1f1', }}>
               <Typography sx={{ flexGrow: 0.9 }}>
                 <img src={Logo} alt="" />
               </Typography>
-              <strong><h2><Link to={`/login`} style={{ color: "#000", textDecoration: "none" }}>Entrar</Link></h2></strong>
+              <strong><h2><Link to={`/login`}>Entrar</Link></h2></strong>
             </Toolbar>
           </AppBar>
         </Box>
@@ -57,14 +58,14 @@ const Landpage = () => {
             </Box>
           ) : (
           <>
-            <h1 style={{ color: '#000', marginBottom: 0, textAlign: "center" }}>Simplifique sua Administração <br /> com Nossa Plataforma</h1>
-            <p style={{ color: '#000', marginBottom: 0, fontSize: 20, textAlign: "center" }}>
+            <h1 style={{ color: '#252525', marginBottom: 0, textAlign: "center" }}>Simplifique sua Administração <br /> com Nossa Plataforma</h1>
+            <p style={{ color: '#252525', marginBottom: 0, fontSize: 20, textAlign: "center" }}>
               Com a nossa plataforma de e-commerce, <br />
               oferecemos-lhe a oportunidade de criar e gerenciar a <br />
               sua loja online.
             </p>
             <div style={{ width: "30%" }}>
-              <Button><Link to={`/cadastro`} style={{ color: "#fff", textDecoration: "none" }}>Cadastrar-se</Link></Button>
+              <Button className="button"><Link to={`/cadastro`} style={{ color: "#fff", textDecoration: "none" }}>Cadastrar-se</Link></Button>
             </div>
             <img src={prototipo} alt="prototipo" />
           </>
@@ -74,6 +75,12 @@ const Landpage = () => {
     </>
   );
 };
+
+const styles = {
+  hover: {
+    hover: 'red'
+  }
+}
 
 export default Landpage;
 

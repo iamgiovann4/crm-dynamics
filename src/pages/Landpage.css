@@ -1,0 +1,12 @@
+strong > h2 > a{
+    color: #252525;
+    text-decoration: none;
+}
+
+strong > h2 > a:hover {
+    color: #027FD7;
+}
+
+/* .opa > .button:hover{
+    background-color: red;
+} */
