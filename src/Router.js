@@ -7,6 +7,7 @@ import Pag404 from "./pages/404";
 import Login from "./pages/Login";
 // import Resumo from "./pages/Resumo";
 import Landpage from "./pages/Landpage";
+
 import Funcionarios from "./pages/Funcionarios";
 import Vendas from "./pages/Vendas";
 import CheckLogged from "./components/CheckLogged";
