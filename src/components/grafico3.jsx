@@ -11,7 +11,7 @@ import {
   Bar
 } from 'recharts';
 
-export function Chart() {
+export function Chart3() {
   const data = [
     {
       name: 'A',
@@ -59,14 +59,6 @@ export function Chart() {
 
   return (
     <div className="chartContainer">
-      <LineChart width={1000} height={300} data={data}>
-        <XAxis dataKey="name" padding={{ left: 0, right: 0 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 1 }} />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
 
       <BarChart width={730} height={250} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -81,4 +73,4 @@ export function Chart() {
   )
 }
 
-export default Chart;
+export default Chart3;
