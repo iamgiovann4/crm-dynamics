@@ -58,9 +58,9 @@ export function Chart3() {
   ];
 
   return (
-    <div className="chartContainer">
+    <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
 
-      <BarChart width={730} height={250} data={data}>
+      <BarChart width={600} height={300} data={data} style={{backgroundColor:'#f1f1f1', padding:'20px', borderRadius:'8px'}}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
