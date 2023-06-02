@@ -68,15 +68,14 @@ function Clientes() {
       <>
       <Content>
       <NavBar></NavBar>
-        <Box sx={{background: 'white', display: 'flex'}}>
-            <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', padding: '30px', margin: '10px auto',  width: '50%', height: 'auto'}}>
-            
+        <Box sx={{ display: 'flex'}}>
+            <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '10px auto',  width: '50%', height: 'auto', background: 'white',  borderCollapse: 'collapse'}}>
             
             <tr>
                 <th colSpan={5}>
                 <Stack container direction="row" sx={{alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px'}}>
-                <h1>Seus Clientes</h1>
-                <button disabled={false} variant="filled" style={{height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE' , border: '0px', color: 'white'}} onClick={() => setOpenModal(true)}>Adcionar</button>
+                <h1 style={{paddingLeft: '45px', paddingTop: '10px'}}>Seus Clientes</h1>
+                <button disabled={false} variant="filled" style={{height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE' , border: '0px', color: 'white', marginRight: '45px', marginTop: '10px'}} onClick={() => setOpenModal(true)}>Adcionar</button>
                 </Stack>
                 </th>
             </tr>
@@ -121,11 +120,12 @@ function Clientes() {
 
   const styles = {
     tabela: {
-        background: 'white',
         fontSize: '24px',
         fontStyle: 'normal',
         lineHeight: '34px',
-        color: '#252525'
+        color: '#252525',
+        borderBottom: '1px solid #ddd',
+        padding: '18px 23px'
     }
   }
 

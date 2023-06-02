@@ -74,16 +74,16 @@ const TableProduct = ({product, setProducts, products}) => {
 
   return (
     <>
-      <tr>
-          <td>{product.name}</td>
-          <td>{product.price}</td>
-          <td>{product.stock}</td>
+      <tr >
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.name}</td>
+          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{product.price}</td>
+          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{product.stock}</td>
 
-          <td>
+          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
             <IconEdit style={{width: '20px', cursor: 'pointer' }}
             onClick={() => setOpenModal(true)}/>
           </td>
-          <td>
+          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
             <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(product.id)}/>
           </td>
       </tr>
@@ -93,7 +93,7 @@ const TableProduct = ({product, setProducts, products}) => {
           if(event.target.className.includes('modal')){
             setOpenModal(false)
           }
-        }}>
+        }}> 
           <Box className='container'>
             <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
             <h2>Editar Produto</h2>

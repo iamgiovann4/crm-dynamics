@@ -22,7 +22,10 @@ const styles = {
         width: "100%",
         background: "linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)",
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        margintop: "20px"
+        margintop: "20px",
+        '&:hover': {
+            background: '#252525',
+        }
       },
       centralizar: {
         display: "flex",
