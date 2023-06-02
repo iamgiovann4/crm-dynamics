@@ -9,10 +9,9 @@ import Chart3 from '../components/grafico3';
 import Chart4 from '../components/grafico4';
 
 
-const Home = () => {
 
 
-    
+const Home = () => {    
     return (
         <>
             <Content title="Dashboard">

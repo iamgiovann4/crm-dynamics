@@ -58,8 +58,8 @@ export function Chart4() {
   ];
 
   return (
-    <div className="chartContainer">
-      <LineChart width={1000} height={300} data={data}>
+    <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
+      <LineChart width={600} height={300} data={data} style={{backgroundColor:'#f1f1f1', padding:'20px', borderRadius:'8px'}}>
         <XAxis dataKey="name" padding={{ left: 0, right: 0 }} />
         <YAxis />
         <Tooltip />
