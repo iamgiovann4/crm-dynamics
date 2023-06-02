@@ -64,11 +64,11 @@ const Login = () => {
         <>
         <Content>
             <Grid container spacing={2} sx={{ height: '100%',  padding: '0px' }}>
-                <Grid item xs={12} sx={{ padding: 0}}>
+                <Grid width={"auto"} item xs={12} sx={{ padding: 0}}>
                     <Box sx={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
                         <img src={Logo} alt={'Logo'} />
                     </Box>
-                    <Box style={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "100%", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
+                    <Box style={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "870px", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
                         <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", }}>
                             <Box sx={{ marginTop: "-100px" }}>
                                 <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
@@ -81,7 +81,7 @@ const Login = () => {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <FormControl sx={{ m: 1, width: '100%' }} variant='standard'>
-                                        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                                        <InputLabel htmlFor="standard-adornment-password">Senha</InputLabel>
                                         <Input
                                         id="standard-adornment-password"
                                         name='password'
@@ -98,8 +98,8 @@ const Login = () => {
                                         }/>
                                     </FormControl>
                                 </Grid> <br />
-                                <div style={{ width: "100%" }}><br /><Button> Entrar </Button></div>
-                                <h3>Não tem uma conta? <span> <Link to={`/cadastro`} style={{ color: "#0070C0" }}>Cadastre-se</Link> </span> </h3>
+                                <div style={{ width: "100%" }}><br /><Button>Entrar</Button></div>
+                                <h3 style={{ fontSize: "20px" }}>Não tem uma conta? <span> <Link to={`/cadastro`} style={{ color: "#0070C0", textDecoration: 'none' }}>Cadastre-se</Link> </span> </h3>
                             </form >
                         </Box>
                     </Box>
