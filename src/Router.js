@@ -9,22 +9,26 @@ import Login from "./pages/Login";
 import Landpage from "./pages/Landpage";
 import Funcionarios from "./pages/Funcionarios";
 import Vendas from "./pages/Vendas";
+import CheckLogged from "./components/CheckLogged";
 
 const Router = () => {
     return (
         <Routes>
-            <Route path="/" element={<Landpage/>} />
+            <Route path="/" element={<Landpage />} />
             {/* <Route path="/landpage" element={<Landpage/>} /> */}
-            <Route path="/produtos" element={<Products/>} />
-            <Route path="/clientes" element={<Clientes/>} />
-            <Route path="/cadastro" element={<Cadastro/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/home" element={<Home/>} />
+            <Route element={<CheckLogged />}>
+                <Route path="/produtos" element={<Products />} />
+                <Route path="/clientes" element={<Clientes />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/funcionarios" element={<Funcionarios />} />
+                <Route path="/vendas" element={<Vendas />} />
+            </Route>
+
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/resumo" element={< Resumo />} /> */}
-            <Route path="/landpage" element={<Landpage/>} />
-            <Route path="/funcionarios" element={<Funcionarios/>} />
-            <Route path="/vendas" element={<Vendas/>} />
-            <Route path="*" element={<Pag404/>} />
+            <Route path="/landpage" element={<Landpage />} />
+            <Route path="*" element={<Pag404 />} />
         </Routes>
     )
 }
