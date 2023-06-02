@@ -3,9 +3,7 @@ import Box from '@mui/material/Box'
 const Content = ({title, children}) => {
 
     return (
-        <Box >
-            <h1>{title}</h1>
-
+        <Box sx={{height:'100%', padding: 0, margin: 0}} >
             {children}
         </Box>
     )

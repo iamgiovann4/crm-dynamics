@@ -3,13 +3,10 @@ import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
-import Header from '../components/Header'
-// import Grid from '@mui/material/Grid'
-// import Button from '@mui/material/Button'
-import Content from '../components/Content'
 import NavBar from '../components/NavBar'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
+import Content from '../components/Content'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
