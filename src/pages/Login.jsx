@@ -43,7 +43,6 @@ const Login = () => {
             localStorage.setItem('user', JSON.stringify(data.user))
 
             navigate('/home')
-            
           } else{
             alert(data.message)
           }
