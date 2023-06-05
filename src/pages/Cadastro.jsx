@@ -56,14 +56,20 @@ const Cadastro = () => {
         })
       const data = await response.json()
       console.log(data)
-      if (data.message === "Dados inválidos") {
-        toast.error(`${data.message}`);
+      if (data.message === "Dados inválidos" && data.fields) {
+        const fieldKeys = Object.keys(data.fields);
+        if (fieldKeys.length > 0) {
+          const firstFieldKey = fieldKeys[0];
+          const { messages } = data.fields[firstFieldKey];
+          toast.error(`${messages}`);
+        } else {
+          toast.error("Erro desconhecido");
+        }
       } else {
         toast.success('Parabéns');
         navigate('/login')
       }
     } catch (error) {
-      console.log("deu merda: " + error)
       toast.error('por favor notifique o suporte')
     }
   }

@@ -47,7 +47,7 @@ const Login = () => {
                 navigate('/home')
                 toast.success(`Bem-vindo ${fname}`)
             } else {
-                toast.error('Tente novamente')
+                toast.error('Senha ou cpf incorreto, por favor tente novamente')
             }
         } catch (error) {
             console.log(error)
