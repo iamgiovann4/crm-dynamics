@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import '../pages/Produto.css'
+import { toast } from 'react-toastify'
 // import Table from '@mui/material/Table'
 // import TableBody from '@mui/material/TableBody'
 // import TableCell from '@mui/material/TableCell'
@@ -36,7 +37,7 @@ const TableProduct = ({product, setProducts, products}) => {
       })
       const data = await response.json()
       if(response.status === 200) {
-      console.log(data)
+        toast.success('Produto editado com sucesso')
       const newProducts = products.map((product) => {
         if(product.id === id) {
           return userEdited
@@ -64,7 +65,7 @@ const TableProduct = ({product, setProducts, products}) => {
         }
       })
       const data = await response.json()
-      console.log(data)
+      toast.success('Produto Deletado com sucesso')
       const newProducts = products.filter((product) => product.id !== id)
       setProducts(newProducts)
     } catch (error) {

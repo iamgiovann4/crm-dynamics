@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Content from '../components/Content'
+import { toast } from 'react-toastify'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
@@ -59,8 +60,9 @@ function Products() {
             console.log(data)
             setOpenModal(false)
             loadProducts()
+            toast.success('Produto criado com sucesso')
         } catch (error) {
-            console.log(error)
+            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
         }
     }
 
