@@ -9,6 +9,7 @@ import  { AiOutlineBars} from "react-icons/ai";
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
   
         export default function Header() {
             const [state, setState] = React.useState({
@@ -140,10 +141,11 @@ import Button from '@mui/material/Button';
                 float: 'left',
                 padding: '10px'
                 }}></AiOutlineBars></Button>
-                    <Drawer
+                    <Drawer style={{backgrounColor: 'rgb(0 0 0 / 0%)'}}
                       anchor={anchor}
                       open={state[anchor]}
                       onClose={toggleDrawer(anchor, false)}
+                      hideBackdrop={false}
                     >
                       {list(anchor)}
                     </Drawer>
