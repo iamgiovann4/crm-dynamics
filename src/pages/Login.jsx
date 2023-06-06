@@ -66,11 +66,11 @@ const Login = () => {
         <>
             <Content>
                 <Grid container spacing={2} sx={{ height: '100%', padding: '0px' }}>
-                    <Grid width={"auto"} item xs={12} sx={{ padding: 0 }}>
-                        <Box sx={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
+                    <Grid width={"auto"} item xs={12} >
+                        <Box sx={{ backgroundColor: "#f1f1f1", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
                             <img src={Logo} alt={'Logo'} />
                         </Box>
-                        <Box style={{ backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "870px", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
+                        <Box style={{ backgroundColor: "#f1f1f1", display: "flex", alignItems: "center", height: "870px", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
                             <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", }}>
                                 <Box sx={{ marginTop: "-100px" }}>
                                     <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
