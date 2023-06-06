@@ -65,6 +65,8 @@ const Cadastro = () => {
         } else {
           toast.error("Erro desconhecido");
         }
+      }else if(data.message === "Usuário não Cadastrado!") {
+        toast.error("cpf ou email invalido");
       } else {
         toast.success('Parabéns');
         // navigate('/login')
