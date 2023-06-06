@@ -3,10 +3,11 @@ import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
-import NavBar from '../components/NavBar'
+import SideBar from '../components/SideBar'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Content from '../components/Content'
+import { toast } from 'react-toastify'
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
@@ -59,15 +60,16 @@ function Products() {
             console.log(data)
             setOpenModal(false)
             loadProducts()
+            toast.success('Produto criado com sucesso')
         } catch (error) {
-            console.log(error)
+            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
         }
     }
 
     return (
       <>
       <Content>
-      <NavBar></NavBar>
+      <SideBar/>
         <Box sx={{ display: 'flex'}}>
             <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '10px auto',  width: '50%', height: 'auto', background: 'white', borderCollapse: 'collapse'}}>
             
