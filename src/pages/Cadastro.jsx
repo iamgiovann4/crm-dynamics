@@ -67,7 +67,7 @@ const Cadastro = () => {
         }
       } else {
         toast.success('Parabéns');
-        navigate('/login')
+        // navigate('/login')
       }
     } catch (error) {
       toast.error('por favor notifique o suporte')
