@@ -1,12 +1,16 @@
 import React from 'react';
 import './Home.css';
 import Content from '../components/Content';
-import NavBar from '../components/NavBar';
+import SideBar from '../components/SideBar';
 import Chart from '../components/grafico1';
 import Chart2 from '../components/grafico2';
 import Chart3 from '../components/grafico3';
 import Chart4 from '../components/grafico4';
 import useAuthStore from '../store/authStore'
+import { ImExit as Sair } from 'react-icons/im'
+import { toast } from 'react-toastify';
+import { Navigate, useNavigate } from 'react-router';
+import Header from '../components/Header';
 
 const Home = () => {    
     const isLogged = useAuthStore((state) => state.isLogged)
@@ -14,6 +18,7 @@ const Home = () => {
     const cpfUserLogged = useAuthStore((state) => state.cpf)
     const tokenUserLogged = useAuthStore((state) => state.token)
     const logout = useAuthStore((state) => state.logout)
+    const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
@@ -29,9 +34,10 @@ const Home = () => {
           console.log(data)
           if(response.status === 200) {
             logout()
-            window.location.href = "./Login"
             localStorage.removeItem('token')
             localStorage.removeItem('user')
+            navigate('/login')
+            toast.success('Deslogado!')
           } else{
             alert(data.message)
           }
@@ -42,12 +48,13 @@ const Home = () => {
 
     return (
         <>
-            <Content title="Dashboard"> <NavBar />
+            <Content title="Dashboard"> <Header  />
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                    <div style={{ height: '100px', width: '300px', display: 'flex', justifyContent: 'flex-end', paddingRight: '30px'}}>
+                    <div style={{ width: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingBottom: '10px', marginRight: '30px'}}>
                         {isLogged ? (
                             <>
-                                <p onClick={() => handleLogout()} style={styles.nome}>Olá, <span style={{fontWeight: 'bolder', fontSize: '25px'}}>{nameUserLogged}</span></p>
+                                <p style={styles.nome}>Olá, <span style={{fontWeight: 'bolder', fontSize: '25px'}}>{nameUserLogged}</span></p>
+                                <button onClick={() => handleLogout()} style={{marginTop: '-10px', border: 'none', padding: '5px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center'}}><Sair size={25}/><p style={{margin: 0, fontSize: '18px'}}>Sair</p></button>
                                 {/* <img onClick={() => handleLogout()} style={styles.avatar} src={avatarUserLogged} alt={nomeUserLogged} /> */}
                             </>
                         ) : null }
@@ -78,7 +85,6 @@ const Home = () => {
 
 const styles = {
     nome: {
-        cursor: 'pointer',
         color: '#252525',
         fontSize: '22px',
     }
