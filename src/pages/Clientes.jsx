@@ -3,10 +3,8 @@ import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
-import SideBar from '../components/SideBar'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
 import Content from '../components/Content'
+import Header from '../components/Header'
 
 function Clientes() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */}
@@ -67,10 +65,9 @@ function Clientes() {
     return (
       <>
       <Content>
-      <SideBar/>
+      <Header/>
         <Box sx={{ display: 'flex'}}>
             <table  style={{boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '10px auto',  width: '50%', height: 'auto', background: 'white',  borderCollapse: 'collapse'}}>
-            
             <tr>
                 <th colSpan={5}>
                 <Stack container direction="row" sx={{alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px'}}>
