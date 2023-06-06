@@ -57,18 +57,18 @@ const Landpage = () => {
               <Skeleton variant="retangle" width={600} height={80} animation="wave" />
             </Box>
           ) : (
-          <>
-            <h1 style={{ color: '#252525', marginBottom: 0, textAlign: "center" }}>Simplifique sua Administração <br /> com Nossa Plataforma</h1>
-            <p style={{ color: '#252525', marginBottom: 0, fontSize: 20, textAlign: "center" }}>
-              Com a nossa plataforma de e-commerce, <br />
-              oferecemos-lhe a oportunidade de criar e gerenciar a <br />
-              sua loja online.
-            </p>
-            <div style={{ width: "30%" }}>
-              <Button className="button"><Link to={`/cadastro`} style={{ color: "#fff", textDecoration: "none" }}>Cadastrar-se</Link></Button>
-            </div>
-            <img src={prototipo} alt="prototipo" />
-          </>
+            <>
+              <h1 style={{ color: '#252525', marginBottom: 0, textAlign: "center" }}>Simplifique sua Administração <br /> com Nossa Plataforma</h1>
+              <p style={{ color: '#252525', marginBottom: 0, fontSize: 20, textAlign: "center" }}>
+                Com a nossa plataforma de e-commerce, <br />
+                oferecemos-lhe a oportunidade de criar e gerenciar a <br />
+                sua loja online.
+              </p>
+              <div style={{ width: "30%" }}>
+                <Button className="button"><Link to={`/cadastro`} style={{ color: "#fff", textDecoration: "none" }}>Cadastrar-se</Link></Button>
+              </div>
+              <img src={prototipo} alt="prototipo" />
+            </>
           )}
         </Box>
       </Content>
