@@ -7,6 +7,10 @@ import Content from '../components/Content'
 import { toast } from 'react-toastify'
 import Header from '../components/Header'
 
+// Restante do seu código...
+
+const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT 
+
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
@@ -23,7 +27,7 @@ function Products() {
 
     const loadProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3100/product')
+            const response = await fetch(hostProduct)
             const data = await response.json()
             setProducts(data)
             console.log(data)
