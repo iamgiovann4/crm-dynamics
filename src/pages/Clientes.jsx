@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Produto.css'
+// import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableProduct from '../components/TableProduct'
@@ -39,10 +39,18 @@ function Clientes() {
         event.preventDefault()
         console.log('Minha funcao de submit')
         console.log(event.target)
-        const name = event.target.name.value 
-        const price = event.target.price.value
-        const stock = event.target.stock.value
-        const product = {name, price, stock}
+        const fname = event.target.fname.value
+        const lname = event.target.lname.value
+        const cpf = event.target.cpf.value
+        const dateOfBirth = event.target.dateOfBirth.value
+        const phone = event.target.phone.value
+        const email = event.target.email.value
+        const address = event.target.address.value
+        const street = event.target.street.value
+        const cep = event.target.cep.value
+        const houseNumber = event.target.houseNumber.value
+        const referencePoint = event.target.referencePoint.value
+        const product = { fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
         console.log(product)
         try {
             const response = await fetch('http://localhost:3100/product',
@@ -72,18 +80,21 @@ function Clientes() {
                 <th colSpan={5}>
                 <Stack container direction="row" sx={{alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px'}}>
                 <h1 style={{paddingLeft: '45px', paddingTop: '10px'}}>Seus Clientes</h1>
-                <button disabled={false} variant="filled" style={{height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE' , border: '0px', color: 'white', marginRight: '45px', marginTop: '10px'}} onClick={() => setOpenModal(true)}>Adcionar</button>
+                <button disabled={false} variant="filled" style={{height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE' , border: '0px', color: 'white', marginRight: '45px', marginTop: '10px'}} onClick={() => setOpenModal(true)}>Adicionar</button>
                 </Stack>
                 </th>
             </tr>
-
-                
-                <tr style={styles.tabela}>
-                    <th align="left" style={styles.tabela}>Produto</th>
-                    <th align="left" style={styles.tabela}>Preço</th>
-                    <th align="left" style={styles.tabela}>Quantidade</th>
-                    <th align="left" style={styles.tabela}></th>
-                    <th align="left" style={styles.tabela}></th>
+                <tr>
+                    <th align="left">Nome</th>
+                    <th align="left">CPF</th>
+                    <th align="left">Nascimento</th>
+                    <th align="left">Telefone</th>
+                    <th align="left">E-mail</th>
+                    <th align="left">Endereço</th>
+                    <th align="left">Bairro</th>
+                    <th align="left">CEP</th>
+                    <th align="left">N° casa</th>
+                    <th align="left">Complemento</th>
                 </tr>
                 {products &&
                     products.map(product => (
@@ -101,9 +112,17 @@ function Clientes() {
                     <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
                     <h2>Cadastrar produtos</h2>
                     <form onSubmit={handleSubmit} className='formModal'>
-                        <input type="text" name="name"  placeholder="Nome"/><br/>
-                        <input type="text" name="price"  placeholder="Preço"/><br/>
-                        <input type="int" name="stock"  placeholder="Quantidade"/><br/><br/>
+                        <input type="text" name="fname"  placeholder="Nome"/><br/>
+                        <input type="text" name="lname"  placeholder="Sobrenome"/><br/>
+                        <input type="int" name="cpf"  placeholder="CPF"/><br/><br/>
+                        <input type="int" name="dateOfBirth"  placeholder="Nascimento"/><br/><br/>
+                        <input type="int" name="phone"  placeholder="Telefone"/><br/><br/>
+                        <input type="int" name="email"  placeholder="E-mail"/><br/><br/>
+                        <input type="int" name="address"  placeholder="Endereço"/><br/><br/>
+                        <input type="int" name="street"  placeholder="Bairro"/><br/><br/>
+                        <input type="int" name="cep"  placeholder="CEP"/><br/><br/>
+                        <input type="int" name="houseNumber"  placeholder="Nº casa"/><br/><br/>
+                        <input type="int" name="referencePoint"  placeholder="Complemento"/><br/><br/>
                         <button className='enviar' type='submit'>Enviar</button><br/>
                         <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
                     </form>
@@ -113,17 +132,6 @@ function Clientes() {
         </Content>
       </>
     )
-  }
-
-  const styles = {
-    tabela: {
-        fontSize: '24px',
-        fontStyle: 'normal',
-        lineHeight: '34px',
-        color: '#252525',
-        borderBottom: '1px solid #ddd',
-        padding: '18px 23px'
-    }
   }
 
 export default Clientes
