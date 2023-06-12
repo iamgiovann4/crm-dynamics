@@ -9,8 +9,9 @@ import { AiOutlineBars } from "react-icons/ai";
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
 
-export default function SideBar() {
+export default function Header() {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -44,7 +45,7 @@ export default function SideBar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
 
-      <NavLink style={{ textDecoration: 'none', color: 'red' }} to='/Home'>
+      <NavLink style={{ textDecoration: 'none', color: 'red' }} to='/home'>
         <Box style={{ margin: '30px' }}>
 
           <Box style={{
@@ -66,7 +67,7 @@ export default function SideBar() {
       </NavLink>
 
 
-      <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/Produtos'>
+      <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/produtos'>
         <Box style={{ margin: '30px' }}>
           <RiDashboardFill style={{
             width: 30,
@@ -79,7 +80,7 @@ export default function SideBar() {
       </NavLink>
 
 
-      <NavLink style={{ textDecoration: 'none' }} to='/Clientes'>
+      <NavLink style={{ textDecoration: 'none' }} to='/clientes'>
         <Box style={{ margin: '30px' }}>
 
           <RiDashboardFill style={{
@@ -93,34 +94,29 @@ export default function SideBar() {
         </Box>
       </NavLink>
 
-      <NavLink style={{ textDecoration: 'none' }} to='/Funcionarios'>
+      <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/vendas'>
         <Box style={{ margin: '30px' }}>
-
           <RiDashboardFill style={{
             width: 30,
             height: 30,
-            fill: 'black',
             float: 'left',
-            padding: '10px'
+            padding: '10px',
           }} />
-          <h3 style={{ padding: '14px', color: 'black' }}>Funcionario</h3>
+          <h3 style={{ padding: '14px' }}>Venda</h3>
         </Box>
       </NavLink>
-      
-      <NavLink style={{ textDecoration: 'none' }} to='/Vendas'>
-        <Box style={{ margin: '30px' }}>
 
+      <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/funcionarios'>
+        <Box style={{ margin: '30px' }}>
           <RiDashboardFill style={{
             width: 30,
             height: 30,
-            fill: 'black',
             float: 'left',
-            padding: '10px'
+            padding: '10px',
           }} />
-          <h3 style={{ padding: '14px', color: 'black' }}>Vendas</h3>
+          <h3 style={{ padding: '14px' }}>Funcionario</h3>
         </Box>
       </NavLink>
-      
 
       <Box style={{ margin: '30px' }}>
 
@@ -171,10 +167,11 @@ export default function SideBar() {
             float: 'left',
             padding: '10px'
           }}></AiOutlineBars></Button>
-          <Drawer
+          <Drawer style={{ backgrounColor: 'rgb(0 0 0 / 0%)' }}
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+            hideBackdrop={false}
           >
             {list(anchor)}
           </Drawer>
@@ -183,5 +180,3 @@ export default function SideBar() {
     </div>
   );
 }
-
-
