@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
-import '../pages/Produto.css'
+// import '../pages/Produto.css'
 import { toast } from 'react-toastify'
 // import Table from '@mui/material/Table'
 // import TableBody from '@mui/material/TableBody'
@@ -11,9 +11,7 @@ import { toast } from 'react-toastify'
 // import TableRow from '@mui/material/TableRow'
 // import Paper from '@mui/material/Paper'
 
-
 const TableProduct = ({product, setProducts, products}) => {
-
   const [modalOpen, setOpenModal] = useState(false)
   const [name, setName] = useState(product.name)
   const [price, setPrice] = useState(product.price)
@@ -65,6 +63,7 @@ const TableProduct = ({product, setProducts, products}) => {
         }
       })
       const data = await response.json()
+      console.log(data)
       toast.success('Produto Deletado com sucesso')
       const newProducts = products.filter((product) => product.id !== id)
       setProducts(newProducts)

@@ -1,30 +1,31 @@
 import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
+import { toast } from 'react-toastify'
+
 // import '../pages/Produto.css'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
+// import Table from '@mui/material/Table'
+// import TableBody from '@mui/material/TableBody'
+// import TableCell from '@mui/material/TableCell'
+// import TableContainer from '@mui/material/TableContainer'
+// import TableHead from '@mui/material/TableHead'
+// import TableRow from '@mui/material/TableRow'
+// import Paper from '@mui/material/Paper'
 
 
-const TableClient = ({product, setProducts, products}) => {
-
+const TableClient = ({client, setClients, clients}) => {
   const [modalOpen, setOpenModal] = useState(false)
-  const [fname, setName] = useState(product.fname)
-  const [lname, setPrice] = useState(product.lname)
-  const [cpf, setStock] = useState(product.cpf)
-  const [dateOfBirth, setStock] = useState(product.dateOfBirth)
-  const [phone, setStock] = useState(product.phone)
-  const [email, setStock] = useState(product.email)
-  const [address, setStock] = useState(product.address)
-  const [street, setStock] = useState(product.street)
-  const [cep, setStock] = useState(product.cep)
-  const [houseNumber, setStock] = useState(product.houseNumber)
-  const [referencePoint, setStock] = useState(product.referencePoint)
+  const [fname, setFname] = useState(client.fname)
+  const [lname, setLname] = useState(client.lname)
+  const [cpf, setCpf] = useState(client.cpf)
+  const [dateOfBirth, setDateOfBirth] = useState(client.dateOfBirth)
+  const [phone, setPhone] = useState(client.phone)
+  const [email, setEmail] = useState(client.email)
+  const [address, setAddress] = useState(client.address)
+  const [street, setStreet] = useState(client.street)
+  const [cep, setCep] = useState(client.cep)
+  const [houseNumber, setHouseNumber] = useState(client.houseNumber)
+  const [referencePoint, setReferencePoint] = useState(client.referencePoint)
   
   const handleEdit = async (event) => {
     event.preventDefault()
@@ -40,26 +41,26 @@ const TableClient = ({product, setProducts, products}) => {
     const cep = event.target.cep.value
     const houseNumber = event.target.houseNumber.value
     const referencePoint = event.target.referencePoint.value
-    const userEdited = {id, fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint}
+    const clientEdited = {id, fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint}
     try {
-      const response = await fetch('http://localhost:3100/product',
+      const response = await fetch('http://localhost:3100/client',
       {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userEdited), 
+        body: JSON.stringify(clientEdited), 
       })
       const data = await response.json()
       if(response.status === 200) {
-      console.log(data)
-      const newProducts = products.map((product) => {
-        if(product.id === id) {
-          return userEdited
+        toast.success('Cliente editado com sucesso!')
+      const newClients = clients.map((client) => {
+        if(client.id === id) {
+          return clientEdited
         }
-        return product
+        return client
       })
-      setProducts(newProducts)
+      setClients(newClients)
       setOpenModal(false)
     } else {
       alert(data.message)
@@ -70,9 +71,9 @@ const TableClient = ({product, setProducts, products}) => {
     }
   }
 
-  const deleteUser = async (id) => {
+  const deleteClient = async (id) => {
     try {
-      const response = await fetch('http://localhost:3100/product/'+id,
+      const response = await fetch('http://localhost:3100/client/'+id,
       {
         method: 'DELETE',
         headers: {
@@ -81,8 +82,8 @@ const TableClient = ({product, setProducts, products}) => {
       })
       const data = await response.json()
       console.log(data)
-      const newProducts = products.filter((product) => product.id !== id)
-      setProducts(newProducts)
+      const newClients = clients.filter((client) => client.id !== id)
+      setClients(newClients)
     } catch (error) {
       console.log(error)
     }
@@ -91,23 +92,23 @@ const TableClient = ({product, setProducts, products}) => {
   return (
     <>
       <tr>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.fname}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.lname}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.cpf}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.dateOfBirth}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.phone}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.email}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.address}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.street}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.cep}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.houseNumber}</td>
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.referencePoint}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.fname}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.lname}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.cpf}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.dateOfBirth}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.phone}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.email}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.address}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.street}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.cep}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.houseNumber}</td>
+          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{client.referencePoint}</td>
           <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>
             <IconEdit style={{width: '20px', cursor: 'pointer' }}
             onClick={() => setOpenModal(true)}/>
           </td>
           <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>
-            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(product.id)}/>
+            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteClient(client.id)}/>
           </td>
       </tr>
 
@@ -121,18 +122,18 @@ const TableClient = ({product, setProducts, products}) => {
             <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
             <h2>Editar Produto</h2>
             <form onSubmit={handleEdit} className='formModal'>
-              <input type="hidden" name="id" value={product.id} />
-              <input type="text" name="fname"  placeholder="Nome" value={fname} onChange={e => setName(e.target.value)} /><br/>
-              <input type="text" name="lname"  placeholder="Sobrenome" value={lname} onChange={e => setPrice(e.target.value)} /><br/>
-              <input type="text" name="cpf"  placeholder="CPF" value={cpf} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="dateOfBirth"  placeholder="Nascimento" value={dateOfBirth} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="phone"  placeholder="Telefone" value={phone} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="email"  placeholder="E-mail" value={email} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="address"  placeholder="Endereço" value={address} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="street"  placeholder="Bairro" value={street} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="cep"  placeholder="CEP" value={cep} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="houseNumber"  placeholder="N° casa" value={houseNumber} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <input type="text" name="referencePoint"  placeholder="Complemento" value={referencePoint} onChange={e => setStock(e.target.value)} /><br/><br/>
+              <input type="hidden" name="id" value={client.id} />
+              <input type="text" name="fname"  placeholder="Nome" value={fname} onChange={e => setFname(e.target.value)} /><br/>
+              <input type="text" name="lname"  placeholder="Sobrenome" value={lname} onChange={e => setLname(e.target.value)} /><br/>
+              <input type="text" name="cpf"  placeholder="CPF" value={cpf} onChange={e => setCpf(e.target.value)} /><br/><br/>
+              <input type="text" name="dateOfBirth"  placeholder="Nascimento" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)} /><br/><br/>
+              <input type="text" name="phone"  placeholder="Telefone" value={phone} onChange={e => setPhone(e.target.value)} /><br/><br/>
+              <input type="text" name="email"  placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} /><br/><br/>
+              <input type="text" name="address"  placeholder="Endereço" value={address} onChange={e => setAddress(e.target.value)} /><br/><br/>
+              <input type="text" name="street"  placeholder="Bairro" value={street} onChange={e => setStreet(e.target.value)} /><br/><br/>
+              <input type="text" name="cep"  placeholder="CEP" value={cep} onChange={e => setCep(e.target.value)} /><br/><br/>
+              <input type="text" name="houseNumber"  placeholder="N° casa" value={houseNumber} onChange={e => setHouseNumber(e.target.value)} /><br/><br/>
+              <input type="text" name="referencePoint"  placeholder="Complemento" value={referencePoint} onChange={e => setReferencePoint(e.target.value)} /><br/><br/>
               <button className='enviar' type='submit'>Editar</button><br/>
               <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
             </form>
@@ -143,17 +144,16 @@ const TableClient = ({product, setProducts, products}) => {
   )
 }
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
 
 export default TableClient
