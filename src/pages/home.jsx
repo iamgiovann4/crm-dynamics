@@ -5,7 +5,7 @@ import Chart from '../components/grafico1';
 import Chart2 from '../components/grafico2';
 import Chart3 from '../components/grafico3';
 import Chart4 from '../components/grafico4';
-import './Home.css'
+import './home.css'
 
 const Home = () => {
     return (

@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Cadastro from "./pages/Cadastro";
-import Products from "./pages/Produtos";
-import Clientes from "./pages/Clientes";
+import Cadastro from "./pages/SignUp";
+import Products from "./pages/Products";
+import Clientes from "./pages/Customers";
 import Home from "./pages/Home";
 import Pag404 from "./pages/404";
 import Login from "./pages/Login";
 // import Resumo from "./pages/Resumo";
 import Landpage from "./pages/Landpage";
 
-import Funcionarios from "./pages/Funcionarios";
-import Vendas from "./pages/Vendas";
+import Funcionarios from "./pages/Employees";
+import Vendas from "./pages/Sales";
 import CheckLogged from "./components/CheckLogged";
 
 const Router = () => {

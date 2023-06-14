@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
-// import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
-import TableClient from '../components/TableClient'
 import Content from '../components/Content'
 import Header from '../components/Header'
+import TableClient from '../components/TableClient'
+import './customers.css'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
-function Clientes() {
+function Customers() {
     const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    const navigate = useNavigate()
 
     // console.log(products)
-
     // const OpenModal = () => {
     //     setOpenModal(true)
     // }
-
     // const CloseModal = () => {
     //     setOpenModal(false)
     // }
@@ -65,44 +66,55 @@ function Clientes() {
             console.log(data)
             setOpenModal(false)
             loadClients()
+            toast.success('Cliente criado com sucesso!')
         } catch (error) {
             console.log(error)
+            toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
         }
     }
 
     return (
         <>
             <Content>
-                <Header />
+               <Header /> 
                 <Box sx={{ display: 'flex' }}>
-                    <table style={{ boxShadow: '0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px', margin: '10px auto', width: '70%', height: 'auto', background: 'white', borderCollapse: 'collapse' }}>
+                    <table className='tabela2'>
                         <tr>
                             <th colSpan={12}>
-                                <Stack container direction="row" sx={{ alignItems: 'center', margin: '0 0 0 auto', width: '100%', justifyContent: 'space-between', paddingBottom: '30px' }}>
-                                    <h1 style={{ paddingLeft: '45px', paddingTop: '10px' }}>Seus Clientes</h1>
-                                    <button disabled={false} variant="filled" style={{ height: '40px', width: '150px', borderRadius: '8px', background: '#0F9AFE', border: '0px', color: 'white', marginRight: '45px', marginTop: '10px' }} onClick={() => setOpenModal(true)}>Adicionar</button>
+                                <Stack container direction="row" className='stack2'>
+                                    <h1 className='tituloTabela2'>Seus Clientes</h1>
+                                    <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/Home')}>Adicionar</button>
                                 </Stack>
                             </th>
                         </tr>
+
                         <tr>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Nascimento</th>
-                            <th>Telefone</th>
-                            <th>E-mail</th>
-                            <th>Endereço</th>
-                            <th>Bairro</th>
-                            <th>CEP</th>
-                            <th>N° casa</th>
-                            <th>Complemento</th>
+                            <th className='coluna2'>Nome</th>
+                            <th className='coluna2'>Sobrenome</th>
+                            <th className='coluna2'>CPF</th>
+                            <th className='coluna2'>Nascimento</th>
+                            <th className='coluna2'>Telefone</th>
+                            <th className='coluna2'>E-mail</th>
+                            <th className='coluna2'>Endereço</th>
+                            <th className='coluna2'>Bairro</th>
+                            <th className='coluna2'>CEP</th>
+                            <th className='coluna2'>N° casa</th>
+                            <th className='coluna2'>Complemento</th>
+                            <th className='coluna2'></th>
+                            <th className='coluna2'></th>
                         </tr>
-                        {clients &&
+                        {clients.length > 0  ?
                             clients.map(client => (
-                                <TableClient key={client.id} client={client} setClients={setClients} clients={client} />
-                            ))}
+                                <TableClient key={client.id} client={client} setClients={setClients} clients={clients} />
+                            )): (
+                            <tr>
+                                <td colSpan={10}>Nenhum cliente cadastrado</td>
+                            </tr>
+                            )}
                     </table>
                 </Box>
-                {openModal &&
+
+                {/* {openModal &&
                     <Box className='modal' onClick={(event) => {
                         if (event.target.className.includes('modal')) {
                             setOpenModal(false)
@@ -111,7 +123,7 @@ function Clientes() {
                         <Box className='container'>
                             <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
                             <h2>Cadastrar produtos</h2>
-                            <form onSubmit={handleSubmit} className='formModal'>
+                            <form onSubmit={handleSubmit}className='formModal'>
                                 <input type="text" name="fname" placeholder="Nome" /><br />
                                 <input type="text" name="lname" placeholder="Sobrenome" /><br />
                                 <input type="int" name="cpf" placeholder="CPF" /><br /><br />
@@ -128,10 +140,10 @@ function Clientes() {
                             </form>
                         </Box>
                     </Box>
-                }
+                } */}
             </Content>
         </>
     )
 }
 
-export default Clientes
+export default Customers
