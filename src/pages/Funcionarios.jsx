@@ -5,7 +5,7 @@ const Funcionarios = () =>{
     return(
         <>
         <Content title='Funcionarios'>
-
+        
         </Content>
         </>
     )
