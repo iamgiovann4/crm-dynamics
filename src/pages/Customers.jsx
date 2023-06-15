@@ -83,7 +83,7 @@ function Customers() {
                             <th colSpan={12}>
                                 <Stack container direction="row" className='stack2'>
                                     <h1 className='tituloTabela2'>Seus Clientes</h1>
-                                    <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/Home')}>Adicionar</button>
+                                    <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
                                 </Stack>
                             </th>
                         </tr>

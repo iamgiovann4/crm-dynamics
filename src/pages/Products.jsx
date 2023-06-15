@@ -64,8 +64,8 @@ function Products() {
 
     return (
         <>
+            <Header />
             <Content>
-                <Header />
                 <Box sx={{ display: 'flex' }}>
                     <table className='tabela'>
                         <tr>
@@ -84,13 +84,13 @@ function Products() {
                             <th className='coluna' align="left"></th>
                             <th className='coluna' align="left"></th>
                         </tr>
-                        {products.length > 0  ?
+                        {products.length > 0 ?
                             products.map(product => (
                                 <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} />
-                            )):  (
-                            <tr>
-                                <td colSpan={10}>Nenhum cliente cadastrado</td>
-                            </tr>
+                            )) : (
+                                <tr>
+                                    <td colSpan={10}>Nenhum cliente cadastrado</td>
+                                </tr>
                             )}
                     </table>
                 </Box>
