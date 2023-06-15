@@ -9,18 +9,18 @@ import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
 
-const hostEmployee = process.env.REACT_APP_HOST_LINE_employees 
+const hostEmployee = process.env.REACT_APP_HOST_LINE_EMPLOYEES
 
 
-const Funcionarios = () => {
+const Employees = () => {
     const [employees, setEmployees] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
 
     const loadEmployees = async () => {
         try {
-            const response = await fetch(hostEmployee)
+            const response = await fetch('http://localhost:3100/employees')
             const data = await response.json()
-            console.log(data) 
+            console.log(data)
             // aqui esta o erro
             setEmployees(data)
             console.log(data)
@@ -64,29 +64,40 @@ const Funcionarios = () => {
     return (
         <>
             <Content title='Funcionarios'>
-                <Header/>
+                <Header />
                 <Box sx={{ display: 'flex' }}>
                     <table className='tabela'>
-                        <tr>
-                            <th colSpan={5}>
-                                <Stack className='stack' container direction="row">
-                                    <h1 className='tituloTabela'>Seus Produtos</h1>
-                                    <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                </Stack>
-                            </th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th colSpan={5}>
+                                    <Stack className='stack' container direction="row">
+                                        <h1 className='tituloTabela'>Seus Funciobnario</h1>
+                                        <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                    </Stack>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <tr>
-                            <th className='coluna' align="left">Produto</th>
-                            <th className='coluna' align="left">Preço</th>
-                            <th className='coluna' align="left">Quantidade</th>
-                            <th className='coluna' align="left"></th>
-                            <th className='coluna' align="left"></th>
-                        </tr>
-                        {employees &&
-                            employees.map(employee => (
-                                <TableEmployees key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} />
-                            ))}
+                            <tr>
+                                <th className='coluna' align="left">Nome</th>
+                                <th className='coluna' align="left">Sobrenome</th>
+                                <th className='coluna' align="left">CPF</th>
+                                <th className='coluna' align="left">E-mail</th>
+                                <th className='coluna' align="left">Cargo</th>
+                                <th className='coluna' align="left">Salario</th>
+                                <th className='coluna' align="left">Nascimento</th>
+                                <th className='coluna' align="left">Rua</th>
+                                <th className='coluna' align="left">Numero</th>
+                                <th className='coluna' align="left">Bairro</th>
+                                <th className='coluna' align="left"></th>
+                                <th className='coluna' align="left"></th>
+                            </tr>
+                            {employees &&
+                                employees.map(employee => (
+                                    <TableEmployees key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} />
+                                ))}
+                        </tbody>
                     </table>
                 </Box>
                 {openModal &&
@@ -113,4 +124,4 @@ const Funcionarios = () => {
     )
 }
 
-export default Funcionarios
+export default Employees

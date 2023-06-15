@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 // import Resumo from "./pages/Resumo";
 import Landpage from "./pages/Landpage";
 
-import Funcionarios from "./pages/Employees";
+import Employees from "./pages/Employees";
 import Vendas from "./pages/Sales";
 import CheckLogged from "./components/CheckLogged";
 
@@ -21,7 +21,7 @@ const Router = () => {
                 <Route path="/produtos" element={<Products />} />
                 <Route path="/clientes" element={<Clientes />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/funcionarios" element={<Funcionarios />} />
+                <Route path="/funcionarios" element={<Employees />} />
                 <Route path="/vendas" element={<Vendas />} />
             </Route>
 
