@@ -5,7 +5,6 @@ import Header from '../components/Header'
 import TableProduct from '../components/TableProduct'
 import './products.css'
 import { toast } from 'react-toastify'
-import MiniDrawer from './404'
 
 // Restante do seu código...
 
@@ -99,7 +98,6 @@ function Products() {
 
     return (
         <>
-            <MiniDrawer />
                 <Content>
                     <Header />
                     <Box sx={{ display: 'flex' }}>
@@ -176,7 +174,6 @@ function Products() {
                         </Box>
                     }
                 </Content >
-            {/* </MiniDrawer> */}
         </>
     )
 }
