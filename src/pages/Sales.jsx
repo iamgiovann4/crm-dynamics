@@ -2,7 +2,7 @@
 import Content from "../components/Content"
 import Header from "../components/Header"
 
-const Vendas = () => {
+const Sales = () => {
     return (
         <>
             <Content title='Vendas'>
@@ -12,4 +12,4 @@ const Vendas = () => {
     )
 }
 
-export default Vendas
+export default Sales
