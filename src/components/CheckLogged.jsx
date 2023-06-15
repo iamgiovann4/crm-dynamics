@@ -18,7 +18,6 @@ const CheckLogged = () => {
         }
     }, [isLogged])
 
-
     return(
         <Outlet />
      )

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import './Produto.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
-import TableProduct from '../components/TableProduct'
 import Content from '../components/Content'
-import { toast } from 'react-toastify'
 import Header from '../components/Header'
+import TableProduct from '../components/TableProduct'
+import './products.css'
+import { toast } from 'react-toastify'
 
 // Restante do seu código...
 
@@ -16,11 +16,9 @@ function Products() {
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
 
     // console.log(products)
-
     // const OpenModal = () => {
     //     setOpenModal(true)
     // }
-
     // const CloseModal = () => {
     //     setOpenModal(false)
     // }
@@ -64,7 +62,7 @@ function Products() {
             loadProducts()
             toast.success('Produto criado com sucesso')
         } catch (error) {
-            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
+            toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
         }
     }
 
@@ -90,10 +88,14 @@ function Products() {
                             <th className='coluna' align="left"></th>
                             <th className='coluna' align="left"></th>
                         </tr>
-                        {products &&
+                        {products.length > 0  ?
                             products.map(product => (
                                 <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} />
-                            ))}
+                            )):  (
+                            <tr>
+                                <td colSpan={10}>Nenhum cliente cadastrado</td>
+                            </tr>
+                            )}
                     </table>
                 </Box>
                 {openModal &&

@@ -10,7 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
-import './Cadastro.css'
+import './signUp.css'
 import Button from "../components/Button"
 import { Link, useNavigate } from 'react-router-dom';
 import Content from '../components/Content';
@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 //===========================
 
 
-const Cadastro = () => {
+const SignUp = () => {
 
   const navigate = useNavigate()
 
@@ -155,7 +155,7 @@ const Cadastro = () => {
   );
 }
 
-export default Cadastro;
+export default SignUp;
 
 const styles = {
   img: {
