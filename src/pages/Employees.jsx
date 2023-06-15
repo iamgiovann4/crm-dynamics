@@ -3,7 +3,7 @@ import Content from "../components/Content"
 import Header from "../components/Header"
 
 import React, { useEffect, useState } from 'react'
-import './Produto.css'
+import '../pages/products.css'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'

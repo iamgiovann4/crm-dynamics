@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
-import '../pages/Produto.css'
+import '../pages/products.css'
 import { toast } from 'react-toastify'
 // import Table from '@mui/material/Table'
 // import TableBody from '@mui/material/TableBody'

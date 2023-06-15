@@ -5,9 +5,10 @@ import Header from '../components/Header'
 import TableProduct from '../components/TableProduct'
 import './products.css'
 import { toast } from 'react-toastify'
+import MiniDrawer from '../components/MiniDrawer'
 
 // Restante do seu código...
-
+// 
 const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 
 function Products() {
@@ -18,7 +19,7 @@ function Products() {
 
     const loadProducts = async () => {
         try {
-            const response = await fetch(hostProduct)
+            const response = await fetch('http://localhost:3100/product')
             const data = await response.json()
             setProducts(data)
             console.log(data)
@@ -98,6 +99,7 @@ function Products() {
 
     return (
         <>
+            <MiniDrawer >
                 <Content>
                     <Header />
                     <Box sx={{ display: 'flex' }}>
@@ -174,6 +176,7 @@ function Products() {
                         </Box>
                     }
                 </Content >
+            </MiniDrawer>
         </>
     )
 }
