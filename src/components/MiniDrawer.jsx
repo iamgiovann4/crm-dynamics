@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import Perfil from './Perfil';
 
 const drawerWidth = 240;
 
@@ -103,7 +104,7 @@ const MiniDrawer = ({ children }) => {
     return (
         <Box sx={{ display: 'flex', boxShadow: '0' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: 'white', color: 'black' }}>
+            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: '#f1f1f1', color: 'black' }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -117,7 +118,8 @@ const MiniDrawer = ({ children }) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant="h6" noWrap component="div" sx={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                        <Perfil/>
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -176,7 +178,7 @@ const MiniDrawer = ({ children }) => {
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, pt: 0 }}>
                 <DrawerHeader />
                 {children}
             </Box>

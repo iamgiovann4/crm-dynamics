@@ -7,6 +7,7 @@ import TableClient from '../components/TableClient'
 import './customers.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import MiniDrawer from '../components/MiniDrawer'
 
 function Customers() {
     const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
@@ -75,46 +76,47 @@ function Customers() {
 
     return (
         <>
-            <Content>
-               <Header /> 
-                <Box sx={{ display: 'flex' }}>
-                    <table className='tabela2'>
-                        <tr>
-                            <th colSpan={12}>
-                                <Stack container direction="row" className='stack2'>
-                                    <h1 className='tituloTabela2'>Seus Clientes</h1>
-                                    <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
-                                </Stack>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <th className='coluna2'>Nome</th>
-                            <th className='coluna2'>Sobrenome</th>
-                            <th className='coluna2'>CPF</th>
-                            <th className='coluna2'>Nascimento</th>
-                            <th className='coluna2'>Telefone</th>
-                            <th className='coluna2'>E-mail</th>
-                            <th className='coluna2'>Endereço</th>
-                            <th className='coluna2'>Bairro</th>
-                            <th className='coluna2'>CEP</th>
-                            <th className='coluna2'>N° casa</th>
-                            <th className='coluna2'>Complemento</th>
-                            <th className='coluna2'></th>
-                            <th className='coluna2'></th>
-                        </tr>
-                        {clients.length > 0  ?
-                            clients.map(client => (
-                                <TableClient key={client.id} client={client} setClients={setClients} clients={clients} />
-                            )): (
+            <MiniDrawer>
+                <Content>
+                    {/* <Header /> */}
+                    <Box sx={{ display: 'flex' }}>
+                        <table className='tabela2'>
                             <tr>
-                                <td colSpan={10}>Nenhum cliente cadastrado</td>
+                                <th colSpan={12}>
+                                    <Stack container direction="row" className='stack2'>
+                                        <h1 className='tituloTabela2'>Seus Clientes</h1>
+                                        <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
+                                    </Stack>
+                                </th>
                             </tr>
-                            )}
-                    </table>
-                </Box>
 
-                {/* {openModal &&
+                            <tr>
+                                <th className='coluna2'>Nome</th>
+                                <th className='coluna2'>Sobrenome</th>
+                                <th className='coluna2'>CPF</th>
+                                <th className='coluna2'>Nascimento</th>
+                                <th className='coluna2'>Telefone</th>
+                                <th className='coluna2'>E-mail</th>
+                                <th className='coluna2'>Endereço</th>
+                                <th className='coluna2'>Bairro</th>
+                                <th className='coluna2'>CEP</th>
+                                <th className='coluna2'>N° casa</th>
+                                <th className='coluna2'>Complemento</th>
+                                <th className='coluna2'></th>
+                                <th className='coluna2'></th>
+                            </tr>
+                            {clients.length > 0 ?
+                                clients.map(client => (
+                                    <TableClient key={client.id} client={client} setClients={setClients} clients={clients} />
+                                )) : (
+                                    <tr>
+                                        <td colSpan={10}>Nenhum cliente cadastrado</td>
+                                    </tr>
+                                )}
+                        </table>
+                    </Box>
+
+                    {/* {openModal &&
                     <Box className='modal' onClick={(event) => {
                         if (event.target.className.includes('modal')) {
                             setOpenModal(false)
@@ -141,7 +143,8 @@ function Customers() {
                         </Box>
                     </Box>
                 } */}
-            </Content>
+                </Content>
+            </MiniDrawer>
         </>
     )
 }

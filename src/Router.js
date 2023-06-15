@@ -15,7 +15,6 @@ const Router = () => {
     return (
         <Routes>
             <Route path="/" element={<Landpage />} />
-            {/* <Route path="/landpage" element={<Landpage/>} /> */}
             <Route element={<CheckLogged />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="/produtos" element={<Products />} />
@@ -24,7 +23,7 @@ const Router = () => {
                 <Route path="/funcionarios" element={<Employees />} />
                 <Route path="/vendas" element={<Sales />} />
             </Route>
-
+            
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/login" element={<Login />} />
             <Route path="/landpage" element={<Landpage />} />

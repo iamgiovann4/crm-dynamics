@@ -8,6 +8,7 @@ import Content from '../components/Content';
 import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import MiniDrawer from '../components/MiniDrawer'
 
 const FormCustomers = () => {
     const [clients, setClients] = useState(false);
@@ -67,75 +68,77 @@ const FormCustomers = () => {
 
     return (
         <>
-            <Header />
-            <Content>
-                <Box sx={{  display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                    <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='fname' label="Nome" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid><br />
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
-                                </FormControl>
+            <MiniDrawer>
+                {/* <Header /> */}
+                <Content>
+                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
+                        <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='fname' label="Nome" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid><br />
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='cpf' label="CPF" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='dateOfBirth' label="Data de Nascimento" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='phone' label="Telefone" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='email' label="E-mail" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='address' label="Endereço" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='street' label="Bairro" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='cep' label="CEP" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='houseNumber' label="Nº Casa" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='referencePoint' label="Complemento" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <div style={{ width: "30%", margin: 'auto' }}>
+                                        <Button>Cadastrar</Button>
+                                    </div>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='cpf' label="CPF" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='dateOfBirth' label="Data de Nascimento" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='phone' label="Telefone" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='email' label="E-mail" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='address' label="Endereço" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='street' label="Bairro" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='cep' label="CEP" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='houseNumber' label="Nº Casa" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                    <TextField name='referencePoint' label="Complemento" variant="outlined" fullWidth />
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <div style={{ width: "30%", margin: 'auto' }}>
-                                    <Button>Cadastrar</Button>
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </form>
-                </Box>
-            </Content>
+                        </form>
+                    </Box>
+                </Content>
+            </MiniDrawer>
         </>
     )
 }

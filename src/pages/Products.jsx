@@ -101,7 +101,6 @@ function Products() {
         <>
             <MiniDrawer >
                 <Content>
-                    <Header />
                     <Box sx={{ display: 'flex' }}>
                         <table className='tabela'>
                             <thead>
