@@ -5,8 +5,9 @@
 }
 
 .paragrafoP > .usuario {
+    font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
 }
 

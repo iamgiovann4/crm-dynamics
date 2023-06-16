@@ -3,15 +3,6 @@ import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
-// import '../pages/Produto.css'
-// import Table from '@mui/material/Table'
-// import TableBody from '@mui/material/TableBody'
-// import TableCell from '@mui/material/TableCell'
-// import TableContainer from '@mui/material/TableContainer'
-// import TableHead from '@mui/material/TableHead'
-// import TableRow from '@mui/material/TableRow'
-// import Paper from '@mui/material/Paper'
-
 
 const TableClient = ({ client, setClients, clients }) => {
 

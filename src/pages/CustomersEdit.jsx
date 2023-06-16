@@ -13,8 +13,7 @@ const CustomersEdit = () => {
 
     const { state: client } = useLocation()
     console.log(client)
-    const navigate = useNavigate()
-
+    const navigate = useNavigate() 
     const [fname, setFname] = useState(client.fname)
     const [lname, setLname] = useState(client.lname)
     const [cpf, setCpf] = useState(client.cpf)
