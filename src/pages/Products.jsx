@@ -18,6 +18,7 @@ const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
