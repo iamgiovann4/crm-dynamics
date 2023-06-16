@@ -11,6 +11,7 @@ import CheckLogged from "./components/CheckLogged";
 import FormCustomers from "./pages/FormCustomers";
 import Customers from "./pages/Customers";
 import Searchbar from "./pages/SearchBar";
+import CustomersEdit from "./pages/CustomersEdit";
 
 const Router = () => {
     return (
@@ -23,12 +24,13 @@ const Router = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/funcionarios" element={<Employees />} />
                 <Route path="/vendas" element={<Sales />} />
+                <Route path="/cadastroC" element={<FormCustomers />} />
+                <Route path="/cliente-edit" element={<CustomersEdit />} />
             </Route>
             
+            <Route path="/landpage" element={<Landpage />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/landpage" element={<Landpage />} />
-            <Route path="/cadastroC" element={<FormCustomers />} />
             <Route path="*" element={<Pag404 />} />
             <Route path="barra" element={<Searchbar />} />
         </Routes>
