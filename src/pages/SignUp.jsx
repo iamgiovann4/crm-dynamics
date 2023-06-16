@@ -17,8 +17,6 @@ import Content from '../components/Content';
 import { toast } from 'react-toastify';
 
 //===========================
-
-
 const SignUp = () => {
 
   const navigate = useNavigate()
@@ -140,7 +138,7 @@ const SignUp = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <div style={styles.centralizar}>
-                    <div style={{ width: "30%" }}><Button>Cadastrar</Button><br /></div>
+                    <div style={{ width: "50%" }}><Button>Cadastrar</Button><br /></div>
 
                     <h2 style={{ color: '#252525' }}>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0", textDecoration: 'none' }}>Entrar</Link> </span> </h2>
                   </div>

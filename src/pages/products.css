@@ -8,7 +8,7 @@
     border-collapse: collapse;
 }
 
-.tabela > tr > th > .stack {
+.tabela > thead > tr > th.stack {
     align-items: center;
     margin: 0 0 0 auto;
     width: 100%;
@@ -16,12 +16,12 @@
     padding-bottom: 30px;
 }
 
-.tabela > tr > th > .stack > .tituloTabela {
+.tabela > thead > tr > th.stack > .tituloTabela {
     padding-left: 45px;
     padding-top: 10px;
 }
 
-.tabela > tr > th > .stack > .botao {
+.tabela > thead > tr > th.stack > .botao {
     height: 40px;
     width: 150px;
     border-radius: 8px;

@@ -9,7 +9,6 @@ import { AiOutlineBars } from "react-icons/ai";
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
 
 export default function Header() {
   const [state, setState] = React.useState({
