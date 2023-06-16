@@ -1,19 +1,20 @@
 //Pág dos funcionarios da empresa que forem cadastrados no sign up, essa pág também terá uma tabela
 import Content from "../components/Content"
-import Header from "../components/Header"
 
 import React, { useEffect, useState } from 'react'
-import '../pages/products.css'
-import Stack from '@mui/material/Stack'
+import '../pages/employees.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
+import { useNavigate } from "react-router"
 
 const hostEmployee = process.env.REACT_APP_HOST_LINE_EMPLOYEES
 
 
 const Employees = () => {
+
+    const navigate = useNavigate()
     const [employees, setEmployees] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
 
@@ -38,40 +39,7 @@ const Employees = () => {
         loadEmployees()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        console.log('Minha funcao de submit')
-        console.log(event.target)
-        const fname = event.target.fname.value
-        const lname = event.target.lname.value
-        const cpf = event.target.cpf.value
-        const email = event.target.email.value
-        const office = event.target.office.value
-        const wage = event.target.wage.value
-        const birth = event.target.birth.value
-        const street = event.target.street.value
-        const number = event.target.number.value
-        const address = event.target.address.value
-        const userEdited = { fname, lname, cpf, email, email, office, wage, birth , street, number, address }
-        console.log(userEdited)
-        try {
-            const response = await fetch('http://localhost:3100/employees',
-                {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(userEdited),
-                })
-            const data = await response.json()
-            console.log(data)
-            setOpenModal(false)
-            loadEmployees()
-            toast.success('Produto criado com sucesso')
-        } catch (error) {
-            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
-        }
-    }
+
 
     const handleEdit = async (event) => {
         event.preventDefault()
@@ -86,7 +54,7 @@ const Employees = () => {
         const street = event.target.street.value
         const number = event.target.number.value
         const address = event.target.address.value
-        const userEdited = { id, fname, lname, cpf, email, email, office, wage, birth , street, number, address }
+        const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
         try {
             const response = await fetch('http://localhost:3100/product',
                 {
@@ -94,14 +62,14 @@ const Employees = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(userEdited),
+                    body: JSON.stringify(Employees),
                 })
             const data = await response.json()
             if (response.status === 200) {
                 toast.success('Produto editado com sucesso')
                 const newProducts = employees.map((employee) => {
                     if (employee.id === id) {
-                        return userEdited
+                        return Employees
                     }
                     return employee
                 })
@@ -122,14 +90,14 @@ const Employees = () => {
                 <Content title='Funcionarios'>
                     {/* <Header /> */}
                     <Box sx={{ display: 'flex' }}>
-                        <table className='tabela'>
+                        <table className='tabela3'>
                             <thead>
                                 <tr>
-                                    <th className='stack'>
-                                        <h1 className='tituloTabela'>Seus Produtos</h1>
+                                    <th className='stack3'>
+                                        <h1 className='tituloTabela3'>Seus Funcionarios</h1>
                                     </th>
-                                    <th colSpan={4} className='stack'>
-                                        <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                    <th colSpan={4} className='stack3'>
+                                        <button disabled={false} variant="filled" className='botao3' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
                                     </th>
                                 </tr>
                             </thead>
@@ -156,53 +124,6 @@ const Employees = () => {
                             </tbody>
                         </table>
                     </Box>
-                    {openModal &&
-                        <Box className='modal' onClick={(event) => {
-                            if (event.target.className.includes('modal')) {
-                                setOpenModal(false)
-                            }
-                        }}>
-                            <Box className='container'>
-                                <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
-                                <h2>Cadastrar produtos</h2>
-                                <form onSubmit={handleSubmit} className='formModal'>
-                                    <input type="text" name="fname" placeholder="Nome" /><br />
-                                    <input type="text" name="lname" placeholder="Sobrenome" /><br />
-                                    <input type="int" name="cpf" placeholder="CPF" /><br /><br />
-                                    <input type="int" name="email" placeholder="E-mail" /><br /><br />
-                                    <input type="int" name="office" placeholder="Cargo" /><br /><br />
-                                    <input type="int" name="wage" placeholder="Salario" /><br /><br />
-                                    <input type="int" name="birth" placeholder="Nascimento" /><br /><br />
-                                    <input type="int" name="street" placeholder="Rua" /><br /><br />
-                                    <input type="int" name="number" placeholder="Numero" /><br /><br />
-                                    <input type="int" name="address" placeholder="Bairro" /><br /><br />
-                                    <button className='enviar' type='submit'>Enviar</button><br />
-                                    <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
-                                </form>
-                            </Box>
-                        </Box>
-                    }
-
-                    {openModalEdit &&
-                        <Box className='modal' onClick={(event) => {
-                            if (event.target.className.includes('modal')) {
-                                setOpenModal(false)
-                            }
-                        }}>
-                            <Box className='container'>
-                                <div className='xizinho'><p onClick={() => setOpenModalEdit(false)}>X</p></div>
-                                <h2>Editar Produto</h2>
-                                <form onSubmit={handleEdit} className='formModal'>
-                                    <input type="hidden" name="id" value={employeesToEdit.id} />
-                                    <input type="text" name="name" placeholder="Nome" value={employeesToEdit.fname} onChange={e => setEmployeesToEdit({...employeesToEdit, fname: e.target.value})} /><br />
-                                    <input type="text" name="price" placeholder="Preço" value={employeesToEdit.lname} onChange={e => setEmployeesToEdit({...employeesToEdit, lname: e.target.value})} /><br />
-                                    <input type="int" name="stock" placeholder="Quantidade" value={employeesToEdit.office} onChange={e => setEmployeesToEdit({...employeesToEdit, office: e.target.value})} /><br /><br />
-                                    <button className='enviar' type='submit'>Editar</button><br />
-                                    <button className='fechar' onClick={() => setOpenModalEdit(false)}>Fechar</button>
-                                </form>
-                            </Box>
-                        </Box>
-                    }
                 </Content>
             </MiniDrawer >
         </>

@@ -3,16 +3,12 @@ import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import '../pages/products.css'
 import { toast } from 'react-toastify'
-// import Table from '@mui/material/Table'
-// import TableBody from '@mui/material/TableBody'
-// import TableCell from '@mui/material/TableCell'
-// import TableContainer from '@mui/material/TableContainer'
-// import TableHead from '@mui/material/TableHead'
-// import TableRow from '@mui/material/TableRow'
-// import Paper from '@mui/material/Paper'
+import { useNavigate } from 'react-router'
 
 
 const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit}) => {
+
+  const navigate = useNavigate()
 
   const deleteUser = async (id) => {
     try {
@@ -48,7 +44,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit}) =>
 
           <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
             <IconEdit style={{width: '20px', cursor: 'pointer' }}
-            onClick={() => setOpenModalEdit(true)}/>
+            onClick={() => navigate('/funcionarios-edit', {state: employee})} />
           </td>
           <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
             <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(employee.id)}/>
