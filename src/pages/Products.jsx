@@ -10,6 +10,8 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import { Autocomplete } from '@mui/material';
 import { Button } from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
+import SearchBar from './SearchBar'
+
 
 // Restante do seu código...
 // 
@@ -29,7 +31,7 @@ function Products() {
             console.log(data)
         } catch (error) {
             console.log(error)
-        }  
+        }
     }
 
     useEffect(() => {
@@ -101,25 +103,31 @@ function Products() {
         }
     }
 
-    // const response =  fetch('http://localhost:3100/product')
-    // const data =  response.json()
-    console.log(handleSubmit)
+    const listProductsName = async () => {
+        try {
+            const response = await fetch('http://localhost:3100/product/name')
+            const data = await response.json()
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
-            {/* <Container maxWidth="md" sx={{ mt: 10, display: 'flex', direction: 'row' }} >
+            <Container maxWidth="md" sx={{ mt: 10, display: 'flex', direction: 'row' }} >
                 
                 <Autocomplete
                     id="free-solo-demo"
                     freeSolo
-                    options={userEdited.map((option) => option.name)}
+                    options={listProductsName((option) => option.name)}
                     renderInput={(params) => (
                         <TextField {...params} label="freeSolo" margin="normal" variant="outlined" sx={{ width: '45rem' }} />
                     )}
                 />
                 <Button variant="contained" sx={{ height: '3.5rem', mt: 2 }}><SearchIcon /></Button> 
 
-             </Container> */}
+             </Container>
 
             <MiniDrawer >
                 <Content>
