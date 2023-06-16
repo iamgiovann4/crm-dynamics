@@ -4,6 +4,8 @@ import useAuthStore from '../store/authStore'
 import { toast } from 'react-toastify';
 import { ImExit as Sair } from 'react-icons/im'
 import '../components/perfil.css'
+import {FaUserCircle as User} from  'react-icons/fa'
+import { Box } from '@mui/system';
 
 const Perfil = () => {
     const isLogged = useAuthStore((state) => state.isLogged)
@@ -46,7 +48,11 @@ const Perfil = () => {
             <div className='dropdown'>
                 {isLogged ? (
                     <>
-                        <p className='paragrafoP' onClick={() => setOpen(!open)}>Olá, <span className='usuario'><a>{nameUserLogged}</a></span></p>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <User size={30} style={{color: "#292727"}} />
+                        <p className='paragrafoP' onClick={() => setOpen(!open)}><span className='usuario'><a>{nameUserLogged}</a></span></p>
+                    </div>
+                        
                     </>
                 ) : null}
                 {open &&
