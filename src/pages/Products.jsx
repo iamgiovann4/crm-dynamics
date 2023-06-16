@@ -4,6 +4,7 @@ import Content from '../components/Content'
 import Header from '../components/Header'
 import TableProduct from '../components/TableProduct'
 import './products.css'
+import pe1 from '../images/pe1.svg'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 
@@ -128,9 +129,7 @@ function Products() {
                                     products.map(product => (
                                         <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
                                     )) : (
-                                        <tr>
-                                            <td colSpan={10}>Nenhum cliente cadastrado</td>
-                                        </tr>
+                                        <img src={pe1} alt="pe1"/>
                                     )}
                             </tbody>
                         </table>
