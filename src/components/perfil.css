@@ -1,6 +1,7 @@
 .paragrafoP {
     color: #252525;
     font-size: 22px;
+    margin-left: 5px;
 }
 
 .paragrafoP > .usuario {
@@ -28,10 +29,12 @@
     border-radius: 8px;
     animation: opacity .7s ease-in-out;
     cursor: pointer;
+    z-index: 999999;
 }
 
 .dropdownMenuItem {
     padding: .7rem 1rem;
+    
 }
 
 @keyframes opacity {

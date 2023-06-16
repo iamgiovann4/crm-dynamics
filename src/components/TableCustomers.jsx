@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router'
 // import '../pages/Produto.css'
 // import Table from '@mui/material/Table'
 // import TableBody from '@mui/material/TableBody'
@@ -13,62 +14,65 @@ import { toast } from 'react-toastify'
 
 
 const TableClient = ({ client, setClients, clients }) => {
-  const [modalOpen, setOpenModal] = useState(false)
-  const [fname, setFname] = useState(client.fname)
-  const [lname, setLname] = useState(client.lname)
-  const [cpf, setCpf] = useState(client.cpf)
-  const [dateOfBirth, setDateOfBirth] = useState(client.dateOfBirth)
-  const [phone, setPhone] = useState(client.phone)
-  const [email, setEmail] = useState(client.email)
-  const [address, setAddress] = useState(client.address)
-  const [street, setStreet] = useState(client.street)
-  const [cep, setCep] = useState(client.cep)
-  const [houseNumber, setHouseNumber] = useState(client.houseNumber)
-  const [referencePoint, setReferencePoint] = useState(client.referencePoint)
 
-  const handleEdit = async (event) => {
-    event.preventDefault()
-    const id = parseInt(event.target.id.value)
-    const fname = event.target.fname.value
-    const lname = event.target.lname.value
-    const cpf = event.target.cpf.value
-    const dateOfBirth = event.target.dateOfBirth.value
-    const phone = event.target.phone.value
-    const email = event.target.email.value
-    const address = event.target.address.value
-    const street = event.target.street.value
-    const cep = event.target.cep.value
-    const houseNumber = event.target.houseNumber.value
-    const referencePoint = event.target.referencePoint.value
-    const clientEdited = { id, fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
-    try {
-      const response = await fetch('http://localhost:3100/client',
-        {
-          method: 'PUT',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(clientEdited),
-        })
-      const data = await response.json()
-      if (response.status === 200) {
-        toast.success('Cliente editado com sucesso!')
-        const newClients = clients.map((client) => {
-          if (client.id === id) {
-            return clientEdited
-          }
-          return client
-        })
-        setClients(newClients)
-        setOpenModal(false)
-      } else {
-        alert(data.message)
-        console.log(data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const navigate = useNavigate()
+
+  // const [modalOpen, setOpenModal] = useState(false)
+  // const [fname, setFname] = useState(client.fname)
+  // const [lname, setLname] = useState(client.lname)
+  // const [cpf, setCpf] = useState(client.cpf)
+  // const [dateOfBirth, setDateOfBirth] = useState(client.dateOfBirth)
+  // const [phone, setPhone] = useState(client.phone)
+  // const [email, setEmail] = useState(client.email)
+  // const [address, setAddress] = useState(client.address)
+  // const [street, setStreet] = useState(client.street)
+  // const [cep, setCep] = useState(client.cep)
+  // const [houseNumber, setHouseNumber] = useState(client.houseNumber)
+  // const [referencePoint, setReferencePoint] = useState(client.referencePoint)
+
+  // const handleEdit = async (event) => {
+  //   event.preventDefault()
+  //   const id = parseInt(event.target.id.value)
+  //   const fname = event.target.fname.value
+  //   const lname = event.target.lname.value
+  //   const cpf = event.target.cpf.value
+  //   const dateOfBirth = event.target.dateOfBirth.value
+  //   const phone = event.target.phone.value
+  //   const email = event.target.email.value
+  //   const address = event.target.address.value
+  //   const street = event.target.street.value
+  //   const cep = event.target.cep.value
+  //   const houseNumber = event.target.houseNumber.value
+  //   const referencePoint = event.target.referencePoint.value
+  //   const clientEdited = { id, fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
+  //   try {
+  //     const response = await fetch('http://localhost:3100/client',
+  //       {
+  //         method: 'PUT',
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(clientEdited),
+  //       })
+  //     const data = await response.json()
+  //     if (response.status === 200) {
+  //       toast.success('Cliente editado com sucesso!')
+  //       const newClients = clients.map((client) => {
+  //         if (client.id === id) {
+  //           return clientEdited
+  //         }
+  //         return client
+  //       })
+  //       setClients(newClients)
+  //       // setOpenModal(false)
+  //     } else {
+  //       alert(data.message)
+  //       console.log(data)
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const deleteClient = async (id) => {
     try {
@@ -106,14 +110,14 @@ const TableClient = ({ client, setClients, clients }) => {
 
         <td style={{ borderBottom: '1px solid #ddd', padding: '15px 23px' }}>
           <IconEdit style={{ width: '20px', cursor: 'pointer' }}
-            onClick={() => setOpenModal(true)} />
+            onClick={() => navigate('/cliente-edit', {state: client})} />
         </td>
         <td style={{ borderBottom: '1px solid #ddd', padding: '15px 23px' }}>
           <IconTrash style={{ height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red' }} onClick={() => deleteClient(client.id)} />
         </td>
       </tr>
 
-      {modalOpen &&
+      {/* {modalOpen &&
         <Box className='modal' onClick={(event) => {
           if (event.target.className.includes('modal')) {
             setOpenModal(false)
@@ -121,7 +125,7 @@ const TableClient = ({ client, setClients, clients }) => {
         }}>
           <Box className='container'>
             <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
-            <h2>Editar Produto</h2>
+            <h2>Editar Clientes</h2>
             <form onSubmit={handleEdit} className='formModal'>
               <input type="hidden" name="id" value={client.id} />
               <input type="text" name="fname" placeholder="Nome" value={fname} onChange={e => setFname(e.target.value)} /><br />
@@ -140,21 +144,9 @@ const TableClient = ({ client, setClients, clients }) => {
             </form>
           </Box>
         </Box>
-      }
+      } */}
     </>
   )
 }
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
 
 export default TableClient
