@@ -10,6 +10,7 @@ import Sales from "./pages/Sales";
 import CheckLogged from "./components/CheckLogged";
 import FormCustomers from "./pages/FormCustomers";
 import Customers from "./pages/Customers";
+import Searchbar from "./pages/SearchBar";
 
 const Router = () => {
     return (
@@ -29,6 +30,7 @@ const Router = () => {
             <Route path="/landpage" element={<Landpage />} />
             <Route path="/cadastroC" element={<FormCustomers />} />
             <Route path="*" element={<Pag404 />} />
+            <Route path="barra" element={<Searchbar />} />
         </Routes>
     )
 }
