@@ -2,7 +2,7 @@
 import Content from "../components/Content"
 
 import React, { useEffect, useState } from 'react'
-import '../pages/employees.css'
+import './employees.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
@@ -93,29 +93,28 @@ const Employees = () => {
                         <table className='tabela3'>
                             <thead>
                                 <tr>
-                                    <th className='stack3'>
-                                        <h1 className='tituloTabela3'>Seus Funcionarios</h1>
-                                    </th>
-                                    <th colSpan={4} className='stack3'>
-                                        <button disabled={false} variant="filled" className='botao3' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
+                                    <th colSpan={12} >
+                                        <Box className='stack3'>
+                                            <h1 className='tituloTabela3'>Seus Funcionarios</h1>
+                                            <button disabled={false} variant="filled" className='botao3' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
+                                        </Box>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <tr>
-                                    <th className='coluna' align="left">Nome</th>
-                                    <th className='coluna' align="left">Sobrenome</th>
-                                    <th className='coluna' align="left">CPF</th>
-                                    <th className='coluna' align="left">E-mail</th>
-                                    <th className='coluna' align="left">Cargo</th>
-                                    <th className='coluna' align="left">Salario</th>
-                                    <th className='coluna' align="left">Nascimento</th>
-                                    <th className='coluna' align="left">Rua</th>
-                                    <th className='coluna' align="left">Numero</th>
-                                    <th className='coluna' align="left">Bairro</th>
-                                    <th className='coluna' align="left"></th>
-                                    <th className='coluna' align="left"></th>
+                                    <th className='coluna3' align="left">Nome</th>
+                                    <th className='coluna3' align="left">Sobrenome</th>
+                                    <th className='coluna3' align="left">CPF</th>
+                                    <th className='coluna3' align="left">E-mail</th>
+                                    <th className='coluna3' align="left">Cargo</th>
+                                    <th className='coluna3' align="left">Salario</th>
+                                    <th className='coluna3' align="left">Nascimento</th>
+                                    <th className='coluna3' align="left">Rua</th>
+                                    <th className='coluna3' align="left">Numero</th>
+                                    <th className='coluna3' align="left">Bairro</th>
+                                    <th className='coluna3' align="left"></th>
+                                    <th className='coluna3' align="left"></th>
                                 </tr>
                                 {employees &&
                                     employees.map(employee => (

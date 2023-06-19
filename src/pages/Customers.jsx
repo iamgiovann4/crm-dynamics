@@ -64,7 +64,7 @@ function Customers() {
             const data = await response.json()
             console.log(data)
             loadClients()
-            toast.success('Cliente criado com sucesso!')
+            toast.success('Cliente cadastrado com sucesso!')
         } catch (error) {
             console.log(error)
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
@@ -74,17 +74,17 @@ function Customers() {
     return (
         <>
             <MiniDrawer>
-                <Content>
+                <Content title='Clientes'>
                     {/* <Header /> */}
                     <Box sx={{ display: 'flex' }}>
                         <table className='tabela2'>
                             <thead>
                                 <tr>
                                     <th colSpan={12}>
-                                        <Stack container direction="row" className='stack2'>
+                                        <Box direction="row" className='stack2'>
                                             <h1 className='tituloTabela2'>Seus Clientes</h1>
                                             <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
-                                        </Stack>
+                                        </Box>
                                     </th>
                                 </tr>
 
@@ -98,7 +98,7 @@ function Customers() {
                                     <th className='coluna2'>Endereço</th>
                                     <th className='coluna2'>Bairro</th>
                                     <th className='coluna2'>CEP</th>
-                                    <th className='coluna2'>N° casa</th>
+                                    <th className='coluna2'>N°</th>
                                     <th className='coluna2'>Complemento</th>
                                     <th className='coluna2'></th>
                                     <th className='coluna2'></th>

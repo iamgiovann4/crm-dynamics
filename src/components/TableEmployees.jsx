@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
-import '../pages/products.css'
+import '../pages/employees.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
 

@@ -18,7 +18,7 @@ const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
-    
+
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
@@ -30,7 +30,7 @@ function Products() {
             console.log(data)
         } catch (error) {
             console.log(error)
-        }  
+        }
     }
 
     useEffect(() => {
@@ -128,11 +128,11 @@ function Products() {
                         <table className='tabela'>
                             <thead>
                                 <tr>
-                                    <th className='stack'>
-                                        <h1 className='tituloTabela'>Seus Produtos</h1>
-                                    </th>
-                                    <th colSpan={4} className='stack'>
-                                        <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                    <th colSpan={12} >
+                                        <Box className='stack'>
+                                            <h1 className='tituloTabela'>Seus Produtos</h1>
+                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                        </Box>
                                     </th>
                                 </tr>
                                 <tr>
@@ -143,7 +143,6 @@ function Products() {
                                     <th className='coluna' align="left"></th>
                                 </tr>
                             </thead>
-
 
                             <tbody>
                                 {products.length > 0 ?
@@ -198,7 +197,7 @@ function Products() {
                         </Box>
                     }
                 </Content >
-            </MiniDrawer>
+            </MiniDrawer >
         </>
     )
 }

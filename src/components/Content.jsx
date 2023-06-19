@@ -10,7 +10,7 @@ const Content = ({children}) => {
 
 const styles = {
     conteudo: {
-        height:'100%'
+        height:'100%',
     }
 }
 
