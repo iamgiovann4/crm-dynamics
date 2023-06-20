@@ -1,8 +1,7 @@
 //Pág dos funcionarios da empresa que forem cadastrados no sign up, essa pág também terá uma tabela
 import Content from "../components/Content"
-
 import React, { useEffect, useState } from 'react'
-import './employees.css'
+import './tableAll.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
@@ -88,37 +87,37 @@ const Employees = () => {
         <>
             <MiniDrawer>
                 <Content title='Funcionarios'>
-                    {/* <Header /> */}
-                    <Box sx={{ display: 'flex' }}>
-                        <table className='tabela3'>
+                    <Box>
+                        <table className='tabela'>
                             <thead>
                                 <tr>
                                     <th colSpan={12} >
-                                        <Box className='stack3'>
-                                            <h1 className='tituloTabela3'>Seus Funcionarios</h1>
-                                            <button disabled={false} variant="filled" className='botao3' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
+                                        <Box direction="row" className='stack'>
+                                            <h1 className='tituloTabela'>Seus Funcionarios</h1>
+                                            <button disabled={false} variant="filled" className='botao' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
                                         </Box>
                                     </th>
                                 </tr>
+
+                                <tr>
+                                    <th className='coluna' align='left'>Nome</th>
+                                    <th className='coluna' align='left'>Sobrenome</th>
+                                    <th className='coluna' align='left'>CPF</th>
+                                    <th className='coluna' align='left'>E-mail</th>
+                                    <th className='coluna' align='left'>Cargo</th>
+                                    <th className='coluna' align='left'>Salario</th>
+                                    <th className='coluna' align='left'>Nascimento</th>
+                                    <th className='coluna' align='left'>Rua</th>
+                                    <th className='coluna' align='left'>Numero</th>
+                                    <th className='coluna' align='left'>Bairro</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th className='coluna3' align="left">Nome</th>
-                                    <th className='coluna3' align="left">Sobrenome</th>
-                                    <th className='coluna3' align="left">CPF</th>
-                                    <th className='coluna3' align="left">E-mail</th>
-                                    <th className='coluna3' align="left">Cargo</th>
-                                    <th className='coluna3' align="left">Salario</th>
-                                    <th className='coluna3' align="left">Nascimento</th>
-                                    <th className='coluna3' align="left">Rua</th>
-                                    <th className='coluna3' align="left">Numero</th>
-                                    <th className='coluna3' align="left">Bairro</th>
-                                    <th className='coluna3' align="left"></th>
-                                    <th className='coluna3' align="left"></th>
-                                </tr>
                                 {employees &&
-                                    employees.map(employee => (
-                                        <TableEmployees key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} setOpenModalEdit={setOpenModalEdit} />
+                                    employees.map((employee, index) => (
+                                        <TableEmployees index={index} key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} setOpenModalEdit={setOpenModalEdit} />
                                     ))}
                             </tbody>
                         </table>

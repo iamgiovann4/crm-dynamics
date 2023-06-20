@@ -82,36 +82,11 @@ const Perfil = () => {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><User2/> Perfil</MenuItem>
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><Contact/> Contato</MenuItem> 
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleLogout}><Sair/> Sair</MenuItem>
+                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><User2/>Perfil</MenuItem>
+                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><Contact/>Contato</MenuItem> 
+                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleLogout}><Sair/>Sair</MenuItem>
                 </Menu>
             </div>
-
-
-
-
-
-
-
-            {/* <div className='dropdown'>
-                {isLogged ? (
-                    <>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <User size={30} style={{ color: "#292727" }} />
-                            <p className='paragrafoP' onClick={() => setOpen(!open)}><span className='usuario'><a>{nameUserLogged}</a></span></p>
-                        </div>
-
-                    </>
-                ) : null}
-                {open &&
-                    <ul className="dropdownMenu">
-                        <li className='dropdownMenuItem' onClick={() => handleLogout()}>Sair</li>
-                        <li className='dropdownMenuItem'>Perfil</li>
-                        <li className='dropdownMenuItem'>mais...</li>
-                    </ul>
-                }
-            </div> */}
         </>
     )
 }

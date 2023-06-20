@@ -67,7 +67,7 @@ const CustomersEdit = () => {
     return (
         <>
             <MiniDrawer>
-                <Content>
+                <Content> 
                     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
                         <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>

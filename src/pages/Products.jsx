@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
-import Header from '../components/Header'
 import TableProduct from '../components/TableProduct'
-import './products.css'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
-import { Container, InputAdornment, TextField } from "@mui/material";
-import { Autocomplete } from '@mui/material';
-import { Button } from '@mui/material'
-import SearchIcon from "@mui/icons-material/Search";
-
-// Restante do seu código...
-// 
-const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
+import './tableAll.css'
+import './modal.css'
+// const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
@@ -101,9 +94,7 @@ function Products() {
             console.log(error)
         }
     }
-
-    // const response =  fetch('http://localhost:3100/product')
-    // const data =  response.json()
+    
     console.log(handleSubmit)
 
     return (
@@ -123,31 +114,31 @@ function Products() {
              </Container> */}
 
             <MiniDrawer >
-                <Content>
-                    <Box sx={{ display: 'flex' }}>
+                <Content title='Produtos'>
+                    <Box>
                         <table className='tabela'>
                             <thead>
                                 <tr>
                                     <th colSpan={12} >
-                                        <Box className='stack'>
+                                        <Box direction="row" className='stack'>
                                             <h1 className='tituloTabela'>Seus Produtos</h1>
                                             <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
                                         </Box>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th className='coluna' align="left">Produto</th>
-                                    <th className='coluna' align="left">Preço</th>
-                                    <th className='coluna' align="left">Quantidade</th>
-                                    <th className='coluna' align="left"></th>
-                                    <th className='coluna' align="left"></th>
+                                    <th className='coluna' align='left'>Produto</th>
+                                    <th className='coluna' align='left'>Preço</th>
+                                    <th className='coluna' align='left'>Quantidade</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 {products.length > 0 ?
-                                    products.map(product => (
-                                        <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
+                                    products.map((product, index) => (
+                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
                                     )) : (
                                         <tr>
                                             <td colSpan={10}>Nenhum cliente cadastrado</td>

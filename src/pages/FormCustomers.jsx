@@ -69,9 +69,11 @@ const FormCustomers = () => {
         <>
             <MiniDrawer>
                 <Content>
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                        <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}> 
+                    <h1 style={{color: '#252525'}}>Cadastro de Clientes</h1>
+                        <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
+                           
+                            <Grid container spacing={2} sx={{ width: "70%", }}>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" variant="outlined" fullWidth />

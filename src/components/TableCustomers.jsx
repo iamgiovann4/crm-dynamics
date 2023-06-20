@@ -1,10 +1,10 @@
-import { useState } from 'react'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
 
-const TableClient = ({ client, setClients, clients }) => {
+const TableClient = ({ client, setClients, clients, index }) => {
 
+  const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
   const navigate = useNavigate()
 
   const deleteClient = async (id) => {
@@ -28,29 +28,54 @@ const TableClient = ({ client, setClients, clients }) => {
 
   return (
     <>
-      <tr>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.fname}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.lname}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.cpf}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.dateOfBirth}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.phone}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.email}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.address}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.street}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.cep}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.houseNumber}</td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>{client.referencePoint}</td>
+      <tr style={{backgroundColor}}>
+        <td style={styles.dadosTabela}>{client.fname}</td>
+        <td style={styles.dadosTabela}>{client.lname}</td>
+        <td style={styles.dadosTabela}>{client.cpf}</td>
+        <td style={styles.dadosTabela}>{client.dateOfBirth}</td>
+        <td style={styles.dadosTabela}>{client.phone}</td>
+        <td style={styles.dadosTabela}>{client.email}</td>
+        <td style={styles.dadosTabela}>{client.address}</td>
+        <td style={styles.dadosTabela}>{client.street}</td>
+        <td style={styles.dadosTabela}>{client.cep}</td>
+        <td style={styles.dadosTabela}>{client.houseNumber}</td>
+        <td style={styles.dadosTabela}>{client.referencePoint}</td>
 
-        <td style={{ borderBottom: '1px solid #ddd', padding: '5px 23px' }}>
-          <IconEdit style={{ width: '20px', cursor: 'pointer' }}
+        <td style={styles.dadosTabela}>
+          <IconEdit style={styles.edit}
             onClick={() => navigate('/cliente-edit', {state: client})} />
         </td>
-        <td style={{ borderBottom: '1px solid #ddd', padding: '15px 23px' }}>
-          <IconTrash style={{ height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red' }} onClick={() => deleteClient(client.id)} />
+        <td style={styles.dadosTabela}>
+          <IconTrash style={styles.delete} onClick={() => deleteClient(client.id)} />
         </td>
       </tr>
     </>
   )
+}
+
+const styles = {
+  dadosTabela: {
+    borderBottom: '1px solid #ddd',
+    fontWeight: 'bold',
+    color: '#3a3a3a', 
+    paddingLeft: '20px',
+    paddingTop: '10px',
+    paddingBottom: '10px'
+  },
+  edit: {
+    cursor: 'pointer',
+    fill: '#222',
+    
+  },
+  delete: {
+    with: '20px',
+    height: '20px',
+    cursor: 'pointer',
+    alignItems: 'center',
+    fill: 'red',
+   
+    
+  }
 }
 
 export default TableClient
