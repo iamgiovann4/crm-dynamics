@@ -7,6 +7,7 @@ import './customers.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import clientes from '../images/clientes.svg'
 
 function Customers() {
     const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
@@ -109,9 +110,7 @@ function Customers() {
                                     clients.map(client => (
                                         <TableCustomers key={client.id} client={client} setClients={setClients} clients={clients} />
                                     )) : (
-                                        <tr>
-                                            <td colSpan={10}>Nenhum cliente cadastrado!</td>
-                                        </tr>
+                                        <img src={clientes} alt="clientes"/>
                                     )}
                             </tbody>
                         </table>

@@ -18,12 +18,12 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import Perfil from './Perfil';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import { NavLink } from 'react-router-dom';
+import './miniDrawer.css'
 
 const drawerWidth = 240;
 
@@ -132,14 +132,26 @@ const MiniDrawer = ({ children }) => {
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </DrawerHeader>
-                <List>
-                    {['Casa', 'Pág. Produtos', 'Pág. Clientes', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
+                <List sx={{}}>
+                    {[
+                      <NavLink exact className="navlink" activeClassName="active" to='/home' style={{color: 'black', textDecoration: 'none'}}>Casa</NavLink>, 
+                      <NavLink exact className="navlink" activeClassName="active" to='/produtos' style={{color: 'black', textDecoration: 'none'}}>Pág. Produtos</NavLink>, 
+                      <NavLink exact className="navlink" activeClassName="active" to='/clientes' style={{color: 'black', textDecoration: 'none'}}>Pág. Clientes</NavLink>, 
+                      
+                      'Drafts'].map((text, index) => (
+                        <ListItem key={text} disablePadding sx={{ display: 'block'}}>
+                            <ListItemButton 
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
+                                    margin: '10px',
+                                    '&:hover':{
+                                        background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
+                                        boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                                        borderRadius: '15px',
+                                        color: 'white'
+                                    }
                                 }}
                             >
                                 <ListItemIcon
@@ -149,8 +161,8 @@ const MiniDrawer = ({ children }) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {index % 4 === 0 ? <NavLink to='/home' style={{color: 'black'}}><HomeIcon /></NavLink> : index % 4 === 1 ? <NavLink to='/produtos' style={{color: 'black'}}><InventoryIcon /></NavLink>
-                                     : index % 4 === 2 ? <NavLink to='/clientes' style={{color: 'black'}}><ContactsIcon/></NavLink> : <VerifiedUserIcon />}
+                                    {index % 4 === 0 ? <HomeIcon /> : index % 4 === 1 ? <InventoryIcon />
+                                     : index % 4 === 2 ? <ContactsIcon/> : <VerifiedUserIcon />}
                                 </ListItemIcon>
                                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
