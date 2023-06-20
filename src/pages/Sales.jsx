@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Content from "../components/Content";
 import MiniDrawer from '../components/MiniDrawer';
-import Teste from "../components/SalesTeste";
 import { toast } from "react-toastify";
 
 const Sales = () => {
