@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -16,11 +15,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import Perfil from './Perfil';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import BadgeIcon from '@mui/icons-material/Badge';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { NavLink } from 'react-router-dom';
+import './miniDrawer.css'
 
 const drawerWidth = 240;
 
@@ -123,20 +125,41 @@ const MiniDrawer = ({ children }) => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant="permanent" open={open} >
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </DrawerHeader>
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
+                    {[
+
+                    { text: 'Casa', link: '/home' },
+                    { text: 'Pág. Produtos', link: '/produtos' },
+                    { text: 'Pág. Clientes', link: '/clientes'},
+                    { text: 'Pág. Funcionarios', link: '/funcionarios'},
+                    { text: 'Pág. Funcionarios', link: '/vendas'}
+
+                      
+                        ].map((item, index) => (
+                        <ListItem exact className="navlink" activeClassName="active" to='/' key={index} disablePadding sx={{ display: 'block'}}>
+                            <ListItemButton 
+                            key={item.text}
+                            exact
+                            component={NavLink}
+                            to={item.link}
+                            activeClassName="active"
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
+                                    margin: '10px',
+                                    '&:hover':{
+                                        background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
+                                        boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                                        borderRadius: '15px',
+                                        color: 'white'
+                                    }
                                 }}
                             >
                                 <ListItemIcon
@@ -146,37 +169,19 @@ const MiniDrawer = ({ children }) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {index % 2 === 0 ? <HomeIcon /> : <SupportAgentIcon />}
+
+                                    {index % 5 === 0 ? <HomeIcon /> : 
+                                    index % 5 === 1 ? <InventoryIcon /> : 
+                                    index % 5 === 2 ? <ContactsIcon/> : 
+                                    index % 5 === 3 ? <BadgeIcon /> : <TrendingUpIcon/>}
+
                                 </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, pt: 0 }}>
                 <DrawerHeader />
