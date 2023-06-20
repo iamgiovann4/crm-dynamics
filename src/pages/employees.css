@@ -1,0 +1,42 @@
+.tabela3 {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin: 10px auto;
+    width:50%;
+    height: auto;
+    background: white;
+    border-collapse: collapse;
+}
+
+.tabela3 > thead > tr > th.stack3 {
+    align-items: center;
+    margin: 0 0 0 auto;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.tabela3 > thead > tr > th.stack3 > .tituloTabela3 {
+    padding-left: 45px;
+    padding-top: 10px;
+}
+
+.tabela3 > thead > tr > th.stack3 > .botao3 {
+    height: 40px;
+    width: 150px;
+    border-radius: 8px;
+    background: #0F9AFE;
+    border: 0px;
+    color: white;
+    margin-right: 45px;
+    margin-top: 10px;
+}
+
+.tabela3 > thead > tr > .coluna2 {
+    /* font-size: 24px; */
+    font-style: normal;
+    /* line-height: 34px; */
+    color: #252525;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 23px;
+}

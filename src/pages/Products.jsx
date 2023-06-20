@@ -7,6 +7,10 @@ import './products.css'
 import pe1 from '../images/pe1.svg'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
+import { Container, InputAdornment, TextField } from "@mui/material";
+import { Autocomplete } from '@mui/material';
+import { Button } from '@mui/material'
+import SearchIcon from "@mui/icons-material/Search";
 
 // Restante do seu código...
 // 
@@ -15,6 +19,7 @@ const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
@@ -26,7 +31,7 @@ function Products() {
             console.log(data)
         } catch (error) {
             console.log(error)
-        }
+        }  
     }
 
     useEffect(() => {
@@ -98,11 +103,28 @@ function Products() {
         }
     }
 
+    // const response =  fetch('http://localhost:3100/product')
+    // const data =  response.json()
+    console.log(handleSubmit)
+
     return (
         <>
+            {/* <Container maxWidth="md" sx={{ mt: 10, display: 'flex', direction: 'row' }} >
+                
+                <Autocomplete
+                    id="free-solo-demo"
+                    freeSolo
+                    options={userEdited.map((option) => option.name)}
+                    renderInput={(params) => (
+                        <TextField {...params} label="freeSolo" margin="normal" variant="outlined" sx={{ width: '45rem' }} />
+                    )}
+                />
+                <Button variant="contained" sx={{ height: '3.5rem', mt: 2 }}><SearchIcon /></Button> 
+
+             </Container> */}
+
             <MiniDrawer >
                 <Content>
-                    <Header />
                     <Box sx={{ display: 'flex' }}>
                         <table className='tabela'>
                             <thead>

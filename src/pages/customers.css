@@ -8,7 +8,7 @@
     border-collapse: collapse;
 }
 
-.tabela2 > tr > th > .stack2 {
+.tabela2 > thead > tr > th > .stack2 {
     align-items: center;
     margin: 0 0 0 auto;
     width: 100%;
@@ -16,12 +16,12 @@
     padding-bottom: 30px;
 }
 
-.tabela2 > tr > th > .stack2 > .tituloTabela2 {
+.tabela2 > thead > tr > th > .stack2 > .tituloTabela2 {
     padding-left: 45px;
     padding-top: 10px;
 }
 
-.tabela2 > tr > th > .stack2 > .botao2 {
+.tabela2 > thead > tr > th > .stack2 > .botao2 {
     height: 40px;
     width: 150px;
     border-radius: 8px;
@@ -32,7 +32,7 @@
     margin-top: 10px;
 }
 
-.tabela2 > tr > .coluna2 {
+.tabela2 > thead > tr > .coluna2 {
     /* font-size: 24px; */
     font-style: normal;
     /* line-height: 34px; */
