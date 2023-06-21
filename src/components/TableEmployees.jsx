@@ -44,7 +44,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
             onClick={() => navigate('/funcionarios-edit', {state: employee})} />
           </td>
           <td style={styles.dadosTabela}>
-            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
+            <IconTrash size={20} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
           </td>
       </tr>
     </> 
@@ -53,10 +53,10 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
 
 const styles = {
   dadosTabela: {
+    color: '#252525',
     borderBottom: '1px solid #ddd',
-    fontWeight: 'bold',
-    color: '#3a3a3a',
     paddingLeft: '20px',
+    paddingRight: '20px',
     paddingTop: '10px',
     paddingBottom: '10px'
   },
@@ -65,8 +65,6 @@ const styles = {
     fill: '#222'
   },
   delete: {
-    with: '20px',
-    height: '20px',
     cursor: 'pointer',
     alignItems: 'center',
     fill: 'red'

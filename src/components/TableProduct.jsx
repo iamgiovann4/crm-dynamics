@@ -48,10 +48,10 @@ const TableProduct = ({product, setProducts, products, setProductToEdit, setOpen
 
 const styles = {
   dadosTabela: {
-    fontWeight: 'bold',
-    color: '#3a3a3a',
+    color: '#252525',
     borderBottom: '1px solid #ddd',
-    paddingLeft: '25px',
+    paddingRight: '20px',
+    paddingLeft: '20px',
     paddingTop: '10px',
     paddingBottom: '10px'
   },
