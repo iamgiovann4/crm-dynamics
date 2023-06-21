@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
-import Header from '../components/Header'
-import TableClient from '../components/TableClient'
-import './customers.css'
+import TableCustomers from '../components/TableCustomers'
+import './tableAll.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import clientes from '../images/clientes.svg'
 
 function Customers() {
     const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
-    const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
     const navigate = useNavigate()
 
     // console.log(products)
@@ -65,9 +63,8 @@ function Customers() {
                 })
             const data = await response.json()
             console.log(data)
-            setOpenModal(false)
             loadClients()
-            toast.success('Cliente criado com sucesso!')
+            toast.success('Cliente cadastrado com sucesso!')
         } catch (error) {
             console.log(error)
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
@@ -77,72 +74,45 @@ function Customers() {
     return (
         <>
             <MiniDrawer>
-                <Content>
-                    {/* <Header /> */}
-                    <Box sx={{ display: 'flex' }}>
-                        <table className='tabela2'>
-                            <tr>
-                                <th colSpan={12}>
-                                    <Stack container direction="row" className='stack2'>
-                                        <h1 className='tituloTabela2'>Seus Clientes</h1>
-                                        <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
-                                    </Stack>
-                                </th>
-                            </tr>
+                <Content title='Clientes'>
+                    <Box className='caixaTabela'>
+                        <table className='tabela'>
+                            <thead>
+                                <tr>
+                                    <th colSpan={12}>
+                                        <Box direction="row" className='stack'>
+                                            <h1 className='tituloTabela'>Seus Clientes</h1>
+                                            <button disabled={false} variant="filled" className='botao' onClick={() => navigate('/cadastroC')}>Adicionar</button>
+                                        </Box>
+                                    </th>
+                                </tr>
 
-                            <tr>
-                                <th className='coluna2'>Nome</th>
-                                <th className='coluna2'>Sobrenome</th>
-                                <th className='coluna2'>CPF</th>
-                                <th className='coluna2'>Nascimento</th>
-                                <th className='coluna2'>Telefone</th>
-                                <th className='coluna2'>E-mail</th>
-                                <th className='coluna2'>Endereço</th>
-                                <th className='coluna2'>Bairro</th>
-                                <th className='coluna2'>CEP</th>
-                                <th className='coluna2'>N° casa</th>
-                                <th className='coluna2'>Complemento</th>
-                                <th className='coluna2'></th>
-                                <th className='coluna2'></th>
-                            </tr>
-                            {clients.length > 0 ?
-                                clients.map(client => (
-                                    <TableClient key={client.id} client={client} setClients={setClients} clients={clients} />
-                                )) : (
-                                    <tr>
-                                        <td colSpan={10}>Nenhum cliente cadastrado</td>
-                                    </tr>
-                                )}
+                                <tr>
+                                    <th className='coluna' align='left'>Nome</th>
+                                    <th className='coluna' align='left'>Sobrenome</th>
+                                    <th className='coluna' align='left'>CPF</th>
+                                    <th className='coluna' align='left'>Nascimento</th>
+                                    <th className='coluna' align='left'>Telefone</th>
+                                    <th className='coluna' align='left'>E-mail</th>
+                                    <th className='coluna' align='left'>Endereço</th>
+                                    <th className='coluna' align='left'>Bairro</th>
+                                    <th className='coluna' align='left'>CEP</th>
+                                    <th className='coluna' align='left'>N°</th>
+                                    <th className='coluna' align='left'>Complemento</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {clients.length > 0 ?
+                                    clients.map((client, index) => (
+                                        <TableCustomers index={index} key={client.id} client={client} setClients={setClients} clients={clients} />
+                                    )) : (
+                                        <img src={clientes} alt="clientes"/>
+                                    )}
+                            </tbody>
                         </table>
                     </Box>
-
-                    {/* {openModal &&
-                    <Box className='modal' onClick={(event) => {
-                        if (event.target.className.includes('modal')) {
-                            setOpenModal(false)
-                        }
-                    }}>
-                        <Box className='container'>
-                            <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
-                            <h2>Cadastrar produtos</h2>
-                            <form onSubmit={handleSubmit}className='formModal'>
-                                <input type="text" name="fname" placeholder="Nome" /><br />
-                                <input type="text" name="lname" placeholder="Sobrenome" /><br />
-                                <input type="int" name="cpf" placeholder="CPF" /><br /><br />
-                                <input type="int" name="dateOfBirth" placeholder="Nascimento" /><br /><br />
-                                <input type="int" name="phone" placeholder="Telefone" /><br /><br />
-                                <input type="int" name="email" placeholder="E-mail" /><br /><br />
-                                <input type="int" name="address" placeholder="Endereço" /><br /><br />
-                                <input type="int" name="street" placeholder="Bairro" /><br /><br />
-                                <input type="int" name="cep" placeholder="CEP" /><br /><br />
-                                <input type="int" name="houseNumber" placeholder="Nº casa" /><br /><br />
-                                <input type="int" name="referencePoint" placeholder="Complemento" /><br /><br />
-                                <button className='enviar' type='submit'>Enviar</button><br />
-                                <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
-                            </form>
-                        </Box>
-                    </Box>
-                } */}
                 </Content>
             </MiniDrawer>
         </>

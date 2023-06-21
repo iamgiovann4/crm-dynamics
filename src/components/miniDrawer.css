@@ -1,0 +1,6 @@
+.active{
+    background: linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%);
+    box-shadow: 0px 0px 4px #00000040;
+    border-radius: 15px;
+    color: white;
+}

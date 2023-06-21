@@ -1,18 +1,9 @@
-import { useState } from 'react'
-import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-// import '../pages/Produto.css'
-// import Table from '@mui/material/Table'
-// import TableBody from '@mui/material/TableBody'
-// import TableCell from '@mui/material/TableCell'
-// import TableContainer from '@mui/material/TableContainer'
-// import TableHead from '@mui/material/TableHead'
-// import TableRow from '@mui/material/TableRow'
-// import Paper from '@mui/material/Paper'
+const TableProduct = ({product, setProducts, products, setProductToEdit, setOpenModalEdit, index}) => {
 
-const TableProduct = ({product, setProducts, products, setProductToEdit, setOpenModalEdit}) => {
+  const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
 
   const deleteUser = async (id) => {
     try {
@@ -35,24 +26,46 @@ const TableProduct = ({product, setProducts, products, setProductToEdit, setOpen
 
   return (
     <>
-      <tr >
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{product.name}</td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{product.price}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{product.stock}</td>
+      <tr style={{backgroundColor}}>
+          <td style={styles.dadosTabela}>{product.name}</td>
+          <td style={styles.dadosTabela}>{product.price}</td>
+          <td  style={styles.dadosTabela}>{product.stock}</td>
 
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconEdit style={{width: '20px', cursor: 'pointer' }}
+          <td style={styles.dadosTabela}>
+            <IconEdit size={20} style={styles.edit}
             onClick={() => {
               setProductToEdit(product)
               setOpenModalEdit(true) 
             }}/>
           </td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(product.id)}/>
+          <td style={styles.dadosTabela}>
+            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(product.id)}/>
           </td>
       </tr>
     </> 
   )
+}
+
+const styles = {
+  dadosTabela: {
+    fontWeight: 'bold',
+    color: '#3a3a3a',
+    borderBottom: '1px solid #ddd',
+    paddingLeft: '25px',
+    paddingTop: '10px',
+    paddingBottom: '10px'
+  },
+  edit: {
+    cursor: 'pointer',
+    fill: '#222'
+  },
+  delete: {
+    with: '20px',
+    height: '20px',
+    cursor: 'pointer',
+    alignItems: 'center',
+    fill: 'red'
+  }
 }
 
 export default TableProduct

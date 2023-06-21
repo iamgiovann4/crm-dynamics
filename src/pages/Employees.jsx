@@ -1,21 +1,25 @@
 //Pág dos funcionarios da empresa que forem cadastrados no sign up, essa pág também terá uma tabela
 import Content from "../components/Content"
-import Header from "../components/Header"
-
 import React, { useEffect, useState } from 'react'
-import '../pages/products.css'
-import Stack from '@mui/material/Stack'
+import './tableAll.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
+import { useNavigate } from "react-router"
 
 const hostEmployee = process.env.REACT_APP_HOST_LINE_EMPLOYEES
 
 
 const Employees = () => {
+
+    const navigate = useNavigate()
     const [employees, setEmployees] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+
+    const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
+    const [employeesToEdit, setEmployeesToEdit] = useState({})
+
 
     const loadEmployees = async () => {
         try {
@@ -34,31 +38,48 @@ const Employees = () => {
         loadEmployees()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
-    const handleSubmit = async (event) => {
+
+
+    const handleEdit = async (event) => {
         event.preventDefault()
-        console.log('Minha funcao de submit')
-        console.log(event.target)
-        const name = event.target.name.value
-        const price = event.target.price.value
-        const stock = event.target.stock.value
-        const product = { name, price, stock }
-        console.log(product)
+        const id = parseInt(event.target.id.value)
+        const fname = event.target.fname.value
+        const lname = event.target.lname.value
+        const cpf = event.target.cpf.value
+        const email = event.target.email.value
+        const office = event.target.office.value
+        const wage = event.target.wage.value
+        const birth = event.target.birth.value
+        const street = event.target.street.value
+        const number = event.target.number.value
+        const address = event.target.address.value
+        const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
         try {
             const response = await fetch('http://localhost:3100/product',
                 {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(product),
+                    body: JSON.stringify(Employees),
                 })
             const data = await response.json()
-            console.log(data)
-            setOpenModal(false)
-            loadEmployees()
-            toast.success('Produto criado com sucesso')
+            if (response.status === 200) {
+                toast.success('Produto editado com sucesso')
+                const newProducts = employees.map((employee) => {
+                    if (employee.id === id) {
+                        return Employees
+                    }
+                    return employee
+                })
+                setEmployees(newProducts)
+                setOpenModal(false)
+            } else {
+                alert(data.message)
+                console.log(data)
+            }
         } catch (error) {
-            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
+            console.log(error)
         }
     }
 
@@ -66,63 +87,43 @@ const Employees = () => {
         <>
             <MiniDrawer>
                 <Content title='Funcionarios'>
-                    {/* <Header /> */}
-                    <Box sx={{ display: 'flex' }}>
+                    <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>
-                                    <th colSpan={5}>
-                                        <Stack className='stack' container direction="row">
-                                            <h1 className='tituloTabela'>Seus Funciobnario</h1>
-                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                        </Stack>
+                                    <th colSpan={12} >
+                                        <Box direction="row" className='stack'>
+                                            <h1 className='tituloTabela'>Seus Funcionarios</h1>
+                                            <button disabled={false} variant="filled" className='botao' onClick={() => navigate('/add-funcionarios')}>Adicionar</button>
+                                        </Box>
                                     </th>
+                                </tr>
+
+                                <tr>
+                                    <th className='coluna' align='left'>Nome</th>
+                                    <th className='coluna' align='left'>Sobrenome</th>
+                                    <th className='coluna' align='left'>CPF</th>
+                                    <th className='coluna' align='left'>E-mail</th>
+                                    <th className='coluna' align='left'>Cargo</th>
+                                    <th className='coluna' align='left'>Salario</th>
+                                    <th className='coluna' align='left'>Nascimento</th>
+                                    <th className='coluna' align='left'>Rua</th>
+                                    <th className='coluna' align='left'>Numero</th>
+                                    <th className='coluna' align='left'>Bairro</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <th className='coluna' align="left">Nome</th>
-                                    <th className='coluna' align="left">Sobrenome</th>
-                                    <th className='coluna' align="left">CPF</th>
-                                    <th className='coluna' align="left">E-mail</th>
-                                    <th className='coluna' align="left">Cargo</th>
-                                    <th className='coluna' align="left">Salario</th>
-                                    <th className='coluna' align="left">Nascimento</th>
-                                    <th className='coluna' align="left">Rua</th>
-                                    <th className='coluna' align="left">Numero</th>
-                                    <th className='coluna' align="left">Bairro</th>
-                                    <th className='coluna' align="left"></th>
-                                    <th className='coluna' align="left"></th>
-                                </tr>
                                 {employees &&
-                                    employees.map(employee => (
-                                        <TableEmployees key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} />
+                                    employees.map((employee, index) => (
+                                        <TableEmployees index={index} key={employee.id} employee={employee} setEmployees={setEmployees} employees={employees} setOpenModalEdit={setOpenModalEdit} />
                                     ))}
                             </tbody>
                         </table>
                     </Box>
-                    {openModal &&
-                        <Box className='modal' onClick={(event) => {
-                            if (event.target.className.includes('modal')) {
-                                setOpenModal(false)
-                            }
-                        }}>
-                            <Box className='container'>
-                                <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
-                                <h2>Cadastrar produtos</h2>
-                                <form onSubmit={handleSubmit} className='formModal'>
-                                    <input type="text" name="name" placeholder="Nome" /><br />
-                                    <input type="text" name="price" placeholder="Preço" /><br />
-                                    <input type="int" name="stock" placeholder="Quantidade" /><br /><br />
-                                    <button className='enviar' type='submit'>Enviar</button><br />
-                                    <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
-                                </form>
-                            </Box>
-                        </Box>
-                    }
                 </Content>
-            </MiniDrawer>
+            </MiniDrawer >
         </>
     )
 }

@@ -1,59 +1,11 @@
-import { useState } from 'react'
-import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
-import '../pages/products.css'
 import { toast } from 'react-toastify'
-// import Table from '@mui/material/Table'
-// import TableBody from '@mui/material/TableBody'
-// import TableCell from '@mui/material/TableCell'
-// import TableContainer from '@mui/material/TableContainer'
-// import TableHead from '@mui/material/TableHead'
-// import TableRow from '@mui/material/TableRow'
-// import Paper from '@mui/material/Paper'
+import { useNavigate } from 'react-router'
 
+const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, index}) => {
 
-const TableEmployee = ({employee, setEmployees, employees}) => {
-
-  const [modalOpen, setOpenModal] = useState(false)
-  const [fname, setName] = useState(employee.fname)
-  const [lname, setPrice] = useState(employee.lname)
-  const [office, setStock] = useState(employee.office)
-  
-  const handleEdit = async (event) => {
-    event.preventDefault()
-    const id = parseInt(event.target.id.value)
-    const name = event.target.name.value 
-    const price = event.target.price.value
-    const stock = event.target.stock.value
-    const userEdited = {id, name, price, stock}
-    try {
-      const response = await fetch('http://localhost:3100/product',
-      {
-        method: 'PUT',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userEdited), 
-      })
-      const data = await response.json()
-      if(response.status === 200) {
-        toast.success('Produto editado com sucesso')
-      const newProducts = employees.map((employee) => {
-        if(employee.id === id) {
-          return userEdited
-        }
-        return employee
-      })
-      setEmployees(newProducts)
-      setOpenModal(false)
-    } else {
-      alert(data.message)
-      console.log(data)
-    }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
+  const navigate = useNavigate()
 
   const deleteUser = async (id) => {
     try {
@@ -75,54 +27,50 @@ const TableEmployee = ({employee, setEmployees, employees}) => {
 
   return (
     <>
-      <tr >
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{employee.name}</td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.price}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.stock}</td>
+      <tr style={{backgroundColor}}>
+          <td style={styles.dadosTabela}>{employee.fname}</td>
+          <td style={styles.dadosTabela}>{employee.lname}</td>
+          <td style={styles.dadosTabela}>{employee.cpf}</td>
+          <td style={styles.dadosTabela}>{employee.email}</td>
+          <td style={styles.dadosTabela}>{employee.office}</td>
+          <td style={styles.dadosTabela}>{employee.wage}</td>
+          <td style={styles.dadosTabela}>{employee.birth}</td>
+          <td style={styles.dadosTabela}>{employee.street}</td>
+          <td style={styles.dadosTabela}>{employee.number}</td>
+          <td style={styles.dadosTabela}>{employee.address}</td>
 
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconEdit style={{width: '20px', cursor: 'pointer' }}
-            onClick={() => setOpenModal(true)}/>
+          <td style={styles.dadosTabela}>
+            <IconEdit size={20} style={styles.edit}
+            onClick={() => navigate('/funcionarios-edit', {state: employee})} />
           </td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(employee.id)}/>
+          <td style={styles.dadosTabela}>
+            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
           </td>
       </tr>
-
-      {modalOpen && 
-        <Box className='modal' onClick={(event) => {
-          if(event.target.className.includes('modal')){
-            setOpenModal(false)
-          }
-        }}> 
-          <Box className='container'>
-            <div className='xizinho'><p onClick={() => setOpenModal(false)}>X</p></div>
-            <h2>Editar Produto</h2>
-            <form onSubmit={handleEdit} className='formModal'>
-              <input type="hidden" name="id" value={employee.id} />
-              <input type="text" name="name"  placeholder="Nome" value={fname} onChange={e => setName(e.target.value)} /><br/>
-              <input type="text" name="price"  placeholder="Preço" value={lname} onChange={e => setPrice(e.target.value)} /><br/>
-              <input type="int" name="stock"  placeholder="Quantidade" value={office} onChange={e => setStock(e.target.value)} /><br/><br/>
-              <button className='enviar' type='submit'>Editar</button><br/>
-              <button className='fechar' onClick={() => setOpenModal(false)}>Fechar</button>
-            </form>
-          </Box>
-        </Box>
-      }
     </> 
   )
 }
 
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
+const styles = {
+  dadosTabela: {
+    borderBottom: '1px solid #ddd',
+    fontWeight: 'bold',
+    color: '#3a3a3a',
+    paddingLeft: '20px',
+    paddingTop: '10px',
+    paddingBottom: '10px'
+  },
+  edit: {
+    cursor: 'pointer',
+    fill: '#222'
+  },
+  delete: {
+    with: '20px',
+    height: '20px',
+    cursor: 'pointer',
+    alignItems: 'center',
+    fill: 'red'
+  }
+}
 
 export default TableEmployee

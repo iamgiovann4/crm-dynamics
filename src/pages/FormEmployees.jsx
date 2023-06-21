@@ -9,24 +9,9 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
 
-const FormCustomers = () => {
-    const [clients, setClients] = useState(false);
+const FormEmployees = () => {
+    const [employees, setEmployees] = useState(false);
     const navigate = useNavigate()
-
-    const loadClients = async () => {
-        try {
-            const response = await fetch('http://localhost:3100/client')
-            const data = await response.json()
-            setClients(data)
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        loadClients()
-    }, []) // [] = executa apenas uma vez quando o componente é montados
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,45 +20,40 @@ const FormCustomers = () => {
         const fname = event.target.fname.value
         const lname = event.target.lname.value
         const cpf = event.target.cpf.value
-        const dateOfBirth = event.target.dateOfBirth.value
-        const phone = event.target.phone.value
         const email = event.target.email.value
-        const address = event.target.address.value
+        const office = event.target.office.value
+        const wage = event.target.wage.value
+        const birth = event.target.birth.value
         const street = event.target.street.value
-        const cep = event.target.cep.value
-        const houseNumber = event.target.houseNumber.value
-        const referencePoint = event.target.referencePoint.value
-        const client = { fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
-        console.log(client)
+        const number = event.target.number.value
+        const address = event.target.address.value
+        const Employees = { fname, lname, cpf, email, email, office, wage, birth , street, number, address }
+        console.log(Employees)
         try {
-            const response = await fetch('http://localhost:3100/client',
+            const response = await fetch('http://localhost:3100/employees',
                 {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(client),
+                    body: JSON.stringify(Employees),
                 })
             const data = await response.json()
             console.log(data)
-            loadClients()
-            navigate("/vendas")
-            toast.success('Cliente criado com sucesso!')
+            // navigate
+            toast.success('Produto criado com sucesso')
         } catch (error) {
-            console.log(error)
-            toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
+            toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
         }
     }
 
     return (
         <>
             <MiniDrawer>
-                <Content>
-                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}> 
-                    <h1 style={{color: '#252525'}}>Cadastro de Clientes</h1>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center'}}>
+                    <h1 style={{color: '#252525'}}>Cadastro de Funcionarios</h1>
                         <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
-                           
-                            <Grid container spacing={2} sx={{ width: "70%", }}>
+                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" variant="outlined" fullWidth />
@@ -91,42 +71,37 @@ const FormCustomers = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='dateOfBirth' label="Data de Nascimento" variant="outlined" fullWidth />
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='phone' label="Telefone" variant="outlined" fullWidth />
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='email' label="E-mail" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='office' label="Cargo" variant="outlined" fullWidth />
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                        <TextField name='wage' label="Salário" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='address' label="Endereço" variant="outlined" fullWidth />
+                                        <TextField name='birth' label="Nascimento" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='street' label="Bairro" variant="outlined" fullWidth />
+                                        <TextField name='street' label="Rua" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='cep' label="CEP" variant="outlined" fullWidth />
+                                        <TextField name='number' label="Numero" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='houseNumber' label="Nº Casa" variant="outlined" fullWidth />
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='referencePoint' label="Complemento" variant="outlined" fullWidth />
+                                        <TextField name='address' label="Bairro" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -137,10 +112,9 @@ const FormCustomers = () => {
                             </Grid>
                         </form>
                     </Box>
-                </Content>
             </MiniDrawer>
         </>
     )
 }
 
-export default FormCustomers
+export default FormEmployees
