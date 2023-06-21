@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableProduct from '../components/TableProduct'
-import './products.css'
-import pe1 from '../images/pe1.svg'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
-
-// Restante do seu código...
-// 
-const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
+import pe1 from '../images/pe1.svg'
+import './tableAll.css'
+import './modal.css'
+// const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 
 function Products() {
     const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
-    
+
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
@@ -26,7 +24,7 @@ function Products() {
             console.log(data)
         } catch (error) {
             console.log(error)
-        }  
+        }
     }
 
     useEffect(() => {
@@ -97,9 +95,7 @@ function Products() {
             console.log(error)
         }
     }
-
-    // const response =  fetch('http://localhost:3100/product')
-    // const data =  response.json()
+    
     console.log(handleSubmit)
 
     return (
@@ -119,32 +115,31 @@ function Products() {
              </Container> */}
 
             <MiniDrawer >
-                <Content>
-                    <Box sx={{ display: 'flex' }}>
+                <Content title='Produtos'>
+                    <Box>
                         <table className='tabela'>
                             <thead>
                                 <tr>
-                                    <th className='stack'>
-                                        <h1 className='tituloTabela'>Seus Produtos</h1>
-                                    </th>
-                                    <th colSpan={4} className='stack'>
-                                        <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                    <th colSpan={12} >
+                                        <Box direction="row" className='stack'>
+                                            <h1 className='tituloTabela'>Seus Produtos</h1>
+                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                                        </Box>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th className='coluna' align="left">Produto</th>
-                                    <th className='coluna' align="left">Preço</th>
-                                    <th className='coluna' align="left">Quantidade</th>
-                                    <th className='coluna' align="left"></th>
-                                    <th className='coluna' align="left"></th>
+                                    <th className='coluna' align='left'>Produto</th>
+                                    <th className='coluna' align='left'>Preço</th>
+                                    <th className='coluna' align='left'>Quantidade</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
                                 </tr>
                             </thead>
 
-
                             <tbody>
                                 {products.length > 0 ?
-                                    products.map(product => (
-                                        <TableProduct key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
+                                    products.map((product, index) => (
+                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
                                     )) : (
                                         <img src={pe1} alt="pe1"/>
                                     )}
@@ -192,7 +187,7 @@ function Products() {
                         </Box>
                     }
                 </Content >
-            </MiniDrawer>
+            </MiniDrawer >
         </>
     )
 }

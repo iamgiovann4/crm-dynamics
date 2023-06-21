@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableCustomers from '../components/TableCustomers'
-import './customers.css'
+import './tableAll.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
@@ -65,7 +64,7 @@ function Customers() {
             const data = await response.json()
             console.log(data)
             loadClients()
-            toast.success('Cliente criado com sucesso!')
+            toast.success('Cliente cadastrado com sucesso!')
         } catch (error) {
             console.log(error)
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
@@ -75,40 +74,39 @@ function Customers() {
     return (
         <>
             <MiniDrawer>
-                <Content>
-                    {/* <Header /> */}
-                    <Box sx={{ display: 'flex' }}>
-                        <table className='tabela2'>
+                <Content title='Clientes'>
+                    <Box>
+                        <table className='tabela'>
                             <thead>
                                 <tr>
                                     <th colSpan={12}>
-                                        <Stack container direction="row" className='stack2'>
-                                            <h1 className='tituloTabela2'>Seus Clientes</h1>
-                                            <button disabled={false} variant="filled" className='botao2' onClick={() => navigate('/cadastroC')}>Adicionar</button>
-                                        </Stack>
+                                        <Box direction="row" className='stack'>
+                                            <h1 className='tituloTabela'>Seus Clientes</h1>
+                                            <button disabled={false} variant="filled" className='botao' onClick={() => navigate('/cadastroC')}>Adicionar</button>
+                                        </Box>
                                     </th>
                                 </tr>
 
                                 <tr>
-                                    <th className='coluna2'>Nome</th>
-                                    <th className='coluna2'>Sobrenome</th>
-                                    <th className='coluna2'>CPF</th>
-                                    <th className='coluna2'>Nascimento</th>
-                                    <th className='coluna2'>Telefone</th>
-                                    <th className='coluna2'>E-mail</th>
-                                    <th className='coluna2'>Endereço</th>
-                                    <th className='coluna2'>Bairro</th>
-                                    <th className='coluna2'>CEP</th>
-                                    <th className='coluna2'>N° casa</th>
-                                    <th className='coluna2'>Complemento</th>
-                                    <th className='coluna2'></th>
-                                    <th className='coluna2'></th>
+                                    <th className='coluna' align='left'>Nome</th>
+                                    <th className='coluna' align='left'>Sobrenome</th>
+                                    <th className='coluna' align='left'>CPF</th>
+                                    <th className='coluna' align='left'>Nascimento</th>
+                                    <th className='coluna' align='left'>Telefone</th>
+                                    <th className='coluna' align='left'>E-mail</th>
+                                    <th className='coluna' align='left'>Endereço</th>
+                                    <th className='coluna' align='left'>Bairro</th>
+                                    <th className='coluna' align='left'>CEP</th>
+                                    <th className='coluna' align='left'>N°</th>
+                                    <th className='coluna' align='left'>Complemento</th>
+                                    <th className='coluna' align='left'></th>
+                                    <th className='coluna' align='left'></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {clients.length > 0 ?
-                                    clients.map(client => (
-                                        <TableCustomers key={client.id} client={client} setClients={setClients} clients={clients} />
+                                    clients.map((client, index) => (
+                                        <TableCustomers index={index} key={client.id} client={client} setClients={setClients} clients={clients} />
                                     )) : (
                                         <img src={clientes} alt="clientes"/>
                                     )}

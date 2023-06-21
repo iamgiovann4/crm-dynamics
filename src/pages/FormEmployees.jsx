@@ -50,9 +50,9 @@ const FormEmployees = () => {
     return (
         <>
             <MiniDrawer>
-                <Content>
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                        <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center'}}>
+                    <h1 style={{color: '#252525'}}>Cadastro de Funcionarios</h1>
+                        <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
                             <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
@@ -112,7 +112,6 @@ const FormEmployees = () => {
                             </Grid>
                         </form>
                     </Box>
-                </Content>
             </MiniDrawer>
         </>
     )

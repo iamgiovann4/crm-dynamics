@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import Box from '@mui/material/Box'
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
-import '../pages/products.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
 
+const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, index}) => {
 
-const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit}) => {
-
+  const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
   const navigate = useNavigate()
 
   const deleteUser = async (id) => {
@@ -30,28 +27,50 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit}) =>
 
   return (
     <>
-      <tr >
-          <td style={{borderBottom: '1px solid #ddd',  padding: '15px 23px' }}>{employee.fname}</td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.lname}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.cpf}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.email}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.office}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.wage}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.birth}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.street}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.number}</td>
-          <td  style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>{employee.address}</td>
+      <tr style={{backgroundColor}}>
+          <td style={styles.dadosTabela}>{employee.fname}</td>
+          <td style={styles.dadosTabela}>{employee.lname}</td>
+          <td style={styles.dadosTabela}>{employee.cpf}</td>
+          <td style={styles.dadosTabela}>{employee.email}</td>
+          <td style={styles.dadosTabela}>{employee.office}</td>
+          <td style={styles.dadosTabela}>{employee.wage}</td>
+          <td style={styles.dadosTabela}>{employee.birth}</td>
+          <td style={styles.dadosTabela}>{employee.street}</td>
+          <td style={styles.dadosTabela}>{employee.number}</td>
+          <td style={styles.dadosTabela}>{employee.address}</td>
 
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconEdit style={{width: '20px', cursor: 'pointer' }}
+          <td style={styles.dadosTabela}>
+            <IconEdit size={20} style={styles.edit}
             onClick={() => navigate('/funcionarios-edit', {state: employee})} />
           </td>
-          <td style={{borderBottom: '1px solid #ddd', padding: '15px 23px'}}>
-            <IconTrash style={{height: '20px', cursor: 'pointer', alignItems: 'center', color: 'red'}} onClick={() => deleteUser(employee.id)}/>
+          <td style={styles.dadosTabela}>
+            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
           </td>
       </tr>
     </> 
   )
+}
+
+const styles = {
+  dadosTabela: {
+    borderBottom: '1px solid #ddd',
+    fontWeight: 'bold',
+    color: '#3a3a3a',
+    paddingLeft: '20px',
+    paddingTop: '10px',
+    paddingBottom: '10px'
+  },
+  edit: {
+    cursor: 'pointer',
+    fill: '#222'
+  },
+  delete: {
+    with: '20px',
+    height: '20px',
+    cursor: 'pointer',
+    alignItems: 'center',
+    fill: 'red'
+  }
 }
 
 export default TableEmployee

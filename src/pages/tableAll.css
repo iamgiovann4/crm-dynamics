@@ -1,14 +1,19 @@
-.tabela3 {
+.tabela {
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    margin: 10px auto;
-    width:50%;
+    margin: 0 auto;
+    width: 50%;
     height: auto;
     background: white;
     border-collapse: collapse;
 }
 
-.tabela3 > thead > tr > th.stack3 {
+/* tbody{
+    box-shadow: inset #000 0px 15px 20px -10px  ;
+} */
+
+.tabela > thead > tr > th > .stack {
+    display: flex;
     align-items: center;
     margin: 0 0 0 auto;
     width: 100%;
@@ -16,12 +21,12 @@
     padding-bottom: 30px;
 }
 
-.tabela3 > thead > tr > th.stack3 > .tituloTabela3 {
-    padding-left: 45px;
+.tabela > thead > tr > th > .stack > .tituloTabela {
+    padding-left: 70px;
     padding-top: 10px;
 }
 
-.tabela3 > thead > tr > th.stack3 > .botao3 {
+.tabela > thead > tr > th > .stack > .botao {
     height: 40px;
     width: 150px;
     border-radius: 8px;
@@ -32,11 +37,12 @@
     margin-top: 10px;
 }
 
-.tabela3 > thead > tr > .coluna2 {
-    /* font-size: 24px; */
-    font-style: normal;
-    /* line-height: 34px; */
-    color: #252525;
+.tabela > thead > tr > .coluna {
+    font-size: 18px;
+    color: #959595;
     border-bottom: 1px solid #ddd;
-    padding: 18px 23px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+    
+    /* box-shadow: 0px 1px 0px 2px rgba(0, 0, 0, 0.15); */
 }

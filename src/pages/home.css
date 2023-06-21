@@ -6,7 +6,7 @@
 .caixas > .caixa1 > .grafico1 {
     width: 50%;
     border-bottom: 1px solid #252525;
-    border-right: 1px solid #252525;
+    border-right: 1px solid #3a3a3a;
     padding: 20px 0;
 }
 

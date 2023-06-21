@@ -183,7 +183,7 @@ const MiniDrawer = ({ children }) => {
                 </List>
 
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, pt: 0 }}>
+            <Box component="main" sx={{ flexGrow: 1, pt: 0}}>
                 <DrawerHeader />
                 {children}
             </Box>

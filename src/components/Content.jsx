@@ -1,17 +1,14 @@
 import Box from '@mui/material/Box'
+import zIndex from '@mui/material/styles/zIndex'
 
 const Content = ({children}) => {
     return (
-        <Box style={styles.conteudo}>
+        <Box>
             {children}
         </Box>
     )
 }
 
-const styles = {
-    conteudo: {
-        height:'100%'
-    }
-}
+
 
 export default Content
