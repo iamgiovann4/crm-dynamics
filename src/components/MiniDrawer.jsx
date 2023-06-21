@@ -104,10 +104,9 @@ const MiniDrawer = ({ children }) => {
     };
 
     return (
-        <Box sx={{ display: 'flex', boxShadow: '0' }}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: '#f1f1f1', color: 'black' }}>
-                <Toolbar>
+        <Box sx={{ display: 'flex', boxShadow: '0'}}>
+            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: '#12121200', paddingLeft: '50px', zIndex: '0'}}>
+                <Toolbar sx={{zIndex: '0'}}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -138,7 +137,7 @@ const MiniDrawer = ({ children }) => {
                     { text: 'Pág. Produtos', link: '/produtos' },
                     { text: 'Pág. Clientes', link: '/clientes'},
                     { text: 'Pág. Funcionarios', link: '/funcionarios'},
-                    { text: 'Pág. Funcionarios', link: '/vendas'}
+                    { text: 'Vendas', link: '/vendas'}
 
                       
                         ].map((item, index) => (
