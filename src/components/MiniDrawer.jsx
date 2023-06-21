@@ -154,6 +154,7 @@ const MiniDrawer = ({ children }) => {
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                     margin: '10px',
+                                    borderRadius: '15px',
                                     '&:hover':{
                                         background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
                                         boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
