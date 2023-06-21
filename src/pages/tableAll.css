@@ -1,12 +1,17 @@
-.tabela {
+.caixaTabela{
+    height: 850px;
+    overflow: auto;
+}
+
+.caixaTabela > .tabela {
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    margin: 0 auto;
     width: 50%;
-    height: auto;
     background: white;
     border-collapse: collapse;
+    margin: 50px auto 0 auto;
 }
+
 
 /* tbody{
     box-shadow: inset #000 0px 15px 20px -10px  ;

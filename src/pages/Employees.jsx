@@ -87,7 +87,7 @@ const Employees = () => {
         <>
             <MiniDrawer>
                 <Content title='Funcionarios'>
-                    <Box>
+                    <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>

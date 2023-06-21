@@ -75,7 +75,7 @@ function Customers() {
         <>
             <MiniDrawer>
                 <Content title='Clientes'>
-                    <Box>
+                    <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>

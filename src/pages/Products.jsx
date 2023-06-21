@@ -116,7 +116,7 @@ function Products() {
 
             <MiniDrawer >
                 <Content title='Produtos'>
-                    <Box>
+                    <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>
