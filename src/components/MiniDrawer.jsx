@@ -22,7 +22,7 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import BadgeIcon from '@mui/icons-material/Badge';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { NavLink } from 'react-router-dom';
-import './miniDrawer.css'
+import './MiniDrawer.css'
 
 const drawerWidth = 240;
 
