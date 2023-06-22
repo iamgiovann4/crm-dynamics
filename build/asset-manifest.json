@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.00cef44d.css",
+    "main.js": "/static/js/main.2192c32a.js",
+    "static/media/prototipo avançado pag de produtos 7.png": "/static/media/prototipo avançado pag de produtos 7.4758b4d2c94b6af86b4f.png",
+    "static/media/quadrados.png": "/static/media/quadrados.ea8e7e6b92156d06cb77.png",
+    "static/media/clientes.svg": "/static/media/clientes.678b1eb56c48f0e083a028e8beb364d7.svg",
+    "static/media/pe1.svg": "/static/media/pe1.92ec34cd4dea8cddbd8b52f6b7de6e8c.svg",
+    "static/media/silhuetaLogin.png": "/static/media/silhuetaLogin.b38ffa047f7c3775912a.png",
+    "index.html": "/index.html",
+    "main.00cef44d.css.map": "/static/css/main.00cef44d.css.map",
+    "main.2192c32a.js.map": "/static/js/main.2192c32a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00cef44d.css",
+    "static/js/main.2192c32a.js"
+  ]
+}
