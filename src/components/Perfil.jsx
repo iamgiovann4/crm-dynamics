@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate } from 'react-router';
 import useAuthStore from '../store/authStore'
 import { toast } from 'react-toastify';
-import '../components/perfil.css'
+import '../components/Perfil.css'
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
