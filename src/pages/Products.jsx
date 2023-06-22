@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 import pe1 from '../images/pe1.svg'
 import './tableAll.css'
-import './modal.css'
+import './Modal.css'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
