@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import MiniDrawer from '../components/MiniDrawer';
+import { API_SERVER } from '../config';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,7 +45,7 @@ export default function CustomizedTables() {
 
     const loadProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3100/product')
+            const response = await fetch(`${API_SERVER}/product`)
             const data = await response.json()
             setProducts(data)
             console.log(data)

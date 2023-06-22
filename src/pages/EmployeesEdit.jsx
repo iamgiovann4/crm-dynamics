@@ -8,6 +8,7 @@ import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate, useLocation } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import { API_SERVER } from '../config';
 
 const EmployeesEdit = () => {
 
@@ -41,7 +42,7 @@ const EmployeesEdit = () => {
         const address = event.target.address.value
         const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
         try {
-            const response = await fetch('http://localhost:3100/employees/',
+            const response = await fetch(`${API_SERVER}/employees/`,
                 {
                     method: 'PUT',
                     headers: {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Content from "../components/Content";
 import MiniDrawer from '../components/MiniDrawer';
 import { toast } from "react-toastify";
+import { API_SERVER } from "../config";
 
 const Sales = () => {
     const [clients, setClients] = useState([]);
@@ -11,7 +12,7 @@ const Sales = () => {
 
     const loadClients = async () => {
         try {
-            const response = await fetch("http://localhost:3100/client");
+            const response = await fetch(`${API_SERVER}/client`);
             const data = await response.json();
             setClients(data);
         } catch (error) {
@@ -25,7 +26,7 @@ const Sales = () => {
 
     const loadProducts = async () => {
         try {
-            const response = await fetch("http://localhost:3100/product");
+            const response = await fetch(`${API_SERVER}/product`);
             const data = await response.json();
             setProducts(data);
         } catch (error) {
@@ -47,7 +48,7 @@ const Sales = () => {
         const sales = { nameClient, nameProduct }
 
         try {
-            const response = await fetch('http://localhost:3100/sales',
+            const response = await fetch(`${API_SERVER}/sales`,
                 {
                     method: 'POST',
                     headers: {

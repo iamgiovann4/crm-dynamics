@@ -1,6 +1,7 @@
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
+import { API_SERVER } from '../config';
 
 const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, index}) => {
 
@@ -9,7 +10,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch('http://localhost:3100/product/'+id,
+      const response = await fetch(`${API_SERVER}/product/` +id,
       {
         method: 'DELETE',
         headers: {

@@ -8,6 +8,7 @@ import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import { API_SERVER } from '../config';
 
 const FormEmployees = () => {
     const [employees, setEmployees] = useState(false);
@@ -30,7 +31,7 @@ const FormEmployees = () => {
         const Employees = { fname, lname, cpf, email, email, office, wage, birth , street, number, address }
         console.log(Employees)
         try {
-            const response = await fetch('http://localhost:3100/employees',
+            const response = await fetch(`${API_SERVER}/employees`,
                 {
                     method: 'POST',
                     headers: {

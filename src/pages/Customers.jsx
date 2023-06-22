@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
 import clientes from '../images/clientes.svg'
+import { API_SERVER } from '../config'
 
 function Customers() {
     const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
@@ -22,7 +23,7 @@ function Customers() {
 
     const loadClients = async () => {
         try {
-            const response = await fetch('http://localhost:3100/client')
+            const response = await fetch(`${API_SERVER}/client`)
             const data = await response.json()
             setClients(data)
             console.log(data)
@@ -53,7 +54,7 @@ function Customers() {
         const client = { fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
         console.log(client)
         try {
-            const response = await fetch('http://localhost:3100/client',
+            const response = await fetch(`${API_SERVER}/client`,
                 {
                     method: 'POST',
                     headers: {

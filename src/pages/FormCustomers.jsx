@@ -8,6 +8,7 @@ import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import { API_SERVER } from '../config';
 
 const FormCustomers = () => {
     const [clients, setClients] = useState(false);
@@ -15,7 +16,7 @@ const FormCustomers = () => {
 
     const loadClients = async () => {
         try {
-            const response = await fetch('http://localhost:3100/client')
+            const response = await fetch(`${API_SERVER}/client`)
             const data = await response.json()
             setClients(data)
             console.log(data)
@@ -46,7 +47,7 @@ const FormCustomers = () => {
         const client = { fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
         console.log(client)
         try {
-            const response = await fetch('http://localhost:3100/client',
+            const response = await fetch(`${API_SERVER}/client`,
                 {
                     method: 'POST',
                     headers: {

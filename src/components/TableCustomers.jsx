@@ -1,6 +1,7 @@
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
+import { API_SERVER } from '../config';
 
 const TableClient = ({ client, setClients, clients, index }) => {
 
@@ -9,7 +10,7 @@ const TableClient = ({ client, setClients, clients, index }) => {
 
   const deleteClient = async (id) => {
     try {
-      const response = await fetch('http://localhost:3100/client/' + id,
+      const response = await fetch(`${API_SERVER}/client/` + id,
         {
           method: 'DELETE',
           headers: {

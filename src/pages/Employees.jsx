@@ -7,6 +7,7 @@ import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 import { useNavigate } from "react-router"
+import { API_SERVER } from "../config"
 
 const hostEmployee = process.env.REACT_APP_HOST_LINE_EMPLOYEES
 
@@ -23,7 +24,7 @@ const Employees = () => {
 
     const loadEmployees = async () => {
         try {
-            const response = await fetch('http://localhost:3100/employees')
+            const response = await fetch(`${API_SERVER}/employees`)
             const data = await response.json()
             console.log(data)
             // aqui esta o erro
@@ -55,7 +56,7 @@ const Employees = () => {
         const address = event.target.address.value
         const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
         try {
-            const response = await fetch('http://localhost:3100/product',
+            const response = await fetch(`${API_SERVER}/product`,
                 {
                     method: 'PUT',
                     headers: {
