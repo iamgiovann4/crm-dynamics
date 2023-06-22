@@ -95,7 +95,7 @@ function Products() {
             console.log(error)
         }
     }
-    
+
     console.log(handleSubmit)
 
     return (
@@ -141,7 +141,11 @@ function Products() {
                                     products.map((product, index) => (
                                         <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
                                     )) : (
-                                        <img src={pe1} alt="pe1"/>
+                                        <tr>
+                                            <td colSpan={5}>
+                                                <img src={pe1} alt="pe1" />
+                                            </td>
+                                        </tr>
                                     )}
                             </tbody>
                         </table>

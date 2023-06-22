@@ -108,7 +108,11 @@ function Customers() {
                                     clients.map((client, index) => (
                                         <TableCustomers index={index} key={client.id} client={client} setClients={setClients} clients={clients} />
                                     )) : (
-                                        <img src={clientes} alt="clientes"/>
+                                        <tr>
+                                            <td colSpan={5}>
+                                                <img src={clientes} alt="clientes" />
+                                            </td>
+                                        </tr>
                                     )}
                             </tbody>
                         </table>
