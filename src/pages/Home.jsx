@@ -4,7 +4,7 @@ import Chart from '../components/Grafico1';
 import Chart2 from '../components/Grafico2';
 import Chart3 from '../components/Grafico3';
 import Chart4 from '../components/Grafico4';
-import './home.css'
+import './Home.css'
 import MiniDrawer from '../components/MiniDrawer'
 
 const Home = () => {
