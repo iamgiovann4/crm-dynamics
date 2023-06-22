@@ -15,6 +15,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import useAuthStore from '../store/authStore';
 import Content from '../components/Content';
 import { toast } from 'react-toastify';
+import {API_SERVER} from '../config'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ const Login = () => {
         const password = event.target.password.value
         const user = { cpf, password }
         try {
-            const response = await fetch('http://localhost:3100/auth/login',
+            const response = await fetch(`${API_SERVER}/auth/login`, //http://localhost:3100
                 {
                     method: 'POST',
                     headers: {

@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { FaUserCircle as User, FaUserAlt as User2 } from 'react-icons/fa'
 import { ImExit as Sair } from 'react-icons/im'
 import { RiContactsFill as Contact } from 'react-icons/ri'
+import {API_SERVER} from '../config'
 
 const Perfil = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,7 +30,7 @@ const Perfil = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:3100/auth/logout',
+            const response = await fetch(`${API_SERVER}/auth/logout`,
                 {
                     method: 'POST',
                     headers: {
