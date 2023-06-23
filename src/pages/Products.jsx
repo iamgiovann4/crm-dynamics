@@ -8,6 +8,7 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import { Autocomplete } from '@mui/material';
 import { Button } from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
+import pe1 from "../images/pe1.svg"
 
 // Restante do seu código...
 // 
@@ -103,6 +104,23 @@ function Products() {
     // const response =  fetch('http://localhost:3100/product')
     // const data =  response.json()
     console.log(handleSubmit)
+
+    const [protudos, setProdutos] = useState([]); {/* Atualiza os dados do Banco */ } 
+    
+    const loadProdutos = async () => {
+        try {
+            const response = await fetch('http://localhost:3100/product')
+            const data = await response.json()
+            setProdutos(data)
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        loadProdutos()
+    }, []) // [] = executa apenas uma vez quando o componente é montados
 
     return (
         <>
