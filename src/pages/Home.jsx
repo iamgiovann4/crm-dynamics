@@ -8,7 +8,7 @@ import './Home.css'
 import MiniDrawer from '../components/MiniDrawer'
 
 const Home = () => {
-    return (
+    return (   
         <>
             <MiniDrawer>
                 <Content title="Dashboard">
