@@ -136,9 +136,9 @@ function Products() {
                         variant="outlined"
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        style={{ marginBottom: '16px', marginTop: '45px'}}
+                        style={{ marginBottom: '16px', marginTop: '45px' }}
                     />
-                    <TableContainer style={{backgroundColor: '#f1f1f1'}} className='caixaTabela' component={Paper}>
+                    <TableContainer style={{ backgroundColor: '#f1f1f1' }} className='caixaTabela' component={Paper}>
 
                         <Table sx={{ maxWidth: '50%' }} aria-label="customized table" className='tabela'>
                             <TableHead>
@@ -154,48 +154,17 @@ function Products() {
                             </TableHead>
                             <TableBody>
                                 {products && products.length > 0 &&
-                                        <TableProduct setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} searchTerm={searchTerm} />}
-                                 {products && products.length === 0 && <img src={pe1} alt="pe1" />}
-                                        
-                                   
+                                    <TableProduct setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} searchTerm={searchTerm} />}
+                                {products && products.length === 0 &&
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <img src={pe1} alt="pe1" style={{width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                }
                             </TableBody>
                         </Table>
                     </TableContainer>
-
-
-
-
-                    {/* <Box className='caixaTabela'>
-                        <table className='tabela'>
-                            <thead>
-                                <tr>
-                                    <th colSpan={12} >
-                                        <Box direction="row" className='stack'>
-                                            <h1 className='tituloTabela'>Seus Produtos</h1>
-                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                        </Box>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th className='coluna' align='left'>Produto</th>
-                                    <th className='coluna' align='left'>Preço</th>
-                                    <th className='coluna' align='left'>Quantidade</th>
-                                    <th className='coluna' align='left'></th>
-                                    <th className='coluna' align='left'></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {products.length > 0 ?
-                                    products.map((product, index) => (
-                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
-                                    )) : (
-                                        <img src={pe1} alt="pe1" />
-                                    )}
-                            </tbody>
-                        </table>
-                    </Box> */}
-
 
                     {openModal &&
                         <Box className='modal' onClick={(event) => {
