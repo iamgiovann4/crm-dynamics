@@ -33,7 +33,7 @@ function createData(name, price, stock) {
 }
 
 function Products() {
-    const [products, setProducts] = useState([]); {/* Atualiza os dados do Banco */ }
+    const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
 
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
@@ -41,12 +41,9 @@ function Products() {
 
     const [searchTerm, setSearchTerm] = useState('');
 
-
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
-
-
 
     const loadProducts = async () => {
         try {
@@ -132,35 +129,35 @@ function Products() {
 
     return (
         <>
-            <MiniDrawer >
+            <MiniDrawer>
                 <Content title='Produtos'>
-                    <TableContainer component={Paper}>
+                    <TextField
+                        label="Search"
+                        variant="outlined"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        style={{ marginBottom: '16px', marginTop: '45px'}}
+                    />
+                    <TableContainer style={{backgroundColor: '#f1f1f1'}} className='caixaTabela' component={Paper}>
+
                         <Table sx={{ maxWidth: '50%' }} aria-label="customized table" className='tabela'>
-                            <TextField
-                                label="Search"
-                                variant="outlined"
-                                value={searchTerm}
-                                onChange={handleSearchChange}
-                                style={{ marginBottom: '16px' }}
-                            />
                             <TableHead>
                                 <Box direction="row" className='stack'>
                                     <h1 className='tituloTabela'>Seus Produtos</h1>
                                     <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
                                 </Box>
                                 <TableRow >
-                                    <StyledTableCell align='left'>Produtos</StyledTableCell>
-                                    <StyledTableCell align="left">Preço</StyledTableCell>
-                                    <StyledTableCell align="left">Quantidade</StyledTableCell>
+                                    <StyledTableCell className='coluna' align='left'>Produtos</StyledTableCell>
+                                    <StyledTableCell className='coluna' align="left">Preço</StyledTableCell>
+                                    <StyledTableCell className='coluna' align="left">Quantidade</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {products.length > 0 ?
-                                    products.map((product, index) => (
-                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
-                                    )) : (
-                                        <img src={pe1} alt="pe1" />
-                                    )}
+                                {products && products.length > 0 &&
+                                        <TableProduct setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} searchTerm={searchTerm} />}
+                                 {products && products.length === 0 && <img src={pe1} alt="pe1" />}
+                                        
+                                   
                             </TableBody>
                         </Table>
                     </TableContainer>

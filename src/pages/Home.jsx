@@ -6,6 +6,7 @@ import Chart3 from '../components/Grafico3';
 import Chart4 from '../components/Grafico4';
 import './home.css'
 import MiniDrawer from '../components/MiniDrawer'
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
@@ -33,6 +34,7 @@ const Home = () => {
                     </div>
                 </Content>
             </MiniDrawer>
+            {/* <Footer/> */}
         </>
     );
 };

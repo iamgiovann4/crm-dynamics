@@ -29,11 +29,9 @@ function createData(name, price, stock) {
   return { name, price, stock };
 }
 
-const TableProduct = ({ product, setProducts, products, setProductToEdit, setOpenModalEdit, index }) => {
+const TableProduct = ({ setProducts, products, setProductToEdit, setOpenModalEdit, searchTerm }) => {
 
-  const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
-
-  const [searchTerm, setSearchTerm] = useState('');
+  // const backgroundColor = index % 2 === 0 ? '#F1F1F1' : 'white';
   const rows = products;
 
   const deleteUser = async (id) => {
@@ -54,7 +52,8 @@ const TableProduct = ({ product, setProducts, products, setProductToEdit, setOpe
       console.log(error)
     }
   }
-
+  console.log(rows)
+  console.log(searchTerm)
   const filteredRows = rows.filter((row) =>
     row.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -66,17 +65,17 @@ const TableProduct = ({ product, setProducts, products, setProductToEdit, setOpe
           <StyledTableCell component="th" scope="row">
             {row.name}
           </StyledTableCell>
-          <StyledTableCell align="left">{row.price}</StyledTableCell>
-          <StyledTableCell align="left">{row.stock}</StyledTableCell>
-          <StyledTableCell align="left">
+          <StyledTableCell style={styles.dadosTabela} align="left">{row.price}</StyledTableCell>
+          <StyledTableCell style={styles.dadosTabela} align="left">{row.stock}</StyledTableCell>
+          <StyledTableCell style={styles.dadosTabela} align="left">
             <IconEdit size={20} style={styles.edit}
               onClick={() => {
-                setProductToEdit(product)
+                setProductToEdit(row)
                 setOpenModalEdit(true)
               }} />
           </StyledTableCell>
-          <StyledTableCell align="left">
-            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(product.id)} />
+          <StyledTableCell style={styles.dadosTabela} align="left">
+            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(row.id)} />
           </StyledTableCell>
         </StyledTableRow>
       ))}

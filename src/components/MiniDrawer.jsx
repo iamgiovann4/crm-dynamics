@@ -134,21 +134,20 @@ const MiniDrawer = ({ children }) => {
                 <List>
                     {[
 
-                    { text: 'Casa', link: '/home' },
-                    { text: 'Pág. Produtos', link: '/produtos' },
-                    { text: 'Pág. Clientes', link: '/clientes'},
-                    { text: 'Pág. Funcionarios', link: '/funcionarios'},
-                    { text: 'Pág. Funcionarios', link: '/vendas'}
+                    { text: 'Início', link: '/home' },
+                    { text: 'Produtos', link: '/produtos' },
+                    { text: 'Clientes', link: '/clientes'},
+                    { text: 'Funcionarios', link: '/funcionarios'},
+                    { text: 'Vendas', link: '/vendas'}
 
                       
                         ].map((item, index) => (
-                        <ListItem exact className="navlink" activeClassName="active" to='/' key={index} disablePadding sx={{ display: 'block'}}>
+                        <ListItem exact className="navlink" to='/' key={index} disablePadding sx={{ display: 'block'}}>
                             <ListItemButton 
                             key={item.text}
                             exact
                             component={NavLink}
                             to={item.link}
-                            activeClassName="active"
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
