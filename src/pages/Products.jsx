@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableProduct from '../components/TableProduct'
@@ -28,16 +28,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
 function createData(name, price, stock) {
     return { name, price, stock };
 }
@@ -49,17 +39,14 @@ function Products() {
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
-    const [searchTerm, setSearchTerm] = React.useState('');
-    const rows = products;
+    const [searchTerm, setSearchTerm] = useState('');
 
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    const filteredRows = rows.filter((row) =>
-        row.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+
 
     const loadProducts = async () => {
         try {
@@ -147,15 +134,15 @@ function Products() {
         <>
             <MiniDrawer >
                 <Content title='Produtos'>
-                    <TextField
-                        label="Search"
-                        variant="outlined"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        style={{ marginBottom: '16px' }}
-                    />
                     <TableContainer component={Paper}>
                         <Table sx={{ maxWidth: '50%' }} aria-label="customized table" className='tabela'>
+                            <TextField
+                                label="Search"
+                                variant="outlined"
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                style={{ marginBottom: '16px' }}
+                            />
                             <TableHead>
                                 <Box direction="row" className='stack'>
                                     <h1 className='tituloTabela'>Seus Produtos</h1>
@@ -164,19 +151,16 @@ function Products() {
                                 <TableRow >
                                     <StyledTableCell align='left'>Produtos</StyledTableCell>
                                     <StyledTableCell align="left">Preço</StyledTableCell>
-                                    <StyledTableCell align="left">Quaantidade</StyledTableCell>
+                                    <StyledTableCell align="left">Quantidade</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {filteredRows.map((row) => (
-                                    <StyledTableRow key={row.name}>
-                                        <StyledTableCell component="th" scope="row">
-                                            {row.name}
-                                        </StyledTableCell>
-                                        <StyledTableCell align="left">{row.price}</StyledTableCell>
-                                        <StyledTableCell align="left">{row.stock}</StyledTableCell>
-                                    </StyledTableRow>
-                                ))}
+                                {products.length > 0 ?
+                                    products.map((product, index) => (
+                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
+                                    )) : (
+                                        <img src={pe1} alt="pe1" />
+                                    )}
                             </TableBody>
                         </Table>
                     </TableContainer>
@@ -184,7 +168,7 @@ function Products() {
 
 
 
-                    <Box className='caixaTabela'>
+                    {/* <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>
@@ -213,7 +197,9 @@ function Products() {
                                     )}
                             </tbody>
                         </table>
-                    </Box>
+                    </Box> */}
+
+
                     {openModal &&
                         <Box className='modal' onClick={(event) => {
                             if (event.target.className.includes('modal')) {
