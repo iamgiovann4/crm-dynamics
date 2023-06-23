@@ -1,7 +1,7 @@
 //Pág dos funcionarios da empresa que forem cadastrados no sign up, essa pág também terá uma tabela
 import Content from "../components/Content"
 import React, { useEffect, useState } from 'react'
-import './tableAll.css'
+import './TableAll.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
 import { toast } from 'react-toastify'
