@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableProduct from '../components/TableProduct'
@@ -28,38 +28,22 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
 function createData(name, price, stock) {
     return { name, price, stock };
 }
 
 function Products() {
-    const [products, setProducts] = useState([]); {/* Atualiza os dados do Banco */ }
+    const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
     const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
 
     const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
     const [productToEdit, setProductToEdit] = useState({})
 
-    const [searchTerm, setSearchTerm] = React.useState('');
-    const rows = products;
-
+    const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
-
-    const filteredRows = rows.filter((row) =>
-        row.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     const loadProducts = async () => {
         try {
@@ -145,16 +129,17 @@ function Products() {
 
     return (
         <>
-            <MiniDrawer >
+            <MiniDrawer>
                 <Content title='Produtos'>
                     <TextField
                         label="Search"
                         variant="outlined"
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        style={{ marginBottom: '16px' }}
+                        style={{ marginBottom: '16px', marginTop: '45px' }}
                     />
-                    <TableContainer component={Paper}>
+                    <TableContainer style={{ backgroundColor: '#f1f1f1' }} className='caixaTabela' component={Paper}>
+
                         <Table sx={{ maxWidth: '50%' }} aria-label="customized table" className='tabela'>
                             <TableHead>
                                 <Box direction="row" className='stack'>
@@ -162,58 +147,25 @@ function Products() {
                                     <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
                                 </Box>
                                 <TableRow >
-                                    <StyledTableCell align='left'>Produtos</StyledTableCell>
-                                    <StyledTableCell align="left">Preço</StyledTableCell>
-                                    <StyledTableCell align="left">Quaantidade</StyledTableCell>
+                                    <StyledTableCell className='coluna' align='left'>Produtos</StyledTableCell>
+                                    <StyledTableCell className='coluna' align="left">Preço</StyledTableCell>
+                                    <StyledTableCell className='coluna' align="left">Quantidade</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {filteredRows.map((row) => (
-                                    <StyledTableRow key={row.name}>
-                                        <StyledTableCell component="th" scope="row">
-                                            {row.name}
-                                        </StyledTableCell>
-                                        <StyledTableCell align="left">{row.price}</StyledTableCell>
-                                        <StyledTableCell align="left">{row.stock}</StyledTableCell>
-                                    </StyledTableRow>
-                                ))}
+                                {products && products.length > 0 &&
+                                    <TableProduct setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} searchTerm={searchTerm} />}
+                                {products && products.length === 0 &&
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <img src={pe1} alt="pe1" style={{width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                }
                             </TableBody>
                         </Table>
                     </TableContainer>
 
-
-
-
-                    <Box className='caixaTabela'>
-                        <table className='tabela'>
-                            <thead>
-                                <tr>
-                                    <th colSpan={12} >
-                                        <Box direction="row" className='stack'>
-                                            <h1 className='tituloTabela'>Seus Produtos</h1>
-                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                        </Box>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th className='coluna' align='left'>Produto</th>
-                                    <th className='coluna' align='left'>Preço</th>
-                                    <th className='coluna' align='left'>Quantidade</th>
-                                    <th className='coluna' align='left'></th>
-                                    <th className='coluna' align='left'></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {products.length > 0 ?
-                                    products.map((product, index) => (
-                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
-                                    )) : (
-                                        <img src={pe1} alt="pe1"/>
-                                    )}
-                            </tbody>
-                        </table>
-                    </Box>
                     {openModal &&
                         <Box className='modal' onClick={(event) => {
                             if (event.target.className.includes('modal')) {

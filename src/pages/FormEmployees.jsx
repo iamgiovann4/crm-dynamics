@@ -51,10 +51,10 @@ const FormEmployees = () => {
     return (
         <>
             <MiniDrawer>
-                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center'}}>
-                    <h1 style={{color: '#252525'}}>Cadastro de Funcionarios</h1>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', height: '850px'}}>
+                    <h1 style={{color: '#252525', marginBottom: '50px'}}>Cadastro de Funcionarios</h1>
                         <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
-                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
+                            <Grid container spacing={2} sx={{ width: '70%' }}>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" variant="outlined" fullWidth />
@@ -85,7 +85,7 @@ const FormEmployees = () => {
                                         <TextField name='wage' label="Salário" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='birth' label="Nascimento" variant="outlined" fullWidth />
                                     </FormControl>
