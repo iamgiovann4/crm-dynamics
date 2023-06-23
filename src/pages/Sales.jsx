@@ -78,17 +78,35 @@ const Sales = () => {
     if (selectedProduct) {
       const product = products.find((p) => p.name === selectedProduct);
       const selectedProductWithClientId = {
-        ...product,
-        clientId: selectedClient.id,
+        ...product
       };
       setSelectedProductsList([...selectedProductsList, selectedProductWithClientId]);
       setSelectedProduct("");
     }
   };
 
-  const handleShowArray = () => {
-    
-    console.log(selectedProductsList);
+  const handleShowArray = async () => {
+    const result = {
+      clientID: selectedClient.id,
+      sales: selectedProductsList
+    }
+
+    try {
+      const response = await fetch('http://localhost:3100/sales',
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(result),
+        })
+      const data = await response.json()
+      console.log(data)
+      toast.success('Produto criado com sucesso')
+    } catch (error) {
+      toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
+    }
+
   };
 
   return (
@@ -130,7 +148,7 @@ const Sales = () => {
                 {products.length > 0 ? (
                   <div>
                     <select
-                    //   value={selectedProduct}
+                      //   value={selectedProduct}
                       onChange={(event) => setSelectedProduct(event.target.value)}
                     >
                       <option value="">Selecione um produto</option>
