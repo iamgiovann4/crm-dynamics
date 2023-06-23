@@ -5,7 +5,7 @@ import TableProduct from '../components/TableProduct'
 import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 import pe1 from '../images/pe1.svg'
-import './tableAll.css'
+import './TableAll.css'
 import './Modal.css'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -209,7 +209,7 @@ function Products() {
                                     products.map((product, index) => (
                                         <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
                                     )) : (
-                                        <img src={pe1} alt="pe1" />
+                                        <img src={pe1} alt="pe1"/>
                                     )}
                             </tbody>
                         </table>

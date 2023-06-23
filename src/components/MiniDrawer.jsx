@@ -142,13 +142,12 @@ const MiniDrawer = ({ children }) => {
 
                       
                         ].map((item, index) => (
-                        <ListItem exact className="navlink" activeClassName="active" to='/' key={index} disablePadding sx={{ display: 'block'}}>
+                        <ListItem exact="true" className="navlink" to='/' key={index} disablePadding sx={{ display: 'block'}}>
                             <ListItemButton 
                             key={item.text}
-                            exact
+                            exact="true"
                             component={NavLink}
                             to={item.link}
-                            activeClassName="active"
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
