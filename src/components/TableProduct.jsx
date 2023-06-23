@@ -3,7 +3,6 @@ import { toast } from 'react-toastify'
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { useState } from 'react'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,10 +23,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-
-function createData(name, price, stock) {
-  return { name, price, stock };
-}
 
 const TableProduct = ({ setProducts, products, setProductToEdit, setOpenModalEdit, searchTerm }) => {
 
@@ -78,24 +73,7 @@ const TableProduct = ({ setProducts, products, setProductToEdit, setOpenModalEdi
             <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(row.id)} />
           </StyledTableCell>
         </StyledTableRow>
-      ))}
-
-      {/* <tr style={{backgroundColor}}>
-          <td style={styles.dadosTabela}>{product.name}</td>
-          <td style={styles.dadosTabela}>{product.price}</td>
-          <td  style={styles.dadosTabela}>{product.stock}</td>
-
-          <td style={styles.dadosTabela}>
-            <IconEdit size={20} style={styles.edit}
-            onClick={() => {
-              setProductToEdit(product)
-              setOpenModalEdit(true) 
-            }}/>
-          </td>
-          <td style={styles.dadosTabela}>
-            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(product.id)}/>
-          </td>
-      </tr> */}
+      )) }
     </>
   )
 }

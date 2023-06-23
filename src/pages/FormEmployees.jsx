@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import FormControl from '@mui/material/FormControl';
-import Content from '../components/Content';
 import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
@@ -11,7 +10,6 @@ import MiniDrawer from '../components/MiniDrawer'
 import { API_SERVER } from '../config';
 
 const FormEmployees = () => {
-    const [employees, setEmployees] = useState(false);
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -28,7 +26,7 @@ const FormEmployees = () => {
         const street = event.target.street.value
         const number = event.target.number.value
         const address = event.target.address.value
-        const Employees = { fname, lname, cpf, email, email, office, wage, birth , street, number, address }
+        const Employees = { fname, lname, cpf, email, office, wage, birth , street, number, address }
         console.log(Employees)
         try {
             const response = await fetch(`${API_SERVER}/employees`,
@@ -41,7 +39,7 @@ const FormEmployees = () => {
                 })
             const data = await response.json()
             console.log(data)
-            // navigate
+            navigate("/funcionarios")
             toast.success('Produto criado com sucesso')
         } catch (error) {
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde')

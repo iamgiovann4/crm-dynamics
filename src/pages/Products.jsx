@@ -28,15 +28,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
-function createData(name, price, stock) {
-    return { name, price, stock };
-}
-
 function Products() {
-    const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
-    const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    const [products, setProducts] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
-    const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
+    const [openModalEdit, setOpenModalEdit] = useState(false);
     const [productToEdit, setProductToEdit] = useState({})
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -129,27 +125,28 @@ function Products() {
 
     return (
         <>
-            <MiniDrawer>
+            <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
                 <Content title='Produtos'>
-                    <TextField
-                        label="Search"
-                        variant="outlined"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        style={{ marginBottom: '16px', marginTop: '45px' }}
-                    />
-                    <TableContainer style={{ backgroundColor: '#f1f1f1' }} className='caixaTabela' component={Paper}>
-
-                        <Table sx={{ maxWidth: '50%' }} aria-label="customized table" className='tabela'>
+                    <TableContainer style={{ backgroundColor: 'transparent', boxShadow: 'none', width: '55%', margin: '0 auto' }} className='caixaTabela' component={Paper}>
+                        <Box direction="row" className='stack'>
+                            <h1>Seus Produtos</h1>
+                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                        </Box>
+                        <TextField
+                            label="Search"
+                            variant="outlined"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            style={{ marginBottom: '16px', marginTop: '16px', width: '100%' }}
+                        />
+                        <Table sx={{ maxWidth: '100%' }} aria-label="customized table">
                             <TableHead>
-                                <Box direction="row" className='stack'>
-                                    <h1 className='tituloTabela'>Seus Produtos</h1>
-                                    <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                </Box>
                                 <TableRow >
-                                    <StyledTableCell className='coluna' align='left'>Produtos</StyledTableCell>
-                                    <StyledTableCell className='coluna' align="left">Preço</StyledTableCell>
-                                    <StyledTableCell className='coluna' align="left">Quantidade</StyledTableCell>
+                                    <StyledTableCell align='left'>Produtos</StyledTableCell>
+                                    <StyledTableCell align="left">Preço</StyledTableCell>
+                                    <StyledTableCell align="left">Quantidade</StyledTableCell>
+                                    <StyledTableCell align="left"></StyledTableCell>
+                                    <StyledTableCell align="left"></StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -158,7 +155,7 @@ function Products() {
                                 {products && products.length === 0 &&
                                     <tr>
                                         <td colSpan={5}>
-                                            <img src={pe1} alt="pe1" style={{width: '100%' }} />
+                                            <img src={pe1} alt="pe1" style={{ width: '100%' }} />
                                         </td>
                                     </tr>
                                 }

@@ -121,7 +121,7 @@ const MiniDrawer = ({ children }) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
-                        <Perfil/>
+                        <Perfil />
                     </Typography>
                 </Toolbar>
             </AppBar>

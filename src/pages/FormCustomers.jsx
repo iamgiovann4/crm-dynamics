@@ -12,6 +12,7 @@ import { API_SERVER } from '../config';
 
 const FormCustomers = () => {
     const [clients, setClients] = useState(false);
+    console.log(clients)
     const navigate = useNavigate()
 
     const loadClients = async () => {
