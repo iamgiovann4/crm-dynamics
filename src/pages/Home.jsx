@@ -1,8 +1,8 @@
 import React from 'react';
 import Content from '../components/Content';
-import Chart from '../components/Grafico1';
-import Chart2 from '../components/Grafico2';
-import Chart3 from '../components/Grafico3';
+import Chart from '../components/CardName';
+import Chart2 from '../components/Calendario';
+import PieChart from '../components/PieChart';
 import Chart4 from '../components/Grafico4';
 import './Home.css'
 import MiniDrawer from '../components/MiniDrawer'
@@ -21,10 +21,9 @@ const Home = () => {
                             <div className='grafico2'>  
                                 <Chart2 />
                             </div>      
-                            <div className='grafico3'>
-                                <Chart3 />
-                            </div>    
-                                <Chart4 />
+                            <div className='grafico3'>  
+                                <PieChart />
+                            </div>   
                 </Content>
             </MiniDrawer>
             {/* <Footer/> */}

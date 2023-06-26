@@ -11,7 +11,7 @@ import {
   Bar
 } from 'recharts';
 
-export function Chart() {
+export function Chart3() {
   const data = [
     {
       name: 'A',
@@ -59,21 +59,22 @@ export function Chart() {
 
   return (
     <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
-      <LineChart width={1000} height={300} data={data} style={{
-        borderRadius: '10px',
-        background: '#FFF',
-        boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-        padding: '50px'
-      }}>
-        <XAxis dataKey="name" padding={{ left: 0, right: 0 }} />
+
+      <BarChart width={1000} height={300} data={data} style={{
+                borderRadius: '10px',
+                background: '#FFF',
+                boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
+                padding: '50px'}}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 1 }} />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="uv" fill="#82ca9d" />
+      </BarChart>
     </div>
   )
 }
 
-export default Chart;
+export default Chart3;
