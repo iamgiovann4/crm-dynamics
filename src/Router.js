@@ -33,7 +33,7 @@ const Router = () => {
                 <Route path="/funcionarios-edit" element={<EmployeesEdit />} />
                 <Route path="/testtable" element={<TableFilter />} />
             </Route>
-            
+
             <Route path="/landpage" element={<Landpage />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/login" element={<Login />} />

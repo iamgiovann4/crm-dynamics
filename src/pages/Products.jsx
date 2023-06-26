@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableProduct from '../components/TableProduct'
@@ -8,18 +8,46 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import { Autocomplete } from '@mui/material';
 import { Button } from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
-import pe1 from "../images/pe1.svg"
 
 // Restante do seu código...
 // 
 const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
+import pe1 from '../images/pe1.svg'
+import './TableAll.css'
+import './Modal.css'
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+// const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.common.black,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
 
 function Products() {
-    const [products, setProducts] = useState(false); {/* Atualiza os dados do Banco */ }
-    const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    const [products, setProducts] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
-    const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
+    const [openModalEdit, setOpenModalEdit] = useState(false);
     const [productToEdit, setProductToEdit] = useState({})
+
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
 
     const loadProducts = async () => {
         try {
@@ -124,52 +152,44 @@ function Products() {
 
     return (
         <>
-            <Container maxWidth="md" sx={{ mt: 10, display: 'flex', direction: 'row' }} >
-
-                <Autocomplete
-                    id="free-solo-demo"
-                    freeSolo
-                    options={protudos.map(option => option.name)}
-                    renderInput={(params) => (
-                        <TextField {...params} label="freeSolo" margin="normal" variant="outlined" sx={{ width: '45rem' }} />
-                    )}
-                />
-                <Button variant="contained" sx={{ height: '3.5rem', mt: 2 }}><SearchIcon /></Button>
-
-            </Container>
-
-            <MiniDrawer >
+            <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
                 <Content title='Produtos'>
-                    <Box className='caixaTabela'>
-                        <table className='tabela'>
-                            <thead>
-                                <tr>
-                                    <th colSpan={12} >
-                                        <Box direction="row" className='stack'>
-                                            <h1 className='tituloTabela'>Seus Produtos</h1>
-                                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                                        </Box>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th className='coluna' align='left'>Produto</th>
-                                    <th className='coluna' align='left'>Preço</th>
-                                    <th className='coluna' align='left'>Quantidade</th>
-                                    <th className='coluna' align='left'></th>
-                                    <th className='coluna' align='left'></th>
-                                </tr>
-                            </thead>
+                    <TableContainer style={{ backgroundColor: 'transparent', boxShadow: 'none', width: '55%', margin: '0 auto' }} className='caixaTabela' component={Paper}>
+                        <Box direction="row" className='stack'>
+                            <h1>Seus Produtos</h1>
+                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                        </Box>
+                        <TextField
+                            label="Search"
+                            variant="outlined"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            style={{ marginBottom: '16px', marginTop: '16px', width: '100%' }}
+                        />
+                        <Table sx={{ maxWidth: '100%' }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow >
+                                    <StyledTableCell align='left'>Produtos</StyledTableCell>
+                                    <StyledTableCell align="left">Preço</StyledTableCell>
+                                    <StyledTableCell align="left">Quantidade</StyledTableCell>
+                                    <StyledTableCell align="left"></StyledTableCell>
+                                    <StyledTableCell align="left"></StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {products && products.length > 0 &&
+                                    <TableProduct setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} searchTerm={searchTerm} />}
+                                {products && products.length === 0 &&
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <img src={pe1} alt="pe1" style={{ width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                }
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
 
-                            <tbody>
-                                {products.length > 0 ?
-                                    products.map((product, index) => (
-                                        <TableProduct index={index} key={product.id} product={product} setProducts={setProducts} products={products} setProductToEdit={setProductToEdit} setOpenModalEdit={setOpenModalEdit} />
-                                    )) : (
-                                        <img src={pe1} alt="pe1"/>
-                                    )}
-                            </tbody>
-                        </table>
-                    </Box>
                     {openModal &&
                         <Box className='modal' onClick={(event) => {
                             if (event.target.className.includes('modal')) {

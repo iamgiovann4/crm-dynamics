@@ -6,11 +6,8 @@ function App() {
 
   const isLoading = useAuthStore((state) => state.isLoading)
 
-  return (
-    <>
-      {isLoading ? <Initialization/> : <Router />}
-    </>
-  );
+  return isLoading ? <Initialization/> : <Router />
+
 }
 
 export default App;

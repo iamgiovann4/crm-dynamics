@@ -1,6 +1,7 @@
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
+import { API_SERVER } from '../config';
 
 const TableClient = ({ client, setClients, clients, index }) => {
 
@@ -9,7 +10,7 @@ const TableClient = ({ client, setClients, clients, index }) => {
 
   const deleteClient = async (id) => {
     try {
-      const response = await fetch('http://localhost:3100/client/' + id,
+      const response = await fetch(`${API_SERVER}/client/` + id,
         {
           method: 'DELETE',
           headers: {
@@ -42,11 +43,11 @@ const TableClient = ({ client, setClients, clients, index }) => {
         <td style={styles.dadosTabela}>{client.referencePoint}</td>
 
         <td style={styles.dadosTabela}>
-          <IconEdit style={styles.edit}
+          <IconEdit size={20} style={styles.edit}
             onClick={() => navigate('/cliente-edit', {state: client})} />
         </td>
         <td style={styles.dadosTabela}>
-          <IconTrash style={styles.delete} onClick={() => deleteClient(client.id)} />
+          <IconTrash size={20} style={styles.delete} onClick={() => deleteClient(client.id)} />
         </td>
       </tr>
     </>
@@ -55,10 +56,10 @@ const TableClient = ({ client, setClients, clients, index }) => {
 
 const styles = {
   dadosTabela: {
+    color: '#252525', 
     borderBottom: '1px solid #ddd',
-    fontWeight: 'bold',
-    color: '#3a3a3a', 
     paddingLeft: '20px',
+    paddingRight: '20px',
     paddingTop: '10px',
     paddingBottom: '10px'
   },
@@ -68,13 +69,9 @@ const styles = {
     
   },
   delete: {
-    with: '20px',
-    height: '20px',
     cursor: 'pointer',
     alignItems: 'center',
     fill: 'red',
-   
-    
   }
 }
 

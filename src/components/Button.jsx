@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Button = ({children}) => {
+const Button = ({ children }) => {
     return (
-        <div style={styles.centralizar}>    
+        <div style={styles.centralizar}>
             <button style={styles.enviar} className='enviar'>{children}</button><br />
         </div>
     );
@@ -26,11 +26,11 @@ const styles = {
         '&:hover': {
             background: '#252525',
         }
-      },
-      centralizar: {
+    },
+    centralizar: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column"
-      }
+    }
 }

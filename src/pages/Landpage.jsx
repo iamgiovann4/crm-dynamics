@@ -76,11 +76,5 @@ const Landpage = () => {
   );
 };
 
-const styles = {
-  hover: {
-    hover: 'red'
-  }
-}
-
 export default Landpage;
 

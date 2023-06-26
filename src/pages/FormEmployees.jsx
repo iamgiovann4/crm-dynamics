@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import FormControl from '@mui/material/FormControl';
-import Content from '../components/Content';
 import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import { API_SERVER } from '../config';
 
 const FormEmployees = () => {
-    const [employees, setEmployees] = useState(false);
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -27,10 +26,10 @@ const FormEmployees = () => {
         const street = event.target.street.value
         const number = event.target.number.value
         const address = event.target.address.value
-        const Employees = { fname, lname, cpf, email, email, office, wage, birth , street, number, address }
+        const Employees = { fname, lname, cpf, email, office, wage, birth , street, number, address }
         console.log(Employees)
         try {
-            const response = await fetch('http://localhost:3100/employees',
+            const response = await fetch(`${API_SERVER}/employees`,
                 {
                     method: 'POST',
                     headers: {
@@ -40,7 +39,7 @@ const FormEmployees = () => {
                 })
             const data = await response.json()
             console.log(data)
-            // navigate
+            navigate("/funcionarios")
             toast.success('Produto criado com sucesso')
         } catch (error) {
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
@@ -50,10 +49,10 @@ const FormEmployees = () => {
     return (
         <>
             <MiniDrawer>
-                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center'}}>
-                    <h1 style={{color: '#252525'}}>Cadastro de Funcionarios</h1>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', height: '850px'}}>
+                    <h1 style={{color: '#252525', marginBottom: '50px'}}>Cadastro de Funcionarios</h1>
                         <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
-                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
+                            <Grid container spacing={2} sx={{ width: '70%' }}>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" variant="outlined" fullWidth />
@@ -84,7 +83,7 @@ const FormEmployees = () => {
                                         <TextField name='wage' label="Salário" variant="outlined" fullWidth />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='birth' label="Nascimento" variant="outlined" fullWidth />
                                     </FormControl>

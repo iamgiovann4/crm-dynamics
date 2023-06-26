@@ -10,11 +10,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from "../images/Dynamics.png"
 import Quadrados from "../images/quadrados.png"
-import './signUp.css'
+import './SignUp.css'
 import Button from "../components/Button"
 import { Link, useNavigate } from 'react-router-dom';
 import Content from '../components/Content';
 import { toast } from 'react-toastify';
+import { API_SERVER } from '../config';
 
 //===========================
 const SignUp = () => {
@@ -44,7 +45,7 @@ const SignUp = () => {
     console.log(user)
     try {
       console.log('entrou')
-      const response = await fetch('http://localhost:3100/user',
+      const response = await fetch(`${API_SERVER}/user`,
         {
           method: 'POST',
           headers: {
