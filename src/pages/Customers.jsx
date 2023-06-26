@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Content from '../components/Content'
 import TableCustomers from '../components/TableCustomers'
-import './tableAll.css'
-import { toast } from 'react-toastify'
+import './TableAll.css'
 import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
 import clientes from '../images/clientes.svg'
+import { API_SERVER } from '../config'
 
 function Customers() {
-    const [clients, setClients] = useState(false); {/* Atualiza os dados do Banco */ }
+    const [clients, setClients] = useState(false);
     const navigate = useNavigate()
 
     // console.log(products)
@@ -22,7 +22,7 @@ function Customers() {
 
     const loadClients = async () => {
         try {
-            const response = await fetch('http://localhost:3100/client')
+            const response = await fetch(`${API_SERVER}/client`)
             const data = await response.json()
             setClients(data)
             console.log(data)
@@ -35,47 +35,11 @@ function Customers() {
         loadClients()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        console.log('Minha funcao de submit')
-        console.log(event.target)
-        const fname = event.target.fname.value
-        const lname = event.target.lname.value
-        const cpf = event.target.cpf.value
-        const dateOfBirth = event.target.dateOfBirth.value
-        const phone = event.target.phone.value
-        const email = event.target.email.value
-        const address = event.target.address.value
-        const street = event.target.street.value
-        const cep = event.target.cep.value
-        const houseNumber = event.target.houseNumber.value
-        const referencePoint = event.target.referencePoint.value
-        const client = { fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
-        console.log(client)
-        try {
-            const response = await fetch('http://localhost:3100/client',
-                {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(client),
-                })
-            const data = await response.json()
-            console.log(data)
-            loadClients()
-            toast.success('Cliente cadastrado com sucesso!')
-        } catch (error) {
-            console.log(error)
-            toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
-        }
-    }
-
     return (
         <>
             <MiniDrawer>
                 <Content title='Clientes'>
-                    <Box>
+                    <Box className='caixaTabela'>
                         <table className='tabela'>
                             <thead>
                                 <tr>
@@ -108,7 +72,11 @@ function Customers() {
                                     clients.map((client, index) => (
                                         <TableCustomers index={index} key={client.id} client={client} setClients={setClients} clients={clients} />
                                     )) : (
-                                        <img src={clientes} alt="clientes"/>
+                                        <tr>
+                                            <td colSpan={5}>
+                                                <img src={clientes} alt="clientes" style={{ width: '100%' }}/>
+                                            </td>
+                                        </tr>
                                     )}
                             </tbody>
                         </table>

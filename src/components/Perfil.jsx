@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useNavigate } from 'react-router';
 import useAuthStore from '../store/authStore'
 import { toast } from 'react-toastify';
-import '../components/perfil.css'
+import '../components/Perfil.css'
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { FaUserCircle as User, FaUserAlt as User2 } from 'react-icons/fa'
 import { ImExit as Sair } from 'react-icons/im'
 import { RiContactsFill as Contact } from 'react-icons/ri'
+import { API_SERVER } from '../config'
 
 const Perfil = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,7 +30,7 @@ const Perfil = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:3100/auth/logout',
+            const response = await fetch(`${API_SERVER}/auth/logout`,
                 {
                     method: 'POST',
                     headers: {
@@ -52,7 +53,6 @@ const Perfil = () => {
             console.log(error)
         }
     }
-
     return (
         <>
             <div>
@@ -67,7 +67,7 @@ const Perfil = () => {
                         <>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <User size={30} style={{ color: "#292727" }} />
-                                <p className='paragrafoP'><span className='usuario'><a>{nameUserLogged}</a></span></p>
+                                <p className='paragrafoP'><span className='usuario'>{nameUserLogged}</span></p>
                             </div>
 
                         </>
@@ -82,9 +82,9 @@ const Perfil = () => {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><User2/>Perfil</MenuItem>
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleClose}><Contact/>Contato</MenuItem> 
-                    <MenuItem sx={{width: '110px', gap: '5px'}} onClick={handleLogout}><Sair/>Sair</MenuItem>
+                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><User2 />Perfil</MenuItem>
+                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><Contact />Contato</MenuItem>
+                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleLogout}><Sair />Sair</MenuItem>
                 </Menu>
             </div>
         </>

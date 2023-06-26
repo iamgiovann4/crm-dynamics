@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -8,6 +8,7 @@ import Button from "../components/Button"
 import { toast } from 'react-toastify'
 import { useNavigate, useLocation } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
+import { API_SERVER } from '../config';
 
 const CustomersEdit = () => {
 
@@ -42,7 +43,7 @@ const CustomersEdit = () => {
         const referencePoint = event.target.referencePoint.value
         const clientEdited = { id, fname, lname, cpf, dateOfBirth, phone, email, address, street, cep, houseNumber, referencePoint }
         try {
-            const response = await fetch('http://localhost:3100/client',
+            const response = await fetch(`${API_SERVER}/client`,
                 {
                     method: 'PUT',
                     headers: {

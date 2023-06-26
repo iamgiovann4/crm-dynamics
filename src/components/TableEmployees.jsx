@@ -1,6 +1,7 @@
 import { FaTrash as IconTrash, FaEdit as IconEdit } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
+import { API_SERVER } from '../config';
 
 const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, index}) => {
 
@@ -9,7 +10,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch('http://localhost:3100/product/'+id,
+      const response = await fetch(`${API_SERVER}/product/` +id,
       {
         method: 'DELETE',
         headers: {
@@ -17,6 +18,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
         }
       })
       const data = await response.json()
+      console.log(data)
       toast.success('Produto Deletado com sucesso')
       const newProducts = employees.filter((employee) => employee.id !== id)
       setEmployees(newProducts)
@@ -44,7 +46,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
             onClick={() => navigate('/funcionarios-edit', {state: employee})} />
           </td>
           <td style={styles.dadosTabela}>
-            <IconTrash size={16} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
+            <IconTrash size={20} style={styles.delete} onClick={() => deleteUser(employee.id)}/>
           </td>
       </tr>
     </> 
@@ -53,10 +55,10 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
 
 const styles = {
   dadosTabela: {
+    color: '#252525',
     borderBottom: '1px solid #ddd',
-    fontWeight: 'bold',
-    color: '#3a3a3a',
     paddingLeft: '20px',
+    paddingRight: '20px',
     paddingTop: '10px',
     paddingBottom: '10px'
   },
@@ -65,8 +67,6 @@ const styles = {
     fill: '#222'
   },
   delete: {
-    with: '20px',
-    height: '20px',
     cursor: 'pointer',
     alignItems: 'center',
     fill: 'red'

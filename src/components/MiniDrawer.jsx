@@ -22,7 +22,7 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import BadgeIcon from '@mui/icons-material/Badge';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { NavLink } from 'react-router-dom';
-import './miniDrawer.css'
+import './MiniDrawer.css'
 
 const drawerWidth = 240;
 
@@ -120,7 +120,7 @@ const MiniDrawer = ({ children }) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
-                        <Perfil/>
+                        <Perfil />
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -133,7 +133,7 @@ const MiniDrawer = ({ children }) => {
                 <List>
                     {[
 
-                    { text: 'Casa', link: '/home' },
+                    { text: 'Casa', link: '/home' }, 
                     { text: 'Pág. Produtos', link: '/produtos' },
                     { text: 'Pág. Clientes', link: '/clientes'},
                     { text: 'Pág. Funcionarios', link: '/funcionarios'},
@@ -141,13 +141,12 @@ const MiniDrawer = ({ children }) => {
 
                       
                         ].map((item, index) => (
-                        <ListItem exact className="navlink" activeClassName="active" to='/' key={index} disablePadding sx={{ display: 'block'}}>
+                        <ListItem exact="true" className="navlink" to='/' key={index} disablePadding sx={{ display: 'block'}}>
                             <ListItemButton 
                             key={item.text}
-                            exact
+                            exact="true"
                             component={NavLink}
                             to={item.link}
-                            activeClassName="active"
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
