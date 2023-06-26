@@ -14,6 +14,7 @@ import Searchbar from "./pages/SearchBar";
 import CustomersEdit from "./pages/CustomersEdit";
 import FormEmployees from "./pages/FormEmployees";
 import EmployeesEdit from "./pages/EmployeesEdit";
+import ListSales from "./pages/ListSales";
 
 const Router = () => {
     return (
@@ -30,6 +31,7 @@ const Router = () => {
                 <Route path="/add-funcionarios" element={<FormEmployees />} />
                 <Route path="/cliente-edit" element={<CustomersEdit />} />
                 <Route path="/funcionarios-edit" element={<EmployeesEdit />} />
+                <Route path="/listSales" element={<ListSales />} />
             </Route>
 
             <Route path="/landpage" element={<Landpage />} />
