@@ -10,7 +10,6 @@ import { FaUserCircle as User, FaUserAlt as User2 } from 'react-icons/fa'
 import { ImExit as Sair } from 'react-icons/im'
 import { RiContactsFill as Contact } from 'react-icons/ri'
 import { API_SERVER } from '../config'
-import { TextField } from '@mui/material';
 
 const Perfil = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);

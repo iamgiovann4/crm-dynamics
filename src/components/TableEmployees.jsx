@@ -18,6 +18,7 @@ const TableEmployee = ({employee, setEmployees, employees, setOpenModalEdit, ind
         }
       })
       const data = await response.json()
+      console.log(data)
       toast.success('Produto Deletado com sucesso')
       const newProducts = employees.filter((employee) => employee.id !== id)
       setEmployees(newProducts)

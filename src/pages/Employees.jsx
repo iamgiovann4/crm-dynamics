@@ -4,23 +4,17 @@ import React, { useEffect, useState } from 'react'
 import './TableAll.css'
 import Box from '@mui/material/Box'
 import TableEmployees from '../components/TableEmployees'
-import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 import { useNavigate } from "react-router"
 import { API_SERVER } from "../config"
 
-const hostEmployee = process.env.REACT_APP_HOST_LINE_EMPLOYEES
-
-
 const Employees = () => {
 
     const navigate = useNavigate()
-    const [employees, setEmployees] = useState(false); {/* Atualiza os dados do Banco */ }
-    const [openModal, setOpenModal] = useState(false); {/* Abrir e fechar o modal */ }
+    const [employees, setEmployees] = useState(false);
 
-    const [openModalEdit, setOpenModalEdit] = useState(false); {/* Abrir e fechar o modal */ }
-    const [employeesToEdit, setEmployeesToEdit] = useState({})
-
+    const [openModalEdit, setOpenModalEdit] = useState(false);
+    console.log(openModalEdit)
 
     const loadEmployees = async () => {
         try {
@@ -38,51 +32,6 @@ const Employees = () => {
     useEffect(() => {
         loadEmployees()
     }, []) // [] = executa apenas uma vez quando o componente é montados
-
-
-
-    const handleEdit = async (event) => {
-        event.preventDefault()
-        const id = parseInt(event.target.id.value)
-        const fname = event.target.fname.value
-        const lname = event.target.lname.value
-        const cpf = event.target.cpf.value
-        const email = event.target.email.value
-        const office = event.target.office.value
-        const wage = event.target.wage.value
-        const birth = event.target.birth.value
-        const street = event.target.street.value
-        const number = event.target.number.value
-        const address = event.target.address.value
-        const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
-        try {
-            const response = await fetch(`${API_SERVER}/product`,
-                {
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(Employees),
-                })
-            const data = await response.json()
-            if (response.status === 200) {
-                toast.success('Produto editado com sucesso')
-                const newProducts = employees.map((employee) => {
-                    if (employee.id === id) {
-                        return Employees
-                    }
-                    return employee
-                })
-                setEmployees(newProducts)
-                setOpenModal(false)
-            } else {
-                alert(data.message)
-                console.log(data)
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     return (
         <>

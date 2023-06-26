@@ -7,7 +7,6 @@ import {
   Autocomplete,
   TextField,
   Button,
-  Modal,
   Table,
   TableHead,
   TableRow,

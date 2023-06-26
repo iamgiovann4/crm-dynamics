@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -40,7 +40,7 @@ const EmployeesEdit = () => {
         const street = event.target.street.value
         const number = event.target.number.value
         const address = event.target.address.value
-        const Employees = { id, fname, lname, cpf, email, email, office, wage, birth, street, number, address }
+        const Employees = { id, fname, lname, cpf, email, office, wage, birth, street, number, address }
         try {
             const response = await fetch(`${API_SERVER}/employees/`,
                 {
