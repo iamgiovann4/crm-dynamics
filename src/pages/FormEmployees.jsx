@@ -40,7 +40,7 @@ const FormEmployees = () => {
             const data = await response.json()
             console.log(data)
             navigate("/funcionarios")
-            toast.success('Produto criado com sucesso')
+            toast.success('Funcionario cadastrado com sucesso!')
         } catch (error) {
             toast.error('Aconteceu um imprevisto, tente novamente mais tarde')
         }

@@ -26,10 +26,10 @@ const Router = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/funcionarios" element={<Employees />} />
                 <Route path="/vendas" element={<Sales />} />
-                <Route path="/cadastroC" element={<FormCustomers />} />
-                <Route path="/add-funcionarios" element={<FormEmployees />} />
-                <Route path="/cliente-edit" element={<CustomersEdit />} />
-                <Route path="/funcionarios-edit" element={<EmployeesEdit />} />
+                <Route path="/cadastro-cliente" element={<FormCustomers />} />
+                <Route path="/cadastro-funcionario" element={<FormEmployees />} />
+                <Route path="/editar-cliente" element={<CustomersEdit />} />
+                <Route path="/editar-funcionario" element={<EmployeesEdit />} />
             </Route>
 
             <Route path="/landpage" element={<Landpage />} />

@@ -7,18 +7,38 @@ import { useNavigate } from 'react-router-dom'
 import MiniDrawer from '../components/MiniDrawer'
 import clientes from '../images/clientes.svg'
 import { API_SERVER } from '../config'
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.common.black,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
 
 function Customers() {
     const [clients, setClients] = useState(false);
+    const [customersToEdit, setCustomersToEdit] = useState({})
+    const [searchTerm, setSearchTerm] = useState('');
+
+    console.log(customersToEdit)
+
     const navigate = useNavigate()
 
-    // console.log(products)
-    // const OpenModal = () => {
-    //     setOpenModal(true)
-    // }
-    // const CloseModal = () => {
-    //     setOpenModal(false)
-    // }
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
 
     const loadClients = async () => {
         try {
@@ -37,54 +57,68 @@ function Customers() {
 
     return (
         <>
-            <MiniDrawer>
+            <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
                 <Content title='Clientes'>
-                    <Box className='caixaTabela'>
-                        <table className='tabela'>
-                            <thead>
-                                <tr>
-                                    <th colSpan={12}>
-                                        <Box direction="row" className='stack'>
-                                            <h1 className='tituloTabela'>Seus Clientes</h1>
-                                            <button disabled={false} variant="filled" className='botao' onClick={() => navigate('/cadastroC')}>Adicionar</button>
-                                        </Box>
-                                    </th>
-                                </tr>
-
-                                <tr>
-                                    <th className='coluna' align='left'>Nome</th>
-                                    <th className='coluna' align='left'>Sobrenome</th>
-                                    <th className='coluna' align='left'>CPF</th>
-                                    <th className='coluna' align='left'>Nascimento</th>
-                                    <th className='coluna' align='left'>Telefone</th>
-                                    <th className='coluna' align='left'>E-mail</th>
-                                    <th className='coluna' align='left'>Endereço</th>
-                                    <th className='coluna' align='left'>Bairro</th>
-                                    <th className='coluna' align='left'>CEP</th>
-                                    <th className='coluna' align='left'>N°</th>
-                                    <th className='coluna' align='left'>Complemento</th>
-                                    <th className='coluna' align='left'></th>
-                                    <th className='coluna' align='left'></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {clients.length > 0 ?
-                                    clients.map((client, index) => (
-                                        <TableCustomers index={index} key={client.id} client={client} setClients={setClients} clients={clients} />
-                                    )) : (
-                                        <tr>
-                                            <td colSpan={5}>
-                                                <img src={clientes} alt="clientes" />
-                                            </td>
-                                        </tr>
-                                    )}
-                            </tbody>
-                        </table>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                        <TextField
+                            label="Pesquisar"
+                            variant="outlined"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            style={{ marginBottom: '0px', marginTop: '60px', width: '90%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px' }}
+                        />
                     </Box>
+                    <TableContainer style={{ backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', width: '90%', margin: '20px auto 0 auto', borderRadius: '10px' }} className='caixaTabela' component={Paper}>
+                        <Box direction="row" className='stack'>
+                            <h1 style={{ paddingLeft: '70px', paddingTop: '0px' }}>Seus Clientes</h1>
+                            <button className='botao' disabled={false} variant="filled" onClick={() => navigate('/cadastro-cliente')}>Adicionar</button>
+                        </Box>
+                        <Table sx={{ minWidth: 500 }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow >
+                                    <StyledTableCell style={styles.coluna} align='left'>Nome</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Sobrenome</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">CPF</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Nascimento</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Telefone</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">E-mail</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Endereço</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Bairro</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">CEP</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">N°</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Complemento</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left"></StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left"></StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {clients && clients.length > 0 &&
+                                    <TableCustomers setClients={setClients} clients={clients} setCustomersToEdit={setCustomersToEdit} searchTerm={searchTerm} />}
+                                {clients && clients.length === 0 &&
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <img src={clientes} alt="clientes" style={{ width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                }
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </Content>
             </MiniDrawer>
         </>
     )
+}
+
+const styles = {
+    coluna: {
+        color: '#9e9e9e',
+        borderBottom: '1px solid #ddd',
+        paddingLeft: '20px',
+        paddingBottom: '15px',
+        fontWeight: 'bold',
+        fontSize: '16px'
+    }
 }
 
 export default Customers
