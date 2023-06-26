@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import MiniDrawer from '../components/MiniDrawer'
 import pe1 from '../images/pe1.svg'
 import './tableAll.css'
+import './product.css'
 import './modal.css'
 // const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 
