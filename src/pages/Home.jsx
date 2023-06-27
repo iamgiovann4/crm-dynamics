@@ -9,7 +9,7 @@ import MiniDrawer from '../components/MiniDrawer'
 // import Footer from '../components/Footer';
 
 const Home = () => {
-    return (
+    return (   
         <>
             <MiniDrawer>
                 <Content title="Dashboard">
