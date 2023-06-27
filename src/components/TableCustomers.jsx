@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
 import { API_SERVER } from '../config';
 import { styled } from '@mui/material/styles';
+import moment from 'moment-timezone';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
@@ -25,6 +26,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
+function DataFormatada({ dataString }) {
+  const data = moment.utc(dataString).tz('America/Sao_Paulo');
+
+  const dia = data.format('DD');
+  const mes = data.format('MM');
+  const ano = data.format('YYYY');
+
+  return <span>{`${dia}/${mes}/${ano}`}</span>;
+}
 
 const TableClient = ({ setClients, clients, setCustomersToEdit, searchTerm }) => {
 
@@ -65,7 +76,9 @@ const TableClient = ({ setClients, clients, setCustomersToEdit, searchTerm }) =>
           </StyledTableCell>
           <StyledTableCell style={styles.dadosTabela} align="left">{row.lname}</StyledTableCell>
           <StyledTableCell style={styles.dadosTabela} align="left">{row.cpf}</StyledTableCell>
-          <StyledTableCell style={styles.dadosTabela} align="left">{row.dateOfBirth}</StyledTableCell>
+          <StyledTableCell style={styles.dadosTabela} align="left">
+            <DataFormatada dataString={row.dateOfBirth} />
+          </StyledTableCell>
           <StyledTableCell style={styles.dadosTabela} align="left">{row.phone}</StyledTableCell>
           <StyledTableCell style={styles.dadosTabela} align="left">{row.email}</StyledTableCell>
           <StyledTableCell style={styles.dadosTabela} align="left">{row.address}</StyledTableCell>
