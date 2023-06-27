@@ -54,6 +54,14 @@ const Employees = () => {
         loadEmployees()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
+    // const CustomTextField = styled(TextField)({
+    //     '& .MuiOutlinedInput-root': {
+    //       '& fieldset': {
+    //         border: 'none',
+    //       },
+    //     },
+    //   });
+
     return (
         <>
             <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>

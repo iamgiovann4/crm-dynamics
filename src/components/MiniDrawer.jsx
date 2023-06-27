@@ -20,9 +20,13 @@ import Perfil from './Perfil';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import BadgeIcon from '@mui/icons-material/Badge';
+import { RiContactsFill } from 'react-icons/ri'
+import { FaMoneyCheck } from 'react-icons/fa'
+import { BsFillBagCheckFill } from 'react-icons/bs'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation as location } from 'react-router-dom';
 import './MiniDrawer.css'
+import dynamics from '../images/Dynamics.png'
 
 const drawerWidth = 240;
 
@@ -96,7 +100,7 @@ const MiniDrawer = ({ children }) => {
     const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
-        setOpen(true);
+        setOpen(!open);
     };
 
     const handleDrawerClose = () => {
@@ -108,6 +112,7 @@ const MiniDrawer = ({ children }) => {
             <CssBaseline />
             <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: '#f1f1f1', color: 'black' }}>
                 <Toolbar>
+
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -118,49 +123,67 @@ const MiniDrawer = ({ children }) => {
                             ...(open && { display: 'none' }),
                         }}
                     >
-                        <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" sx={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                    <img src={dynamics} alt="" style={{
+                        marginLeft: 20,
+                        ...(open && { display: 'none' }),
+                    }} />
+                    <Typography variant="h6" noWrap component="div" sx={{ display: "flex", justifyContent: "flex-end", width: '100%' }}>
+
                         <Perfil />
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open} >
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            <Drawer variant="permanent" open={open} sx={{ zIndex: '99999999' }}>
+                <DrawerHeader >
+                    <img src={dynamics} alt="" style={{
+                        marginRight: 5,
+                        marginTop: 10,
+                        width: '75%',
+                        ...(!open && { display: 'none' }),
+                    }} />
+                    <IconButton onClick={handleDrawerOpen}>
+                        <MenuIcon sx={{ marginTop: '10px' }} />
+                        {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
                     </IconButton>
                 </DrawerHeader>
-                <List>
+                <List pt={0} >
                     {[
 
-                    { text: 'Início', link: '/home' },
-                    { text: 'Produtos', link: '/produtos' },
-                    { text: 'Clientes', link: '/clientes'},
-                    { text: 'Funcionarios', link: '/funcionarios'},
-                    { text: 'Vendas', link: '/vendas'},
-                    { text: 'Vendas Feitas', link: '/listar-vendas'}
+                        { text: 'Início', link: '/home' },
+                        { text: 'Produtos', link: '/produtos' },
+                        { text: 'Clientes', link: '/clientes' },
+                        { text: 'Funcionarios', link: '/funcionarios' },
+                        { text: 'Vendas', link: '/vendas' },
+                        { text: 'Relatório', link: '/listar-vendas' },
+                        { text: 'Contato', link: '/contato' }
 
-                      
-                        ].map((item, index) => (
-                        <ListItem exact="true" className="navlink" to='/' key={index} disablePadding sx={{ display: 'block'}}>
-                            <ListItemButton 
-                            key={item.text}
-                            exact="true"
-                            component={NavLink}
+
+                    ].map((item, index) => (
+                        <ListItem
+                            exact
                             to={item.link}
+                            disablePadding
+                            sx={{
+                                display: 'block',
+                                margin: '0px',
+                                '&:hover': {
+                                    background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
+                                    boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+                                    color: 'white'
+                                }
+                            }}
+                            component={NavLink}
+                        >
+                            <ListItemButton
+                                key={item.text}
+                                exact
+                                component="div"
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
-                                    margin: '10px',
-                                    borderRadius: '15px',
-                                    '&:hover':{
-                                        background: 'linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)',
-                                        boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
-                                        borderRadius: '15px',
-                                        color: 'white'
-                                    }
+                                    margin: '10px'
                                 }}
                             >
                                 <ListItemIcon
@@ -170,12 +193,13 @@ const MiniDrawer = ({ children }) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-
-                                    {index % 5 === 0 ? <HomeIcon /> : 
-                                    index % 5 === 1 ? <InventoryIcon /> : 
-                                    index % 5 === 2 ? <ContactsIcon/> : 
-                                    index % 5 === 3 ? <BadgeIcon /> : <TrendingUpIcon/>}
-
+                                    {index % 7 === 0 ? <HomeIcon sx={{ fontSize: '24px' }} /> :
+                                        index % 7 === 1 ? <InventoryIcon sx={{ fontSize: '24px' }} /> :
+                                            index % 7 === 2 ? <ContactsIcon sx={{ fontSize: '24px' }} /> :
+                                                index % 7 === 3 ? <BadgeIcon sx={{ fontSize: '24px' }} /> :
+                                                    index % 7 === 4 ? <FaMoneyCheck size={24} /> :
+                                                        index % 7 === 5 ? <BsFillBagCheckFill size={24} /> :
+                                                            index % 7 === 6 ? <RiContactsFill size={24} /> : <TrendingUpIcon />}
                                 </ListItemIcon>
                                 <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
@@ -184,7 +208,7 @@ const MiniDrawer = ({ children }) => {
                 </List>
 
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, pt: 0}}>
+            <Box component="main" sx={{ flexGrow: 1, pt: 0 }}>
                 <DrawerHeader />
                 {children}
             </Box>

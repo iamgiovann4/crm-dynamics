@@ -15,6 +15,7 @@ import CustomersEdit from "./pages/CustomersEdit";
 import FormEmployees from "./pages/FormEmployees";
 import EmployeesEdit from "./pages/EmployeesEdit";
 import ListSales from "./pages/ListSales";
+import Contact from "./pages/Contact";
 
 const Router = () => {
     return (
@@ -32,6 +33,7 @@ const Router = () => {
                 <Route path="/cadastro-funcionario" element={<FormEmployees />} />
                 <Route path="/editar-cliente" element={<CustomersEdit />} />
                 <Route path="/editar-funcionario" element={<EmployeesEdit />} />
+                <Route path="/contato" element={<Contact />} />
             </Route>
 
             <Route path="/landpage" element={<Landpage />} />
