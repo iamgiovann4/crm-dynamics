@@ -68,13 +68,17 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
         toast.success('Produto achado com sucesso')
     }
 
+    const filteredRows = rows.filter((row) =>
+    row.fname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
 
     return (
         <>
-            {rows.map((row) => (
+            {filteredRows.map((row) => (
                 <StyledTableRow key={row.id}>
                     <StyledTableCell style={styles.dadosTabela} align="left">{row.id}</StyledTableCell>
-                    <StyledTableCell style={styles.dadosTabela} align="left">{row.fname}</StyledTableCell>
+                    <StyledTableCell style={styles.dadosTabela} align="left"  scope="row">{row.fname}</StyledTableCell>
                     <StyledTableCell style={styles.dadosTabela} align="left">
                         <DataFormatada dataString={row.date} />
                     </StyledTableCell>

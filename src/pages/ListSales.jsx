@@ -53,6 +53,15 @@ function ListSales() {
         loadSales()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
+    const CustomTextField = styled(TextField)({
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            border: 'none',
+          },
+        },
+      });
+      
+
 
     return (
         <>
@@ -62,7 +71,7 @@ function ListSales() {
                         <Box direction="row" className='stack'>
                             <h1>Suas Vendas</h1>
                         </Box>
-                        <TextField
+                        <CustomTextField 
                             label="Search"
                             variant="outlined"
                             value={searchTerm}
