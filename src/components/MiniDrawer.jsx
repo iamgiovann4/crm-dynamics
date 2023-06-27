@@ -21,6 +21,7 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import BadgeIcon from '@mui/icons-material/Badge';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { NavLink } from 'react-router-dom';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 import './MiniDrawer.css'
 
 const drawerWidth = 240;
@@ -136,8 +137,8 @@ const MiniDrawer = ({ children }) => {
                     { text: 'Produtos', link: '/produtos' },
                     { text: 'Clientes', link: '/clientes'},
                     { text: 'Funcionarios', link: '/funcionarios'},
-                    { text: 'Vendas', link: '/vendas'},
-                    { text: 'Vendas Feitas', link: '/listar-vendas'}
+                    { text: 'Produtos Vendidos', link: '/listar-vendas'},
+                    { text: 'vendas', link: '/vendass'}
 
                       
                         ].map((item, index) => (
@@ -169,10 +170,11 @@ const MiniDrawer = ({ children }) => {
                                     }}
                                 >
 
-                                    {index % 5 === 0 ? <HomeIcon /> : 
-                                    index % 5 === 1 ? <InventoryIcon /> : 
-                                    index % 5 === 2 ? <ContactsIcon/> : 
-                                    index % 5 === 3 ? <BadgeIcon /> : <TrendingUpIcon/>}
+                                    {index % 6 === 0 ? <HomeIcon /> : 
+                                    index % 6 === 1 ? <InventoryIcon /> : 
+                                    index % 6 === 2 ? <ContactsIcon/> : 
+                                    index % 6 === 3 ? <BadgeIcon/> : 
+                                    index % 6 === 4 ? <FactCheckIcon /> : <TrendingUpIcon/>}
 
                                 </ListItemIcon>
                                 <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />

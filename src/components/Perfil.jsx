@@ -83,7 +83,7 @@ const Perfil = () => {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><NavLink to='/conta'><User2 />Perfil</NavLink></MenuItem>
+                    <NavLink to="/conta"  style={{color: 'black', textDecoration: 'none'}}><MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><User2 style={{color: 'black'}}/>Perfil</MenuItem></NavLink>
                     <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><Contact />Contato</MenuItem>
                     <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleLogout}><Sair />Sair</MenuItem>
                 </Menu>

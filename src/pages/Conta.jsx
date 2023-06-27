@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from '../components/Content';
-import Chart from '../components/CardName';
-import Chart2 from '../components/Calendario';
+import Chart from '../components/Calendario';
+import Chart2 from '../components/Trands';
 import PieChart from '../components/PieChart';
 import Chart4 from '../components/Grafico4';
 import './Home.css'
