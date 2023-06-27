@@ -53,14 +53,6 @@ function ListSales() {
         loadSales()
     }, []) // [] = executa apenas uma vez quando o componente é montados
 
-    const CustomTextField = styled(TextField)({
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            border: 'none',
-          },
-        },
-      });
-      
 
 
     return (
@@ -71,7 +63,7 @@ function ListSales() {
                         <Box direction="row" className='stack'>
                             <h1>Suas Vendas</h1>
                         </Box>
-                        <CustomTextField 
+                        <TextField
                             label="Search"
                             variant="outlined"
                             value={searchTerm}
@@ -84,19 +76,25 @@ function ListSales() {
                                     <StyledTableCell align='left'>Nmr. Pedido</StyledTableCell>
                                     <StyledTableCell align='left'>Cliente</StyledTableCell>
                                     <StyledTableCell align="left">Data da compra</StyledTableCell>
+                                    <StyledTableCell align="left">Total</StyledTableCell>
+                                    <StyledTableCell align="left"></StyledTableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
-                                {sales && sales.length > 0 &&
-                                    <TableSales setSales={setSales} sales={sales} searchTerm={searchTerm} />}
-                                {sales && sales.length === 0 &&
-                                    <tr>
-                                        <td colSpan={5}>
-                                            <img src={pe1} alt="pe1" style={{ width: '100%' }} />
-                                        </td>
-                                    </tr>
-                                }
-                            </TableBody>
+                                <TableBody>
+
+
+                                    {sales && sales.length > 0 &&
+                                        <TableSales setSales={setSales} sales={sales} searchTerm={searchTerm} />}
+                                    {sales && sales.length === 0 &&
+                                        <tr>
+                                            <td colSpan={5}>
+                                                <img src={pe1} alt="pe1" style={{ width: '100%' }} />
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                                </TableBody>
                         </Table>
                     </TableContainer>
                 </Content >

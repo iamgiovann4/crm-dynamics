@@ -1,13 +1,12 @@
-
+import moment from 'moment-timezone';
 import Box from '@mui/material/Box'
 import Hashids from 'hashids'
 import React from 'react';
-import { toast } from 'react-toastify';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { useEffect } from 'react';
 import { useState } from 'react';
+import { CgMoreO } from 'react-icons/cg'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -30,13 +29,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function DataFormatada({ dataString }) {
-    const indiceT = dataString.indexOf('T');
-    const dataFormatada = dataString.substring(0, indiceT);
+    const data = moment.utc(dataString).tz('America/Sao_Paulo');
 
-    const data = new Date(dataFormatada);
-    const dia = String(data.getDate()).padStart(2, '0');
-    const mes = String(data.getMonth() + 1).padStart(2, '0');
-    const ano = data.getFullYear();
+    const dia = data.format('DD');
+    const mes = data.format('MM');
+    const ano = data.format('YYYY');
 
     return <span>{`${dia}/${mes}/${ano}`}</span>;
 }
@@ -47,15 +44,16 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
     const [openModal, setOpenModal] = useState(false);
 
     const rows = sales;
-    const hashids = new Hashids('', 10)
+    const hashids = new Hashids('', 5)
     //   #{hashids.encode(row.id)}
-
     const loadItems = async (id) => {
         try {
             const response = await fetch(`http://localhost:3100/sales/${id}`);
             const data = await response.json();
             setItems(data)
             console.log(data)
+
+            console.log(items)
         } catch (error) {
             console.log(error);
         }
@@ -65,24 +63,32 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
         setOpenModal(true)
         loadItems(id)
         console.log(items)
-        toast.success('Produto achado com sucesso')
     }
 
     const filteredRows = rows.filter((row) =>
-    row.fname.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+        hashids.encode(row.id).toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
 
     return (
         <>
             {filteredRows.map((row) => (
                 <StyledTableRow key={row.id}>
-                    <StyledTableCell style={styles.dadosTabela} align="left">{row.id}</StyledTableCell>
-                    <StyledTableCell style={styles.dadosTabela} align="left"  scope="row">{row.fname}</StyledTableCell>
+                    <StyledTableCell style={styles.dadosTabela} align="left" scope="row">
+                        #{hashids.encode(row.id)}
+                    </StyledTableCell>
+                    <StyledTableCell style={styles.dadosTabela} align="left" >{row.fname}</StyledTableCell>
                     <StyledTableCell style={styles.dadosTabela} align="left">
                         <DataFormatada dataString={row.date} />
                     </StyledTableCell>
-                    <button onClick={() => showItems(row.id)}>mostrar</button>
+                    <StyledTableCell style={styles.dadosTabela} align="left">
+                        {row.valor}
+                    </StyledTableCell>
+                    <StyledTableCell>
+                        <CgMoreO
+                            size={24}
+                            onClick={() => showItems(row.id)}>Itens</CgMoreO>
+                    </StyledTableCell>
                 </StyledTableRow>
             ))}
 
@@ -99,7 +105,9 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
                         <h2>Produtos Comprados</h2>
                         <ul>
                             {items.map((item, index) => (
-                                <li key={index}>{item.name}</li>
+                                <>
+                                    <li key={index}>{item.name} - {item.qtd}x</li>
+                                </>
                             ))}
                         </ul>
                     </Box>
