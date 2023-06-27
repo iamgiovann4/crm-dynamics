@@ -14,6 +14,7 @@ import Searchbar from "./pages/SearchBar";
 import CustomersEdit from "./pages/CustomersEdit";
 import FormEmployees from "./pages/FormEmployees";
 import EmployeesEdit from "./pages/EmployeesEdit";
+import ListSales from "./pages/ListSales";
 
 const Router = () => {
     return (
