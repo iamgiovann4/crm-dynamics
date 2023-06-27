@@ -21,6 +21,10 @@ const Sales = () => {
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedProductsList, setSelectedProductsList] = useState([]);
 
+  const [totalValue, setTotalValue] = useState(0);
+
+  const [selectedProductValue, setSelectedProductValue] = useState('');
+
   const loadClients = async () => {
     try {
       const response = await fetch(`${API_SERVER}/client`);
@@ -74,22 +78,38 @@ const Sales = () => {
       toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
     }
   }
+
   const handleAddProduct = () => {
     if (selectedProduct) {
       const product = products.find((p) => p.name === selectedProduct);
+
+      // Remover os caracteres não numéricos do preço
+      const priceString = product.price.replace(/[^\d.,]/g, "");
+      const price = parseFloat(priceString.replace(",", "."));
+
       const selectedProductWithClientId = {
-        ...product
+        ...product,
+        qtd: selectedProductValue,
+        value: price * selectedProductValue, // Calcular o valor total corretamente
       };
       setSelectedProductsList([...selectedProductsList, selectedProductWithClientId]);
       setSelectedProduct("");
+      setSelectedProductValue("");
+
+      const productValue = price * selectedProductValue; // Calcular o valor total corretamente
+      setTotalValue(totalValue + productValue);
     }
   };
 
+
   const handleShowArray = async () => {
     const result = {
-      clientID: selectedClient.id,
-      sales: selectedProductsList
+      clientID: selectedClient.id, 
+      sales: selectedProductsList,
+      totalValue: totalValue, // Incluir o valor total no objeto result
     }
+
+    console.log(result);
 
     try {
       const response = await fetch('http://localhost:3100/sales',
@@ -158,6 +178,15 @@ const Sales = () => {
                         </option>
                       ))}
                     </select>
+                    <TextField
+                      type="number"
+                      label="Valor"
+                      value={selectedProductValue}
+                      onChange={(event) => setSelectedProductValue(Number(event.target.value))}
+                      variant="outlined"
+                      margin="normal"
+                      sx={{ width: "45rem" }}
+                    />
                     <Button variant="contained" onClick={handleAddProduct} sx={{ mt: 2 }}>
                       Adicionar Produto
                     </Button>
@@ -180,6 +209,9 @@ const Sales = () => {
                         <TableCell>{product.price}</TableCell>
                       </TableRow>
                     ))}
+                    <TableRow>
+                      <TableCell colSpan={2} align="right">Total: {totalValue}</TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
 

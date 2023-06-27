@@ -60,7 +60,7 @@ const TableEmployee = ({ setEmployees, employees, setEmployeesToEdit, searchTerm
   return (
     <>
       {filteredRows.map((row) => (
-        <StyledTableRow key={row.fname}>
+        <StyledTableRow key={row.id}>
           <StyledTableCell component="th" scope="row">
             {row.fname}
           </StyledTableCell>
