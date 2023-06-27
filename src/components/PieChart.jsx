@@ -64,7 +64,8 @@ export function Chart3() {
                 borderRadius: '10px',
                 background: '#FFF',
                 boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-                padding: '50px'}}>
+                padding: '50px'
+                }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

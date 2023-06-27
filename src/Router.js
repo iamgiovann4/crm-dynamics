@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Cadastro from "./pages/SignUp";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
+import Conta from "./pages/Conta";
 import Pag404 from "./pages/404";
 import Login from "./pages/Login";
 import Landpage from "./pages/Landpage";
@@ -21,6 +22,7 @@ const Router = () => {
             <Route path="/" element={<Landpage />} />
             <Route element={<CheckLogged />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/conta" element={<Conta />} />
                 <Route path="/produtos" element={<Products />} />
                 <Route path="/clientes" element={<Customers />} />
                 <Route path="/home" element={<Home />} />
