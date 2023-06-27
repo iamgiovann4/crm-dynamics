@@ -66,15 +66,15 @@ const Login = () => {
     return (
         <>
             <Content>
-                <Grid container spacing={2} sx={{ height: '100%', padding: '0px' }}>
-                    <Grid width={"auto"} item xs={12} >
-                        <Box sx={{ backgroundColor: "#f1f1f1", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", paddingTop: "50px" }}>
+                <Grid container spacing={2} sx={{ padding: '0px' }}>
+                    <Grid width={"auto"} item xs={12} sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                        <Box sx={{  display: "flex", justifyContent: "center",  marginBottom: '40px'}}>
                             <img src={Logo} alt={'Logo'} />
                         </Box>
-                        <Box style={{ backgroundColor: "#f1f1f1", display: "flex", alignItems: "center", height: "870px", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
-                            <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", }}>
-                                <Box sx={{ marginTop: "-100px" }}>
-                                    <img style={styles.silhueta} src={Silhueta} alt={'silhueta'} />
+                        <Box style={{ backgroundColor: "#f1f1f1", display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
+                            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", }}>
+                                <Box sx={{marginTop: '-70px'}}>
+                                    <img style={styles.silhueta} src={Silhueta} alt={'silhueta'}  />
                                 </Box>
                                 <form sx={{ m: 1, width: '25ch', padding: "100px" }} onSubmit={handleSubmit}>
                                     <Grid item xs={12}>
