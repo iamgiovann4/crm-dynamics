@@ -11,11 +11,11 @@ import MiniDrawer from '../components/MiniDrawer'
 import { API_SERVER } from '../config';
 
 const CustomersEdit = () => {
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
 
     const { state: row } = useLocation()
     console.log(row)
-    
+
     const [fname, setFname] = useState(row.fname)
     const [lname, setLname] = useState(row.lname)
     const [cpf, setCpf] = useState(row.cpf)
@@ -69,11 +69,12 @@ const CustomersEdit = () => {
     return (
         <>
             <MiniDrawer>
-                <Content> 
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                        <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
-                                <TextField type="hidden" name="id" value={row.id} />
+                <Content>
+                    <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', height: '850px' }}>
+                        <h1 style={{ color: '#252525', marginBottom: '50px' }}>Editar Cliente</h1>
+                        <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
+                            <Grid container spacing={2} sx={{ width: '70%' }}>
+                                <input type="hidden" name="id" value={row.id} />
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" value={fname} variant="outlined" fullWidth onChange={e => setFname(e.target.value)} />
@@ -81,7 +82,7 @@ const CustomersEdit = () => {
                                 </Grid><br />
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='lname' label="Sobrenome" value={lname} variant="outlined" fullWidth onChange={e => setLname(e.target.value)}/>
+                                        <TextField name='lname' label="Sobrenome" value={lname} variant="outlined" fullWidth onChange={e => setLname(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -91,22 +92,22 @@ const CustomersEdit = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='dateOfBirth' label="Data de Nascimento" value={dateOfBirth} variant="outlined" fullWidth onChange={e => setDateOfBirth(e.target.value)}/>
+                                        <TextField name='dateOfBirth' label="Data de Nascimento" value={dateOfBirth} variant="outlined" fullWidth onChange={e => setDateOfBirth(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='phone' label="Telefone" value={phone} variant="outlined" fullWidth onChange={e => setPhone(e.target.value)}/>
+                                        <TextField name='phone' label="Telefone" value={phone} variant="outlined" fullWidth onChange={e => setPhone(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='email' label="E-mail" value={email} variant="outlined" fullWidth onChange={e => setEmail(e.target.value)}/>
+                                        <TextField name='email' label="E-mail" value={email} variant="outlined" fullWidth onChange={e => setEmail(e.target.value)} />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='address' label="Endereço" value={address} variant="outlined" fullWidth onChange={e => setAddress(e.target.value)}/>
+                                        <TextField name='address' label="Endereço" value={address} variant="outlined" fullWidth onChange={e => setAddress(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -116,17 +117,17 @@ const CustomersEdit = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='cep' label="CEP" value={cep} variant="outlined" fullWidth onChange={e => setCep(e.target.value)}/>
+                                        <TextField name='cep' label="CEP" value={cep} variant="outlined" fullWidth onChange={e => setCep(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='houseNumber' label="Nº Casa" value={houseNumber} variant="outlined" fullWidth onChange={e => setHouseNumber(e.target.value)}/>
+                                        <TextField name='houseNumber' label="Nº Casa" value={houseNumber} variant="outlined" fullWidth onChange={e => setHouseNumber(e.target.value)} />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='referencePoint' label="Complemento" value={referencePoint} variant="outlined" fullWidth onChange={e => setReferencePoint(e.target.value)}/>
+                                        <TextField name='referencePoint' label="Complemento" value={referencePoint} variant="outlined" fullWidth onChange={e => setReferencePoint(e.target.value)} />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12}>
