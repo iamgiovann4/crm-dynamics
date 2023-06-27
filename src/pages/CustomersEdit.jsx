@@ -11,21 +11,22 @@ import MiniDrawer from '../components/MiniDrawer'
 import { API_SERVER } from '../config';
 
 const CustomersEdit = () => {
-
-    const { state: client } = useLocation()
-    console.log(client)
     const navigate = useNavigate() 
-    const [fname, setFname] = useState(client.fname)
-    const [lname, setLname] = useState(client.lname)
-    const [cpf, setCpf] = useState(client.cpf)
-    const [dateOfBirth, setDateOfBirth] = useState(client.dateOfBirth)
-    const [phone, setPhone] = useState(client.phone)
-    const [email, setEmail] = useState(client.email)
-    const [address, setAddress] = useState(client.address)
-    const [street, setStreet] = useState(client.street)
-    const [cep, setCep] = useState(client.cep)
-    const [houseNumber, setHouseNumber] = useState(client.houseNumber)
-    const [referencePoint, setReferencePoint] = useState(client.referencePoint)
+
+    const { state: row } = useLocation()
+    console.log(row)
+    
+    const [fname, setFname] = useState(row.fname)
+    const [lname, setLname] = useState(row.lname)
+    const [cpf, setCpf] = useState(row.cpf)
+    const [dateOfBirth, setDateOfBirth] = useState(row.dateOfBirth)
+    const [phone, setPhone] = useState(row.phone)
+    const [email, setEmail] = useState(row.email)
+    const [address, setAddress] = useState(row.address)
+    const [street, setStreet] = useState(row.street)
+    const [cep, setCep] = useState(row.cep)
+    const [houseNumber, setHouseNumber] = useState(row.houseNumber)
+    const [referencePoint, setReferencePoint] = useState(row.referencePoint)
 
     const handleEdit = async (event) => {
         event.preventDefault()
@@ -72,7 +73,7 @@ const CustomersEdit = () => {
                     <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
                         <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
-                                <TextField type="hidden" name="id" value={client.id} />
+                                <TextField type="hidden" name="id" value={row.id} />
                                 <Grid item xs={6}>
                                     <FormControl sx={{ width: '100%' }} variant='outlined'>
                                         <TextField name='fname' label="Nome" value={fname} variant="outlined" fullWidth onChange={e => setFname(e.target.value)} />

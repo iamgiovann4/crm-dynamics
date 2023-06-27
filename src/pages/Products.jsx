@@ -7,6 +7,7 @@ import MiniDrawer from '../components/MiniDrawer'
 import pe1 from '../images/pe1.svg'
 import './TableAll.css'
 import './Modal.css'
+import { API_SERVER } from '../config'
 import './product.css'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -44,7 +45,7 @@ function Products() {
 
     const loadProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3100/product')
+            const response = await fetch(`${API_SERVER}/product`)
             const data = await response.json()
             setProducts(data)
             console.log(data)
@@ -128,26 +129,28 @@ function Products() {
         <>
             <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
                 <Content title='Produtos'>
-                    <TableContainer style={{ backgroundColor: 'transparent', boxShadow: 'none', width: '55%', margin: '0 auto' }} className='caixaTabela' component={Paper}>
-                        <Box direction="row" className='stack'>
-                            <h1>Seus Produtos</h1>
-                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
-                        </Box>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <TextField
-                            label="Search"
+                            label="Pesquisar"
                             variant="outlined"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            style={{ marginBottom: '16px', marginTop: '16px', width: '100%' }}
+                            style={{ marginBottom: '0px', marginTop: '60px', width: '60%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px' }}
                         />
-                        <Table sx={{ maxWidth: '100%' }} aria-label="customized table">
+                    </Box>
+                    <TableContainer style={{ backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', width: '60%', margin: '20px auto 0 auto', borderRadius: '10px' }} className='caixaTabela' component={Paper}>
+                        <Box direction="row" className='stack'>
+                            <h1 style={{ paddingLeft: '70px', paddingTop: '0px' }}>Seus Produtos</h1>
+                            <button className='botao' disabled={false} variant="filled" onClick={() => setOpenModal(true)}>Adicionar</button>
+                        </Box>
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow >
-                                    <StyledTableCell align='left'>Produtos</StyledTableCell>
-                                    <StyledTableCell align="left">Preço</StyledTableCell>
-                                    <StyledTableCell align="left">Quantidade</StyledTableCell>
-                                    <StyledTableCell align="left"></StyledTableCell>
-                                    <StyledTableCell align="left"></StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align='left'>Produtos</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Preço</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Quantidade</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left"></StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left"></StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -208,6 +211,17 @@ function Products() {
             </MiniDrawer >
         </>
     )
+}
+
+const styles = {
+    coluna: {
+        color: '#9e9e9e',
+        borderBottom: '1px solid #ddd',
+        paddingLeft: '20px',
+        paddingBottom: '15px',
+        fontWeight: 'bold',
+        fontSize: '16px'
+    }
 }
 
 export default Products
