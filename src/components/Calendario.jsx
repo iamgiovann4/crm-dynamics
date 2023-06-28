@@ -79,7 +79,7 @@ const Clock = () => {
       </div>
       </Box>
 
-    </>
+    </div>
   );
 };
 
