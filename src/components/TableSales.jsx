@@ -103,8 +103,17 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
                                 setOpenModal(false);
                             }
                         }}>
-                            <Box className='container'>
-                                <div className='xizinho'>
+                            <Box sx={{backgroundColor: '#fff', borderRadius: '10px', boxShadow: '0px 0px 40px 20px rgba(0, 0, 0, 0.25)', height: '450px', width: '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
+                                    width: '83%',
+                                    color: '#252525',
+                                    fontWeight: 'bolder',
+                                    fontSize: '20px',
+                                    cursor: 'pointer',
+                                    marginTop: '-100px',
+                                    marginTop: '-100px'}} >
                                     <p onClick={() => setOpenModal(false)}>X</p>
                                 </div>
                                 <h2 style={{fontSize: '25px', color: "linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)"}}>Produtos Comprados</h2>

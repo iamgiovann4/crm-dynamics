@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from "../images/Dynamics.png"
-import Quadrados from "../images/quadrados.png"
 import './SignUp.css'
 import Button from "../components/Button"
 import { Link, useNavigate } from 'react-router-dom';
