@@ -23,11 +23,9 @@ const Home = () => {
                     </div>
                     <div className='grafico2'>
                         <Chart2 />
-                        <div sx={{ display: "flex", rowDirection: "row" }}>
-                            <Grafico1></Grafico1>
-                            <Grafico2></Grafico2>
-                            <Grafico3></Grafico3>
-                            <Grafico4></Grafico4>
+                        <div>
+                            <div><Grafico2></Grafico2></div>
+                            <div><Grafico1 ></Grafico1></div>
                         </div>
                     </div>
 

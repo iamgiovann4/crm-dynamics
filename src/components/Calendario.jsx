@@ -12,7 +12,7 @@ export function Chart() {
 
   return (
     <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
-      <Box width={1000} height={50} data={data} style={{
+      <Box width={980} height={50} data={data} style={{
         borderRadius: '10px',
         background: '#FFF',
         boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',

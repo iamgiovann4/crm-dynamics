@@ -49,9 +49,6 @@ useEffect(() => {
 <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
       <Box width={1000} height={440} style={{
         borderRadius: '10px',
-        background: 'rgba(255, 255, 255, 1), rgba(15, 154, 254, 1)',
-        boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-        padding: '50px',
         boxSizing: 'initial'
       }}>
 
