@@ -160,7 +160,8 @@ const MiniDrawer = ({ children }) => {
 
                     ].map((item, index) => (
                         <ListItem
-                            exact
+                            key={index}
+                            exact="true"
                             to={item.link}
                             disablePadding
                             sx={{
@@ -175,8 +176,6 @@ const MiniDrawer = ({ children }) => {
                             component={NavLink}
                         >
                             <ListItemButton
-                                key={item.text}
-                                exact
                                 component="div"
                                 sx={{
                                     minHeight: 48,

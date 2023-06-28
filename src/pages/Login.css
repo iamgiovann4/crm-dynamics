@@ -1,0 +1,16 @@
+body{
+    height: 100vh;
+}
+.teste{
+    background-image: url('../images/capa.png') !important;
+    background-size: cover;
+}
+
+.contentForm{
+    background-color: #97909063;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
+}
