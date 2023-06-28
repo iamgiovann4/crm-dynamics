@@ -5,3 +5,8 @@
 html, body, #root{
     height: 100%;
 }
+
+.content{
+    background-image: url('../images/capa.png') !important;
+    background-size: cover;
+}

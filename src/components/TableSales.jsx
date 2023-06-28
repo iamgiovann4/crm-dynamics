@@ -7,6 +7,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { useState } from 'react';
 import { CgMoreO } from 'react-icons/cg'
+import { border } from '@mui/system';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -21,6 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
+        backgroundColor: "#f1f1f1"
     },
     // hide last border
     '&:last-child td, &:last-child th': {
@@ -88,9 +90,7 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
                         {row.valor}
                     </StyledTableCell>
                     <StyledTableCell>
-                        <CgMoreO size={24} onClick={() => showItems(row.id)}>
-                            Itens
-                        </CgMoreO>
+                        <CgMoreO size={24} onClick={() => showItems(row.id)}/>
                     </StyledTableCell>
                 </StyledTableRow>
             ))}
@@ -98,29 +98,44 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
             {openModal && (
                 <tr key="modal">
                     <td>
-                        <Box className='modal' onClick={(event) => {
+                        <Box sx={{ zIndex: '9999999999' }} className='modal' onClick={(event) => {
                             if (event.target.className.includes('modal')) {
                                 setOpenModal(false);
                             }
                         }}>
-                            <Box className='container'>
-                                <div className='xizinho'>
+                            <Box sx={{backgroundColor: '#fff', borderRadius: '10px', boxShadow: '0px 0px 40px 20px rgba(0, 0, 0, 0.25)', height: '450px', width: '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
+                                    width: '83%',
+                                    color: '#252525',
+                                    fontWeight: 'bolder',
+                                    fontSize: '20px',
+                                    cursor: 'pointer',
+                                    marginTop: '-100px',
+                                    marginTop: '-100px'}} >
                                     <p onClick={() => setOpenModal(false)}>X</p>
                                 </div>
-                                <h2>Produtos Comprados</h2>
-                                <ul>
-                                    {items.map((item, index) => (
-                                        <>
-                                            <table>
-                                                <StyledTableRow key={index}>
-                                                    <StyledTableCell style={styles.dadosTabela} align="left" scope="row">
-                                                        {item.name} - {item.qtd}x
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            </table>
-                                        </>
-                                    ))}
-                                </ul>
+                                <h2 style={{fontSize: '25px', color: "linear-gradient(90deg, #0070C0 0%, rgba(15, 154, 254, 0.7) 100%)"}}>Produtos Comprados</h2>
+                                <table style={{ border: '1px solid black', padding: '10px' }}>
+                                    <thead>
+                                        <tr>
+                                            <th style={{ padding: '5px' }}>Produto</th>
+                                            <th style={{  padding: '5px' }}>Quantidade</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {items.map((item, index) => (
+                                            <>
+                                                <tr key={index}  style={{ border: '1px solid black'}}>
+                                                    <td style={{ padding: '5px' }}>{item.name}</td>
+                                                    <td style={{ padding: '5px', textAlign: 'center' }}>{item.qtd}x</td>
+                                                </tr>
+                                            </>
+                                        ))}
+                                    </tbody>
+                                </table >
                             </Box>
                         </Box>
                     </td>
@@ -138,7 +153,7 @@ const styles = {
         paddingRight: '20px',
         paddingLeft: '20px',
         paddingTop: '10px',
-        paddingBottom: '10px',
+        paddingBottom: '10px'
     },
     edit: {
         cursor: 'pointer',
