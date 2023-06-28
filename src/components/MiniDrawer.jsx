@@ -138,7 +138,7 @@ const MiniDrawer = ({ children }) => {
                     { text: 'Clientes', link: '/clientes'},
                     { text: 'Funcionarios', link: '/funcionarios'},
                     { text: 'Produtos Vendidos', link: '/listar-vendas'},
-                    { text: 'vendas', link: '/vendass'}
+                    { text: 'vendas', link: '/vendas'}
 
                       
                         ].map((item, index) => (
