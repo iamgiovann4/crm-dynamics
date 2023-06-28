@@ -73,10 +73,10 @@ function Customers() {
                             variant="outlined"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            style={{ marginBottom: '0px', marginTop: '60px', width: '90%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px' }}
+                            style={{ marginBottom: '0px', marginTop: '60px', width: '95%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px' }}
                         />
                     </Box>
-                    <TableContainer style={{ backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', width: '90%', margin: '20px auto 0 auto', borderRadius: '10px' }} className='caixaTabela' component={Paper}>
+                    <TableContainer style={{ backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', width: '95%', margin: '20px auto 0 auto', borderRadius: '10px' }} className='caixaTabela' component={Paper}>
                         <Box direction="row" className='stack'>
                             <h1 style={{ paddingLeft: '70px', paddingTop: '0px' }}>Seus Clientes</h1>
                             <button className='botao' disabled={false} variant="filled" onClick={() => navigate('/cadastro-cliente')}>Adicionar</button>

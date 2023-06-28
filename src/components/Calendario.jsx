@@ -40,7 +40,7 @@ const Clock = () => {
         borderRadius: '10px',
         background: '#FFF',
         boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-        padding: '50px',
+        padding: '70px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -54,31 +54,30 @@ const Clock = () => {
 
     </div>
       <div style={{ ...clockStyle}}>
-        <h2>Hora</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{hours}:{minutes}:{seconds}</p>
+        <h3 style={{color: '#4d4c4cb2'}}>Hora</h3>
+        <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{hours}:{minutes}:{seconds}</p>
       </div>
 
       <div style={{ ...clockStyle}}>
-        <h2>Dia da semna</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{dayOfWeek}</p>
+        <h3 style={{color: '#4d4c4cb2'}}>Dia da semna</h3>
+        <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{dayOfWeek}</p>
       </div>
 
       <div style={{ ...clockStyle}}>
-        <h2>Dia do Mês</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{dayOfMonth}</p>
+        <h3 style={{color: '#4d4c4cb2'}}>Dia do Mês</h3>
+        <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{dayOfMonth}</p>
       </div>
 
       <div style={{ ...clockStyle}}>
-        <h2>Mês</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{month}</p>
+        <h3 style={{color: '#4d4c4cb2'}}>Mês</h3>
+        <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{month}</p>
       </div>
 
       <div style={{ ...clockStyle}}>
-        <h2>Ano</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{year}</p>
+        <h3 style={{color: '#4d4c4cb2'}}>Ano</h3>
+        <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{year}</p>
       </div>
       </Box>
-
     </div>
   );
 };

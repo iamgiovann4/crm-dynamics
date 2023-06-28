@@ -13,6 +13,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Sales = () => {
   const [clients, setClients] = useState([]);
@@ -24,6 +25,8 @@ const Sales = () => {
   const [totalValue, setTotalValue] = useState(0);
 
   const [selectedProductValue, setSelectedProductValue] = useState('');
+
+  const navigate = useNavigate()
 
   const loadClients = async () => {
     try {
@@ -104,7 +107,7 @@ const Sales = () => {
 
   const handleShowArray = async () => {
     const result = {
-      clientID: selectedClient.id, 
+      clientID: selectedClient.id,
       sales: selectedProductsList,
       totalValue: totalValue, // Incluir o valor total no objeto result
     }
@@ -123,6 +126,7 @@ const Sales = () => {
       const data = await response.json()
       console.log(data)
       toast.success('Produto criado com sucesso')
+      navigate('/listar-vendas')
     } catch (error) {
       toast.error('Aconteceu um imprevisto, tente novamente mais tarde.')
     }
@@ -133,98 +137,106 @@ const Sales = () => {
     <>
       <MiniDrawer>
         <Content title="Vendas">
-          <h1>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label>Cliente:</label>
-                {clients.length > 0 ? (
-                  <Autocomplete
-                    id="clientAutoComplete"
-                    freeSolo={true}
-                    options={clients.map((client) => client.cpf)}
-                    onInputChange={(event, value) => {
-                      const selectedClient = clients.find((client) => client.cpf === value);
-                      setSelectedClient(selectedClient);
-                    }}
-                    renderInput={(params) => (
-                      <div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', minHeight: '900px', borderRadius: '10px', width: '50%', backgroundColor: 'tranparent', margin: '0 auto', }}>
+
+            <form onSubmit={handleSubmit} style={{ width: '100%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', padding: '30px', borderRadius: '20px' }}>
+              <h1 style={{ textAlign: 'center' }}>Cadastrar vendas</h1>
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '500px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <label style={{ fontSize: '20px' }}>Cliente:</label>
+                  {clients.length > 0 ? (
+                    <Autocomplete
+                      id="clientAutoComplete"
+                      freeSolo={true}
+                      options={clients.map((client) => client.cpf)}
+                      onInputChange={(event, value) => {
+                        const selectedClient = clients.find((client) => client.cpf === value);
+                        setSelectedClient(selectedClient);
+                      }}
+                      renderInput={(params) => (
+                        <div>
+                          <TextField
+                            {...params}
+                            label="CPF"
+                            margin="normal"
+                            variant="outlined"
+                            sx={{ width: "20rem" }}
+                          />
+                        </div>
+                      )}
+                    />
+                  ) : (
+                    <p>Carregando clientes...</p>
+                  )}
+                </div>
+
+                <div>
+                  
+                  {products.length > 0 ? (
+                    <>
+                    
+                      <div style={{ display: 'flex', alignItems: 'center', gap:'20px'}}>
+                        <label style={{ fontSize: '20px' }}>Produto:</label>
+                        <select style={{height: '55px', color: 'gray', font: 'inherit', paddingLeft: '10px', border: '1px solid #9c9c9cb2', borderRadius: '5px'}}
+                          //   value={selectedProduct}
+                          onChange={(event) => setSelectedProduct(event.target.value)}
+                        >
+                          <option value="">Selecione um produto</option>
+                          {products.map((product) => (
+                            <option key={product.id} value={product.name}>
+                              {product.name} - {product.price}
+                            </option>
+                          ))}
+                        </select>
                         <TextField
-                          {...params}
-                          label="CPF"
-                          margin="normal"
+                          type="number"
+                          label="Quantidade"
+                          value={selectedProductValue}
+                          onChange={(event) => setSelectedProductValue(Number(event.target.value))}
                           variant="outlined"
-                          sx={{ width: "45rem" }}
+                          margin="normal"
+                          sx={{ width: "30%" }}
                         />
                       </div>
-                    )}
-                  />
-                ) : (
-                  <p>Carregando clientes...</p>
-                )}
-              </div>
+                      <div style={{  display: 'flex', justifyContent: 'end', marginBottom: '30px'}}>
+                        <Button variant="contained" onClick={handleAddProduct} sx={{ mt: 2, ml: 2 }}>
+                          Adicionar
+                        </Button>
+                      </div>
+                    </>
+                  ) : (
+                    <p>Carregando produtos...</p>
+                  )}
 
-              <div>
-                <label>Produto:</label>
-                {products.length > 0 ? (
-                  <div>
-                    <select
-                      //   value={selectedProduct}
-                      onChange={(event) => setSelectedProduct(event.target.value)}
-                    >
-                      <option value="">Selecione um produto</option>
-                      {products.map((product) => (
-                        <option key={product.id} value={product.name}>
-                          {product.name} - {product.price}
-                        </option>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Nome do Produto</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Preço</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {selectedProductsList.map((product) => (
+                        <TableRow key={product.id}>
+                          <TableCell>{product.name}</TableCell>
+                          <TableCell>{product.price}</TableCell>
+                        </TableRow>
                       ))}
-                    </select>
-                    <TextField
-                      type="number"
-                      label="Valor"
-                      value={selectedProductValue}
-                      onChange={(event) => setSelectedProductValue(Number(event.target.value))}
-                      variant="outlined"
-                      margin="normal"
-                      sx={{ width: "45rem" }}
-                    />
-                    <Button variant="contained" onClick={handleAddProduct} sx={{ mt: 2 }}>
-                      Adicionar Produto
+                      <TableRow>
+                        <TableCell colSpan={2} align="right" sx={{ fontWeight: 'bold' }}>Total: {totalValue}</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+
+                  <div style={{ display: 'flex', justifyContent: 'end' }}>
+                    <Button variant="contained" onClick={handleShowArray} sx={{ mt: 2 }} >
+                      Enviar
                     </Button>
                   </div>
-                ) : (
-                  <p>Carregando produtos...</p>
-                )}
-
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Nome do Produto</TableCell>
-                      <TableCell>Preço</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {selectedProductsList.map((product) => (
-                      <TableRow key={product.id}>
-                        <TableCell>{product.name}</TableCell>
-                        <TableCell>{product.price}</TableCell>
-                      </TableRow>
-                    ))}
-                    <TableRow>
-                      <TableCell colSpan={2} align="right">Total: {totalValue}</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-
-                <Button variant="contained" onClick={handleShowArray} sx={{ mt: 2 }}>
-                  Mostrar Array
-                </Button>
+                </div>
               </div>
-
-              <Button type="submit" variant="contained">
-                Enviar
-              </Button>
             </form>
-          </h1>
+          </div>
         </Content>
       </MiniDrawer>
     </>
