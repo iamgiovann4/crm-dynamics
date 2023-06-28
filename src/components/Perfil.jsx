@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router';
 import useAuthStore from '../store/authStore'
 import { toast } from 'react-toastify';
 import '../components/Perfil.css'
@@ -11,8 +10,11 @@ import { ImExit as Sair } from 'react-icons/im'
 import { RiContactsFill as Contact } from 'react-icons/ri'
 import { API_SERVER } from '../config'
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const Perfil = () => {
+
+    const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const openMenu = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -27,7 +29,6 @@ const Perfil = () => {
     const cpfUserLogged = useAuthStore((state) => state.cpf)
     const tokenUserLogged = useAuthStore((state) => state.token)
     const logout = useAuthStore((state) => state.logout)
-    const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
@@ -84,7 +85,7 @@ const Perfil = () => {
                     }}
                 >
                     <NavLink to="/conta"  style={{color: 'black', textDecoration: 'none'}}><MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><User2 style={{color: 'black'}}/>Perfil</MenuItem></NavLink>
-                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><Contact />Contato</MenuItem>
+                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={() => navigate('/contato')}><Contact />Contato</MenuItem>
                     <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleLogout}><Sair />Sair</MenuItem>
                 </Menu>
             </div>
