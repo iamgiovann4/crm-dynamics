@@ -1,86 +1,170 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import Logo from "../images/Dynamics.png"
+import Quadrados from "../images/quadrados.png"
+import './SignUp.css'
+import Button from "../components/Button"
+import { Link, useNavigate } from 'react-router-dom';
+import Content from '../components/Content';
+import { toast } from 'react-toastify';
+import { API_SERVER } from '../config';
 
+//===========================
+const SignUp = () => {
 
-const clockStyle = {
-  display: 'inline-block',
-  margin: '10px',
-  padding: '20px',
-  borderRadius: '10px',
-  textAlign: 'center',
-  fontFamily: 'Arial',
-};
-const Clock = () => {
-  const [time, setTime] = useState(new Date());
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+  const [showPassword, setShowPassword] = React.useState(false);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const hours = time.getHours().toString().padStart(2, '0');
-  const minutes = time.getMinutes().toString().padStart(2, '0');
-  const seconds = time.getSeconds().toString().padStart(2, '0');
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
-  const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'];
-  const dayOfWeek = daysOfWeek[time.getDay()];
+  const handleSubmit = async (event) => {
 
-  const dayOfMonth = time.getDate();
-  const month = time.toLocaleString('default', { month: 'long' });
-  const year = time.getFullYear();
+    event.preventDefault()
+    console.log('Minha funcao de submit')
+    console.log(event.target)
+    const fname = event.target.fname.value
+    const lname = event.target.lname.value
+    const office = event.target.office.value
+    const cpf = event.target.cpf.value
+    const password = event.target.password.value;
+    const email = event.target.email.value
+    const user = { fname, lname, office, cpf, password, email }
+    console.log(user)
+    try {
+      console.log('entrou')
+      const response = await fetch(`${API_SERVER}/user`,
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+      const data = await response.json()
+      console.log(data)
+      if (data.message === "Dados inválidos" && data.fields) {
+        const fieldKeys = Object.keys(data.fields);
+        if (fieldKeys.length > 0) {
+          const firstFieldKey = fieldKeys[0];
+          const { messages } = data.fields[firstFieldKey];
+          toast.error(`${messages}`);
+        } else {
+          toast.error("Erro desconhecido");
+        }
+      }else if(data.message === "Usuário não Cadastrado!") {
+        toast.error("cpf ou email invalido");
+      } else {
+        toast.success('Parabéns');
+        navigate('/login')
+      }
+    } catch (error) {
+      toast.error('por favor notifique o suporte')
+    }
+  }
 
   return (
-    <>
-      <Box width={1000} height={50} style={{
-        borderRadius: '10px',
-        background: '#FFF',
-        boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-        padding: '50px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    
-        '&:hover':{
-          transform: 'scale(1.5)',
-      }
-      }}>
-        <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
+    <Content>
+      <Grid width={"auto"} className='content' container spacing={2} sx={{ height: '100%', margin: '0%' }}>
+        <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
+          <Box sx={{ width: '60%', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }}>
+            <Box sx={{ display: "flex", justifyContent: "center", }}>
+              <img style={styles.logo} src={Logo} alt={'logo'} />
+            </Box>
+            <h2 style={{ fontSize: "34px", color: "#252525" }}>Bem-vindo</h2>
+            <h3 ><span style={{ color: "#000", opacity: "50%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
+            <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
+              <Grid container spacing={2} sx={{ width: "60%", }}>
+                <Grid item xs={6}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <TextField name='fname' label="Nome" variant="outlined" fullWidth />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <TextField name='office' label="Profissão" variant="outlined" fullWidth />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <TextField name='cpf' label="CPF" variant="outlined" fullWidth />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={showPassword ? 'text' : 'password'}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      label="Password" name="password"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControl sx={{ width: '100%' }} variant='outlined'>
+                    <TextField name='email' label="E-mail" variant="outlined" fullWidth />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <div style={styles.centralizar}>
+                    <div style={{ width: "50%" }}><Button>Cadastrar</Button><br /></div>
+                    <h2 style={{ color: '#252525' }}>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0", textDecoration: 'none' }}>Entrar</Link> </span> </h2>
+                  </div>
 
-
-    </div>
-      <div style={{ ...clockStyle}}>
-        <h2>Hora</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{hours}:{minutes}:{seconds}</p>
-      </div>
-
-      <div style={{ ...clockStyle}}>
-        <h2>Dia da semna</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{dayOfWeek}</p>
-      </div>
-
-      <div style={{ ...clockStyle}}>
-        <h2>Dia do Mês</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{dayOfMonth}</p>
-      </div>
-
-      <div style={{ ...clockStyle}}>
-        <h2>Mês</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{month}</p>
-      </div>
-
-      <div style={{ ...clockStyle}}>
-        <h2>Ano</h2>
-        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{year}</p>
-      </div>
-      </Box>
-
-    </>
+                </Grid>
+              </Grid>
+            </form>
+          </Box>
+        </Grid>
+      </Grid >
+    </Content>
   );
-};
+}
 
-export default Clock;
+export default SignUp;
+
+const styles = {
+  img: {
+    height: "50%"
+  },
+  logo: {
+    width: "350px"
+  },
+  centralizar: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column"
+  }
+}
+
