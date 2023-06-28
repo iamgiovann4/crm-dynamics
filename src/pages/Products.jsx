@@ -8,10 +8,6 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import { Autocomplete } from '@mui/material';
 import { Button } from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
-
-// Restante do seu código...
-// 
-const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 import pe1 from '../images/pe1.svg'
 import './TableAll.css'
 import './Modal.css'
@@ -24,7 +20,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import TextField from '@mui/material/TextField';
+
+// Restante do seu código...
+// 
+const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 // const hostProduct = process.env.REACT_APP_HOST_LINE_PRODUCT
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

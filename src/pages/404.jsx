@@ -1,10 +1,70 @@
-const Error404 = () => {
-    return (
-        <div style={{margin: 0, display: 'flex', alignItems: 'center', flexDirection: 'column', paddingTop: '300px'}}>
-            <h1 style={{color: 'red'}}>Error 404</h1>
-            <h3>Rota não encontrada!!!</h3>
-        </div>
-    );
-}
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Chart } from "react-google-charts";
 
+
+
+
+export const dados = [
+    ["Task", "Hours per Day"],
+    ["Work", 11],
+    ["Eat", 2],
+    ["Commute", 2],
+    ["Watch TV", 2],
+    ["Sleep", 7], // CSS-style declaration
+  ];
+export const options = {
+    title: "My Daily Activities",
+    pieHole: 0.4,
+    is3D: false,
+  };
+
+export function Error404() {
+
+    const [data, setData] = useState([]);
+
+    useEffect((data) => {
+        axios.get("http://localhost:3100/product")
+        .then(response => {
+           data = response.data.map(item => [item.name, item.stock]);
+           data = [['Task', 'Hours per Day'], ...data];
+          setData(data);
+          console.log(data)
+        })
+        .catch(error => {
+          console.error("Erro ao obter os dados:", error);
+        });
+
+    }, []);
+  
+
+    const options = {
+        title: "PJ3",
+        pieHole: 0.4,
+        is3D: false,
+    };
+
+
+    return (
+        <div>
+            {console.log(data,"bomdia")}
+            {console.log(dados,"boanoite")}
+                <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="400px"
+                    data={dados}
+                    options={options}
+                />
+                <Chart
+                    chartType="PieChart"
+                    width="100%"
+                    height="400px"
+                    data={data}
+                    options={options}
+                />
+
+        </div>
+    )
+}
 export default Error404
