@@ -110,7 +110,7 @@ const MiniDrawer = ({ children }) => {
     return (
         <Box sx={{ display: 'flex', boxShadow: '0' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: '#f1f1f1', color: 'black' }}>
+            <AppBar position="fixed" open={open} sx={{ boxShadow: '0', backgroundColor: 'rgba(255, 255, 255, 0.00)', color: 'black' }}>
                 <Toolbar>
 
                     <IconButton

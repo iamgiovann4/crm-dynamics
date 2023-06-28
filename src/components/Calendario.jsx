@@ -35,8 +35,8 @@ const Clock = () => {
   const year = time.getFullYear();
 
   return (
-    <>
-      <Box width={1000} height={50} style={{
+    <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
+      <Box width={980} height={50} style={{
         borderRadius: '10px',
         background: '#FFF',
         boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',

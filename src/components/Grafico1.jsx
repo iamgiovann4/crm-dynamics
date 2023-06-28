@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Chart } from "react-google-charts";
+import Box from '@mui/material/Box';
 
 
 
@@ -46,16 +47,24 @@ export function Grafico1() {
 
 
     return (
-        <div>
+      <div className="chartContainer" style={{display:'flex', justifyContent:'center', margin: '20px', backgorundColor: 'white', backgorund: 'white',}}>
             {console.log(data,"bomdia")}
             {console.log(dados,"boanoite")}
-                <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="400px"
-                    data={data}
-                    options={options}
-                />
+              <Box width={980} height={500}
+              style={{
+                borderRadius: '0px',
+                borderRadius: '10px',
+                backgorundColor: 'white',
+                backgorund: 'white',
+                boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',}}>
+                <Chart  width={900} height={400}
+                     chartType="Bar"
+                     data={data} 
+                     >
+                  </Chart></Box>
         </div>
     )
 }
