@@ -93,25 +93,27 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
             ))}
 
             {openModal && (
-                <Box className='modal' onClick={(event) => {
-                    if (event.target.className.includes('modal')) {
-                        setOpenModal(false);
-                    }
-                }}>
-                    <Box className='container'>
-                        <div className='xizinho'>
-                            <p onClick={() => setOpenModal(false)}>X</p>
-                        </div>
-                        <h2>Produtos Comprados</h2>
-                        <ul>
-                            {items.map((item, index) => (
-                                <>
-                                    <li key={index}>{item.name} - {item.qtd}x</li>
-                                </>
-                            ))}
-                        </ul>
+                <tr>
+                    <Box className='modal' onClick={(event) => {
+                        if (event.target.className.includes('modal')) {
+                            setOpenModal(false);
+                        }
+                    }}>
+                        <Box className='container'>
+                            <div className='xizinho'>
+                                <p onClick={() => setOpenModal(false)}>X</p>
+                            </div>
+                            <h2>Produtos Comprados</h2>
+                            <ul>
+                                {items.map((item, index) => (
+                                    <>
+                                        <li key={index}>{item.name} - {item.qtd}x</li>
+                                    </>
+                                ))}
+                            </ul>
+                        </Box>
                     </Box>
-                </Box>
+                </tr>
             )}
 
         </>
