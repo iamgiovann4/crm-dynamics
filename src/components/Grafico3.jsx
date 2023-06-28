@@ -19,7 +19,7 @@ export const options = {
     is3D: false,
   };
 
-export function Grafico4() {
+export function Grafico3() {
 
     const [data, setData] = useState([]);
 
@@ -50,14 +50,15 @@ export function Grafico4() {
             {console.log(data,"bomdia")}
             {console.log(dados,"boanoite")}
                 <Chart
-                    chartType="LineChart"
+                    chartType="Line"
                     width="100%"
                     height="400px"
                     data={data}
                     options={options}
                 />
 
+
         </div>
     )
 }
-export default Grafico4
+export default Grafico3

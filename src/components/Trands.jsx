@@ -51,7 +51,8 @@ useEffect(() => {
         borderRadius: '10px',
         background: 'rgba(255, 255, 255, 1), rgba(15, 154, 254, 1)',
         boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-        padding: '50px'
+        padding: '50px',
+        boxSizing: 'initial'
       }}>
 
 <NavLink to="/conta"><Box width={980} height={200} style={{
