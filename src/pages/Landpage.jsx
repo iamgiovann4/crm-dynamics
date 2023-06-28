@@ -9,7 +9,7 @@ import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import Content from '../components/Content';
-import './landpage.css';
+import './Landpage.css';
 
 const Landpage = () => {
   const [loading, setLoading] = useState(true);
