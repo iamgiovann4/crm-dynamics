@@ -67,9 +67,9 @@ const Login = () => {
     <>
       <Content>
         <Grid container spacing={2} sx={{ padding: '0px' }} className='teste'>
-          <Grid width={"auto"} item xs={12} sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <Grid width={"auto"} item xs={12} sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0' }}>
             <Box style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", padding: "0px" }}>
-              <Box className='contentForm' sx={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#ffffffbd", padding: "40px", borderRadius: "20px", }}>
+              <Box className='contentForm' sx={{ display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#ffffffdb", padding: "40px", borderRadius: "20px", }}>
                 <Box sx={{ marginTop: '-120px' }}>
                   <img style={styles.silhueta} src={Simbolo} alt={'silhueta'} />
                 </Box>

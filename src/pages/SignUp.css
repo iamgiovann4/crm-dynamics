@@ -7,5 +7,6 @@ html, body, #root{
 }
 
 .content{
-    background-image: url('../images/capa.png')!important;
+    background-image: url('../images/capa.png') !important;
+    background-size: cover;
 }

@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from "../images/Dynamics.png"
+import Simbolo from "../images/simbolo.png"
 import Quadrados from "../images/quadrados.png"
 import './SignUp.css'
 import Button from "../components/Button"
@@ -64,7 +65,7 @@ const SignUp = () => {
         } else {
           toast.error("Erro desconhecido");
         }
-      }else if(data.message === "Usuário não Cadastrado!") {
+      } else if (data.message === "Usuário não Cadastrado!") {
         toast.error("cpf ou email invalido");
       } else {
         toast.success('Parabéns');
@@ -77,72 +78,76 @@ const SignUp = () => {
 
   return (
     <Content>
-      <Grid width={"auto"}  container spacing={2} sx={{ height: '100%', margin: '0%' }}>
-        <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
-          <Box sx={{ width: '60%', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }}>
-            <Box sx={{ display: "flex", justifyContent: "center", }}>
+      <Grid className='content' width={"auto"} container spacing={2} sx={{ height: '100%', margin: '0%' }}>
+        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
+          <Box sx={{ width: '100%', display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", }}>
+            <Box sx={{ backgroundColor: "#ffffffdb", borderRadius: '16px', width: '50%', marginRight: '20px' }}>
+            <Box sx={{ display: "flex", justifyContent: "center", width: '45%', justifyContent: 'center', width: '100%', paddingTop: '30px' }}>
               <img style={styles.logo} src={Logo} alt={'logo'} />
             </Box>
-            <h2 style={{ fontSize: "34px", color: "#252525" }}>Bem-vindo</h2>
-            <h3 ><span style={{ color: "#000", opacity: "50%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
-            <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
-              <Grid container spacing={2} sx={{ width: "60%", }}>
-                <Grid item xs={6}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <TextField name='fname' label="Nome" variant="outlined" fullWidth />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <TextField name='office' label="Profissão" variant="outlined" fullWidth />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <TextField name='cpf' label="CPF" variant="outlined" fullWidth />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      type={showPassword ? 'text' : 'password'}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Password" name="password"
-                    />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl sx={{ width: '100%' }} variant='outlined'>
-                    <TextField name='email' label="E-mail" variant="outlined" fullWidth />
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <div style={styles.centralizar}>
-                    <div style={{ width: "50%" }}><Button>Cadastrar</Button><br /></div>
-                    <h2 style={{ color: '#252525' }}>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0", textDecoration: 'none' }}>Entrar</Link> </span> </h2>
-                  </div>
+              <Box sx={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
+                <h2 style={{ fontSize: "34px", color: "#252525" }}>Bem-vindo</h2>
+                <h3 ><span style={{ color: "#000", opacity: "50%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
+              </Box>
+              <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
+                <Grid container spacing={2} sx={{ width: "60%", }}>
+                  <Grid item xs={6}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <TextField name='fname' label="Nome" variant="outlined" fullWidth />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <TextField name='lname' label="Sobrenome" variant="outlined" fullWidth />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <TextField name='office' label="Profissão" variant="outlined" fullWidth />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <TextField name='cpf' label="CPF" variant="outlined" fullWidth />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Password" name="password"
+                      />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl sx={{ width: '100%' }} variant='outlined'>
+                      <TextField name='email' label="E-mail" variant="outlined" fullWidth />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <div style={styles.centralizar}>
+                      <div style={{ width: "50%" }}><Button>Cadastrar</Button><br /></div>
+                      <h2 style={{ color: '#252525' }}>Já tem uma conta? <span style={{ color: "#0070C0" }}> <Link to={`/login`} style={{ color: "#0070C0", textDecoration: 'none' }}>Entrar</Link> </span> </h2>
+                    </div>
 
+                  </Grid>
                 </Grid>
-              </Grid>
-            </form>
+              </form>
+            </Box>
           </Box>
         </Grid>
       </Grid >
