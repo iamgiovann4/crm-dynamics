@@ -1,6 +1,6 @@
 import React from 'react';
 import Content from '../components/Content';
-import Chart from '../components/Calendario';
+import Clock from '../components/Calendario';
 import Chart2 from '../components/Trands';
 import PieChart from '../components/PieChart';
 import Grafico1 from '../components/Grafico1';
@@ -18,9 +18,10 @@ const Home = () => {
             <MiniDrawer>
                 <Content title="Dashboard">
                     {/* <Header /> */}
-                    <div className='grafico1'>
-                        <Chart />
+                    <div className='grafico1' style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
+                        <Clock/>
                     </div>
+                    
                     <div className='grafico2'>
                         <Chart2 />
                         <div sx={{ display: "flex", rowDirection: "row" }}>

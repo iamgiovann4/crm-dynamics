@@ -24,7 +24,7 @@ export function Grafico3() {
     const [data, setData] = useState([]);
 
     useEffect((data) => {
-        axios.get("http://localhost:3100/product")
+        axios.get("http://localhost:3100/clients")
         .then(response => {
            data = response.data.map(item => [item.name, item.stock]);
            data = [['Task', 'Hours per Day'], ...data];
