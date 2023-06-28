@@ -59,48 +59,57 @@ function ListSales() {
         <>
             <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
                 <Content title='Produtos'>
-                    <TableContainer style={{ backgroundColor: 'transparent', boxShadow: 'none', width: '55%', margin: '0 auto' }} className='caixaTabela' component={Paper}>
-                        <Box direction="row" className='stack'>
-                            <h1>Suas Vendas</h1>
-                        </Box>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <TextField
                             label="Search"
                             variant="outlined"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            style={{ marginBottom: '16px', marginTop: '16px', width: '100%' }}
+                            style={{ marginBottom: '0px', marginTop: '60px', width: '90%', backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', borderRadius: '10px' }}
                         />
-                        <Table sx={{ maxWidth: '100%' }} aria-label="customized table">
+                    </Box>
+                    <TableContainer style={{ backgroundColor: 'white', boxShadow: ' 0px 0px 10px 1px rgba(0, 0, 0, 0.15)', width: '90%', margin: '20px auto 0 auto', borderRadius: '10px' }} className='caixaTabela' component={Paper}>
+                        <Box direction="row" className='stack'>
+                            <h1 style={{ paddingLeft: '70px', paddingTop: '0px' }}>Suas Vendas</h1>
+                        </Box>
+                        <Table sx={{ minWidth: 500 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow >
-                                    <StyledTableCell align='left'>Nmr. Pedido</StyledTableCell>
-                                    <StyledTableCell align='left'>Cliente</StyledTableCell>
-                                    <StyledTableCell align="left">Data da compra</StyledTableCell>
-                                    <StyledTableCell align="left">Total</StyledTableCell>
-                                    <StyledTableCell align="left"></StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align='left'>Nmr. Pedido</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align='left'>Cliente</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Data da compra</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left">Total</StyledTableCell>
+                                    <StyledTableCell style={styles.coluna} align="left"></StyledTableCell>
                                 </TableRow>
                             </TableHead>
-                                <TableBody>
-
-
-                                    {sales && sales.length > 0 &&
-                                        <TableSales setSales={setSales} sales={sales} searchTerm={searchTerm} />}
-                                    {sales && sales.length === 0 &&
-                                        <tr>
-                                            <td colSpan={5}>
-                                                <img src={pe1} alt="pe1" style={{ width: '100%' }} />
-                                            </td>
-                                        </tr>
-                                    }
-
-
-                                </TableBody>
+                            <TableBody>
+                                {sales && sales.length > 0 &&
+                                    <TableSales setSales={setSales} sales={sales} searchTerm={searchTerm} />}
+                                {sales && sales.length === 0 &&
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <img src={pe1} alt="pe1" style={{ width: '100%' }} />
+                                        </td>
+                                    </tr>
+                                }
+                            </TableBody>
                         </Table>
                     </TableContainer>
                 </Content >
             </MiniDrawer >
         </>
     )
+}
+
+const styles = {
+    coluna: {
+        color: '#9e9e9e',
+        borderBottom: '1px solid #ddd',
+        paddingLeft: '20px',
+        paddingBottom: '15px',
+        fontWeight: 'bold',
+        fontSize: '16px'
+    }
 }
 
 export default ListSales
