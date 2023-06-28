@@ -47,22 +47,20 @@ export function Grafico1() {
 
 
     return (
-      <div className="chartContainer" style={{display:'flex', justifyContent:'center', margin: '20px', backgorundColor: 'white', backgorund: 'white',}}>
-            {console.log(data,"bomdia")}
-            {console.log(dados,"boanoite")}
+      <div className="chartContainer" style={{display:'flex', justifyContent:'center', margin: '20px', backgorundColor: 'white', backgorund: 'white'}}>
               <Box width={980} height={500}
-              style={{
-                borderRadius: '0px',
-                borderRadius: '10px',
-                backgorundColor: 'white',
-                backgorund: 'white',
-                boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',}}>
-                <Chart  width={900} height={400}
+            chartType="PieChart"
+             style={{
+              borderRadius: '20px',
+              backgorundColor: 'white',
+              backgorund: 'white',
+              boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',}}>
+                <Chart  width={980} height={500}
                      chartType="Bar"
-                     data={data} 
+                     data={data}
                      >
                   </Chart></Box>
         </div>

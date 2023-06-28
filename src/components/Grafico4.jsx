@@ -1,63 +1,35 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Chart } from "react-google-charts";
+import React from 'react';
+import Box from '@mui/material/Box';
+import { FaUserCircle as User, FaUserAlt as User2 } from 'react-icons/fa'
+import useAuthStore from '../store/authStore';
 
+export function Chart4() {
+  const nameUserLogged = useAuthStore((state) => state.fname)
+  const cpfUserLogged = useAuthStore((state) => state.cpf)
+  const email = useAuthStore((state) => state.email)
 
+  return (
+    <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
+      <Box width={500} height={700} style={{
+                borderRadius: '10px',
+                background: '#FFF',
+                boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
+                padding: '50px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column'
+      }}>
+        <User size={80} style={{ color: "black",
+}} /><p>{nameUserLogged}</p>
+<Box>
+  <p>cpf: {cpfUserLogged}</p>
+  <p>cpf: {email}</p>
+</Box>
+        </Box>
 
-
-export const dados = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7], // CSS-style declaration
-  ];
-export const options = {
-    title: "My Daily Activities",
-    pieHole: 0.4,
-    is3D: false,
-  };
-
-export function Grafico4() {
-
-    const [data, setData] = useState([]);
-
-    useEffect((data) => {
-        axios.get("http://localhost:3100/product")
-        .then(response => {
-           data = response.data.map(item => [item.name, item.stock]);
-           data = [['Task', 'Hours per Day'], ...data];
-          setData(data);
-          console.log(data)
-        })
-        .catch(error => {
-          console.error("Erro ao obter os dados:", error);
-        });
-
-    }, []);
-  
-
-    const options = {
-        title: "PJ3",
-        pieHole: 0.4,
-        is3D: false,
-    };
-
-
-    return (
-        <div>
-            {console.log(data,"bomdia")}
-            {console.log(dados,"boanoite")}
-                <Chart
-                    chartType="LineChart"
-                    width="100%"
-                    height="400px"
-                    data={data}
-                    options={options}
-                />
-
-        </div>
-    )
+    </div>
+  )
 }
-export default Grafico4
+
+export default Chart4;

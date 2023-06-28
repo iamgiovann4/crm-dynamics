@@ -6,10 +6,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import { API_SERVER } from '../config'
+import useAuthStore from '../store/authStore';
 
 
 export function Chart2() {
 
+  const nameUserLogged = useAuthStore((state) => state.fname)
+
+  
   const [clients, setClients] = useState(false);
 
   const loadClients = async () => {
@@ -65,7 +69,7 @@ useEffect(() => {
         flexDirection: 'column',
       }}>
         <User size={80} style={{ color: "black",
-}} /><p>Nome</p><Box>Veja Mais detalhes sobre sua conta</Box>
+}} /><p>{nameUserLogged}</p><Box>Veja Mais detalhes sobre sua conta</Box>
         </Box>
         
         </NavLink>

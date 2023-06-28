@@ -48,13 +48,10 @@ export function Grafico2() {
 
     return (
       <div className="chartContainer" style={{display:'flex', justifyContent:'center', borderRadius: '20px', margin: '20px'}}>
-            {console.log(data,"bomdia")}
-            {console.log(dados,"boanoite")}
             <Box 
             width={980} height={500}
             chartType="PieChart"
              style={{
-               margin: '0px',
               borderRadius: '20px',
               backgorundColor: 'white',
               backgorund: 'white',
