@@ -31,6 +31,7 @@ const Employees = () => {
     const navigate = useNavigate()
     const [employees, setEmployees] = useState(false);
     const [employeeslEdit, setEmployeesToEdit] = useState({});
+
     console.log(employeeslEdit)
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -53,6 +54,14 @@ const Employees = () => {
     useEffect(() => {
         loadEmployees()
     }, []) // [] = executa apenas uma vez quando o componente é montados
+
+    // const CustomTextField = styled(TextField)({
+    //     '& .MuiOutlinedInput-root': {
+    //       '& fieldset': {
+    //         border: 'none',
+    //       },
+    //     },
+    //   });
 
     return (
         <>

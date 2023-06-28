@@ -11,7 +11,7 @@ import {
   Bar
 } from 'recharts';
 
-export function Chart2() {
+export function Chart3() {
   const data = [
     {
       name: 'A',
@@ -59,7 +59,13 @@ export function Chart2() {
 
   return (
     <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
-      <BarChart width={600} height={300} data={data} style={{backgroundColor:'#f1f1f1', padding:'20px', borderRadius:'8px'}}>
+
+      <BarChart width={1000} height={300} data={data} style={{
+                borderRadius: '10px',
+                background: '#FFF',
+                boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
+                padding: '50px'
+                }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -72,4 +78,4 @@ export function Chart2() {
   )
 }
 
-export default Chart2;
+export default Chart3;

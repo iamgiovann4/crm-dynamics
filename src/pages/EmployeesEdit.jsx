@@ -66,71 +66,70 @@ const EmployeesEdit = () => {
     return (
         <>
             <MiniDrawer>
-                <Content>
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                        <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Grid container spacing={2} sx={{ height: "100%", width: "70%", }}>
-                                <TextField type="hidden" name="id" value={row.id} />
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='fname' label="Nome" value={fname} variant="outlined" fullWidth onChange={e => setFname(e.target.value)} />
-                                    </FormControl>
-                                </Grid><br />
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='lname' label="Sobrenome" value={lname} variant="outlined" fullWidth onChange={e => setLname(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='cpf' label="CPF" value={cpf} variant="outlined" fullWidth onChange={e => setCpf(e.target.value)} />
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='email' label="E-mail" value={email} variant="outlined" fullWidth onChange={e => setEmail(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='office' label="Cargo" value={office} variant="outlined" fullWidth onChange={e => setOffice(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='wage' label="Salário" value={wage} variant="outlined" fullWidth onChange={e => setWage(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='birth' label="Nascimento" value={birth} variant="outlined" fullWidth onChange={e => setBirth(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='street' label="Rua" value={street} variant="outlined" fullWidth onChange={e => setStreet(e.target.value)} />
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='number' label="Numero" value={number} variant="outlined" fullWidth onChange={e => setNumber(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <FormControl sx={{ width: '100%' }} variant='outlined'>
-                                        <TextField name='address' label="Bairro" value={address} variant="outlined" fullWidth onChange={e => setAddress(e.target.value)}/>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div style={{ width: "30%", margin: 'auto' }}>
-                                        <Button>Editar</Button>
-                                    </div>
-                                </Grid>
+                <Box m={0} p={0} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', height: '850px' }}>
+                    <h1 style={{ color: '#252525', marginBottom: '50px' }}>Editar Funcionario</h1>
+                    <form onSubmit={handleEdit} style={{ display: "flex", justifyContent: "center", height: '70%' }}>
+                        <Grid container spacing={2} sx={{ width: '70%' }}>
+                            <input type="hidden" name="id" value={row.id} />
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='fname' label="Nome" value={fname} variant="outlined" fullWidth onChange={e => setFname(e.target.value)} />
+                                </FormControl>
+                            </Grid><br />
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='lname' label="Sobrenome" value={lname} variant="outlined" fullWidth onChange={e => setLname(e.target.value)} />
+                                </FormControl>
                             </Grid>
-                        </form>
-                    </Box>
-                </Content>
-            </MiniDrawer>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='cpf' label="CPF" value={cpf} variant="outlined" fullWidth onChange={e => setCpf(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='email' label="E-mail" value={email} variant="outlined" fullWidth onChange={e => setEmail(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='office' label="Cargo" value={office} variant="outlined" fullWidth onChange={e => setOffice(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='wage' label="Salário" value={wage} variant="outlined" fullWidth onChange={e => setWage(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='birth' label="Nascimento" value={birth} variant="outlined" fullWidth onChange={e => setBirth(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='street' label="Rua" value={street} variant="outlined" fullWidth onChange={e => setStreet(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='number' label="Numero" value={number} variant="outlined" fullWidth onChange={e => setNumber(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl sx={{ width: '100%' }} variant='outlined'>
+                                    <TextField name='address' label="Bairro" value={address} variant="outlined" fullWidth onChange={e => setAddress(e.target.value)} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div style={{ width: "30%", margin: 'auto' }}>
+                                    <Button>Editar</Button>
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </form>
+                </Box>
+            </MiniDrawer >
         </>
     )
 }

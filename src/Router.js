@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Cadastro from "./pages/SignUp";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
+import Conta from "./pages/Conta";
 import Pag404 from "./pages/404";
 import Login from "./pages/Login";
 import Landpage from "./pages/Landpage";
@@ -16,6 +17,7 @@ import FormEmployees from "./pages/FormEmployees";
 import EmployeesEdit from "./pages/EmployeesEdit";
 import ListSales from "./pages/ListSales";
 import TableFilter from "./pages/TableFilter";
+import Contact from "./pages/Contact";
 
 const Router = () => {
     return (
@@ -23,16 +25,18 @@ const Router = () => {
             <Route path="/" element={<Landpage />} />
             <Route element={<CheckLogged />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/conta" element={<Conta />} />
                 <Route path="/produtos" element={<Products />} />
                 <Route path="/clientes" element={<Customers />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/funcionarios" element={<Employees />} />
                 <Route path="/vendas" element={<Sales />} />
-                <Route path="/cadastroC" element={<FormCustomers />} />
-                <Route path="/add-funcionarios" element={<FormEmployees />} />
-                <Route path="/cliente-edit" element={<CustomersEdit />} />
-                <Route path="/funcionarios-edit" element={<EmployeesEdit />} />
-                <Route path="/testtable" element={<TableFilter />} />
+                <Route path="/listar-vendas" element={<ListSales />} />
+                <Route path="/cadastro-cliente" element={<FormCustomers />} />
+                <Route path="/cadastro-funcionario" element={<FormEmployees />} />
+                <Route path="/editar-cliente" element={<CustomersEdit />} />
+                <Route path="/editar-funcionario" element={<EmployeesEdit />} />
+                <Route path="/contato" element={<Contact />} />
             </Route>
 
             <Route path="/landpage" element={<Landpage />} />

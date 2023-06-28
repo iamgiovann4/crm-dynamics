@@ -12,6 +12,7 @@ import pe1 from '../images/pe1.svg'
 import './TableAll.css'
 import './Modal.css'
 import { API_SERVER } from '../config'
+import './product.css'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -149,6 +150,13 @@ function Products() {
     useEffect(() => {
         loadProdutos()
     }, []) // [] = executa apenas uma vez quando o componente é montados
+    // const CustomTextField = styled(TextField)({
+    //     '& .MuiOutlinedInput-root': {
+    //       '& fieldset': {
+    //         border: 'none',
+    //       },
+    //     },
+    //   });
 
     return (
         <>

@@ -10,6 +10,7 @@ import { FaUserCircle as User, FaUserAlt as User2 } from 'react-icons/fa'
 import { ImExit as Sair } from 'react-icons/im'
 import { RiContactsFill as Contact } from 'react-icons/ri'
 import { API_SERVER } from '../config'
+import { NavLink } from 'react-router-dom';
 
 const Perfil = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -82,7 +83,7 @@ const Perfil = () => {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><User2 />Perfil</MenuItem>
+                    <NavLink to="/conta"  style={{color: 'black', textDecoration: 'none'}}><MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><User2 style={{color: 'black'}}/>Perfil</MenuItem></NavLink>
                     <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleClose}><Contact />Contato</MenuItem>
                     <MenuItem sx={{ width: '110px', gap: '5px' }} onClick={handleLogout}><Sair />Sair</MenuItem>
                 </Menu>

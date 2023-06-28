@@ -9,19 +9,15 @@ import MiniDrawer from '../components/MiniDrawer'
 // import Footer from '../components/Footer';
 
 
-const Home = () => {
-    return (   
+const Conta = () => {
+    return (
         <>
             <MiniDrawer>
                 <Content title="Dashboard">
                     {/* <Header /> */}
-                            <div className='grafico1'>
-                                <Chart/>
+                            <div className='grafico4'>
+                                <Chart4/>
                             </div>
-                            <div className='grafico2'>  
-                                <Chart2 />
-                            </div>      
-
                 </Content>
             </MiniDrawer>
             {/* <Footer/> */}
@@ -29,4 +25,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Conta;
