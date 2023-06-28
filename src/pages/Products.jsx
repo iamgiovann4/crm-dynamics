@@ -135,9 +135,9 @@ function Products() {
 
     return (
         <>
-            <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange}>
+            <MiniDrawer searchTerm={searchTerm} handleSearchChange={handleSearchChange} >
                 <Content title='Produtos'>
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center'}}>
                         <TextField
                             label="Pesquisar"
                             variant="outlined"

@@ -73,12 +73,14 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
 
     return (
         <>
-            {filteredRows.map((row) => (
+            {filteredRows.sort((a, b) => b.id - a.id).map((row) => (
                 <StyledTableRow key={row.id}>
                     <StyledTableCell style={styles.dadosTabela} align="left" scope="row">
                         #{hashids.encode(row.id)}
                     </StyledTableCell>
-                    <StyledTableCell style={styles.dadosTabela} align="left" >{row.fname}</StyledTableCell>
+                    <StyledTableCell style={styles.dadosTabela} align="left">
+                        {row.fname}
+                    </StyledTableCell>
                     <StyledTableCell style={styles.dadosTabela} align="left">
                         <DataFormatada dataString={row.date} />
                     </StyledTableCell>
@@ -86,9 +88,9 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
                         {row.valor}
                     </StyledTableCell>
                     <StyledTableCell>
-                        <CgMoreO
-                            size={24}
-                            onClick={() => showItems(row.id)}>Itens</CgMoreO>
+                        <CgMoreO size={24} onClick={() => showItems(row.id)}>
+                            Itens
+                        </CgMoreO>
                     </StyledTableCell>
                 </StyledTableRow>
             ))}
@@ -109,7 +111,13 @@ const TableSales = ({ setSales, sales, searchTerm }) => {
                                 <ul>
                                     {items.map((item, index) => (
                                         <>
-                                            <li key={index}>{item.name} - {item.qtd}x</li>
+                                            <table>
+                                                <StyledTableRow key={index}>
+                                                    <StyledTableCell style={styles.dadosTabela} align="left" scope="row">
+                                                        {item.name} - {item.qtd}x
+                                                    </StyledTableCell>
+                                                </StyledTableRow>
+                                            </table>
                                         </>
                                     ))}
                                 </ul>
