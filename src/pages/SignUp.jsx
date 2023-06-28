@@ -77,7 +77,7 @@ const SignUp = () => {
 
   return (
     <Content>
-      <Grid width={"auto"} container spacing={2} sx={{ height: '100%', margin: '0%' }}>
+      <Grid width={"auto"}  container spacing={2} sx={{ height: '100%', margin: '0%' }}>
         <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
           <Box sx={{ width: '60%', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }}>
             <Box sx={{ display: "flex", justifyContent: "center", }}>
