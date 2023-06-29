@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { API_SERVER } from '../config'
 import useAuthStore from '../store/authStore';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 export function Chart2() {
 
@@ -83,7 +85,7 @@ export function Chart2() {
             fontSize: '20px',
             fontWeight: '500'
           }}>
-            Funcionários<Box sx={{color: 'black', fontWeight: 'bold'}}>{employees.length}</Box>
+            <InventoryIcon></InventoryIcon>Funcionários<Box sx={{color: 'black', fontWeight: 'bold'}}>{employees.length}</Box>
           </Box>
         </NavLink>
 
@@ -102,7 +104,7 @@ export function Chart2() {
             fontSize: '20px',
             fontWeight: '500'
           }}>
-            Clientes<Box sx={{color: 'black', fontWeight: 'bold'}}>{clients.length}</Box>
+            <ContactsIcon></ContactsIcon>Clientes<Box sx={{color: 'black', fontWeight: 'bold'}}>{clients.length}</Box>
           </Box>
         </NavLink>
 

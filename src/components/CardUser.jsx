@@ -10,7 +10,7 @@ export function Chart4() {
 
   return (
     <div className="chartContainer" style={{display:'flex', justifyContent:'center'}}>
-      <Box width={500} height={700} style={{
+      <Box width={1000} height={400} style={{
                 borderRadius: '10px',
                 background: '#FFF',
                 boxShadow: '0px 0px 20px 2px rgba(0, 0, 0, 0.05)',
@@ -23,9 +23,9 @@ export function Chart4() {
         <User size={80} style={{ color: "black",
 }} /><p>{nameUserLogged}</p>
 <Box>
-  <p>cpf: {cpfUserLogged}</p>
-  <p>cpf: {email}</p>
+  <p style={{float: 'left', margin: '5px', color: '#252525'}}>cpf: </p><p style={{float: 'left', margin: '5px', color: '#0000007D'}}>{cpfUserLogged}</p>
 </Box>
+
         </Box>
 
     </div>
