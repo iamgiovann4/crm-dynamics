@@ -17,6 +17,7 @@ const Conta = () => {
                     {/* <Header /> */}
                             <div className='grafico4'>
                                 <Chart4/>
+                                Card
                             </div>
                 </Content>
             </MiniDrawer>

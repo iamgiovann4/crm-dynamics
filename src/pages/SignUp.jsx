@@ -85,7 +85,7 @@ const SignUp = () => {
             </Box>
               <Box sx={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
                 <h2 style={{ fontSize: "34px", color: "#252525" }}>Bem-vindo</h2>
-                <h3 ><span style={{ color: "#000", opacity: "50%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
+                <h3 ><span style={{ color: "#000", opacity: "80%" }}>Administre  sua empresa em uma plataforma </span> <span style={{ color: "#0070C0", }}>Confiável</span></h3>
               </Box>
               <form onSubmit={handleSubmit} style={{ display: "flex", justifyContent: "center", }}>
                 <Grid container spacing={2} sx={{ width: "60%", }}>
